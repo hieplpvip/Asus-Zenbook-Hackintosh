@@ -18,11 +18,6 @@ A collection of DSDT/SSDT patches and tools for the ASUS UX401 laptop for macOS 
 
 ## Notes:
 
-To make trackpad work, remove these kexts from /System/Library/Extensions/:
-* AppleHPM.kext
-* AppleIntelLpssI2C.kext
-* AppleIntelLpssI2CController.kext
-
 ## To-Do
 
 * Create automatic scripts
