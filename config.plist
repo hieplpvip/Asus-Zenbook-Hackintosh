@@ -8,13 +8,13 @@
 		<dict>
 			<key>Fixes</key>
 			<dict>
-				<key>FIX_RTC_20000</key>
+				<key>FixHeaders</key>
 				<true/>
-				<key>FIX_TMR_40000</key>
+				<key>FixIPIC</key>
 				<true/>
-				<key>FixHeaders_20000000</key>
+				<key>FixRTC</key>
 				<true/>
-				<key>FixIPIC_0040</key>
+				<key>FixTMR</key>
 				<true/>
 			</dict>
 			<key>Patches</key>
@@ -453,6 +453,90 @@
 					WFBFVAg=
 					</data>
 				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change Method(_STA,0,S) in GPI0 to XSTA</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					X1NUQQCgCZNTQlJH
+					</data>
+					<key>Replace</key>
+					<data>
+					WFNUQQCgCZNTQlJH
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change device ETPD to XTPD</string>
+					<key>Disabled</key>
+					<true/>
+					<key>Find</key>
+					<data>
+					RVRQRAg=
+					</data>
+					<key>Replace</key>
+					<data>
+					WFRQRAg=
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change PNP0C50 to PNP0000</string>
+					<key>Disabled</key>
+					<true/>
+					<key>Find</key>
+					<data>
+					TlAwQzUw
+					</data>
+					<key>Replace</key>
+					<data>
+					TlAwMDAw
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change ELAN1200 to 00000000</string>
+					<key>Disabled</key>
+					<true/>
+					<key>Find</key>
+					<data>
+					RUxBTjEyMDA=
+					</data>
+					<key>Replace</key>
+					<data>
+					MDAwMDAwMDA=
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change Method(_STA,0,S) in XTPD to XSTA</string>
+					<key>Disabled</key>
+					<true/>
+					<key>Find</key>
+					<data>
+					X1NUQQCgEZGS
+					</data>
+					<key>Replace</key>
+					<data>
+					WFNUQQCgEZGS
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change Method(_CRS,0,S) in XTPD to XCRS</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					X0NSUwgIU0JGSQ==
+					</data>
+					<key>Replace</key>
+					<data>
+					WENSUwgIU0JGSQ==
+					</data>
+				</dict>
 			</array>
 		</dict>
 		<key>DropTables</key>
@@ -817,8 +901,6 @@
 	</dict>
 	<key>SystemParameters</key>
 	<dict>
-		<key>#BacklightLevel</key>
-		<integer>0</integer>
 		<key>InjectKexts</key>
 		<string>Detect</string>
 	</dict>
