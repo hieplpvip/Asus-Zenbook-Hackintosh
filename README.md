@@ -4,13 +4,13 @@ A collection of DSDT/SSDT patches and tools for the ASUS UX401 laptop for macOS 
 #### What you should expect works
 
 * Audio
-* Keyboard and touchpad
+* Keyboard
+* Touchpad (partially)
 * Battery
 * Fn-keys
 * Brightness
 * Sleep
-* Bluetooth
-* WiFi when replaced (tested: Dell DW1560 WiFi)
+* HDMI
 
 #### Will never work
 
@@ -21,7 +21,8 @@ A collection of DSDT/SSDT patches and tools for the ASUS UX401 laptop for macOS 
 ## To-Do
 
 * Create automatic scripts
-* Test HDMI audio
+* Bluetooth
+* WiFi (Dell DW1560 WiFi)
 
 ## Credits
 

@@ -8,6 +8,8 @@
 		<dict>
 			<key>Fixes</key>
 			<dict>
+				<key>FixHDA</key>
+				<true/>
 				<key>FixHeaders</key>
 				<true/>
 				<key>FixIPIC</key>
@@ -469,62 +471,6 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change device ETPD to XTPD</string>
-					<key>Disabled</key>
-					<true/>
-					<key>Find</key>
-					<data>
-					RVRQRAg=
-					</data>
-					<key>Replace</key>
-					<data>
-					WFRQRAg=
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change PNP0C50 to PNP0000</string>
-					<key>Disabled</key>
-					<true/>
-					<key>Find</key>
-					<data>
-					TlAwQzUw
-					</data>
-					<key>Replace</key>
-					<data>
-					TlAwMDAw
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change ELAN1200 to 00000000</string>
-					<key>Disabled</key>
-					<true/>
-					<key>Find</key>
-					<data>
-					RUxBTjEyMDA=
-					</data>
-					<key>Replace</key>
-					<data>
-					MDAwMDAwMDA=
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_STA,0,S) in XTPD to XSTA</string>
-					<key>Disabled</key>
-					<true/>
-					<key>Find</key>
-					<data>
-					X1NUQQCgEZGS
-					</data>
-					<key>Replace</key>
-					<data>
-					WFNUQQCgEZGS
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
 					<string>change Method(_CRS,0,S) in XTPD to XCRS</string>
 					<key>Disabled</key>
 					<false/>
@@ -562,6 +508,14 @@
 			<false/>
 			<key>Generate</key>
 			<dict>
+				<key>APLF</key>
+				<true/>
+				<key>APSN</key>
+				<true/>
+				<key>CStates</key>
+				<true/>
+				<key>PStates</key>
+				<true/>
 				<key>PluginType</key>
 				<true/>
 			</dict>
@@ -655,6 +609,8 @@
 			<key>Inject</key>
 			<true/>
 		</dict>
+		<key>UseIntelHDMI</key>
+		<true/>
 	</dict>
 	<key>DisableDrivers</key>
 	<array>
@@ -774,6 +730,8 @@
 				<data>
 				ixnUEQ==
 				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
 				<key>Name</key>
 				<string>AppleHDA</string>
 				<key>Replace</key>
@@ -790,6 +748,8 @@
 				<data>
 				ihnUEQ==
 				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
 				<key>Name</key>
 				<string>AppleHDA</string>
 				<key>Replace</key>
@@ -806,6 +766,8 @@
 				<data>
 				RiV1VCUwNHgA
 				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleBacklight</string>
 				<key>Replace</key>
@@ -822,6 +784,8 @@
 				<data>
 				AABgAgAAUAE=
 				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleIntelKBLGraphicsFramebuffer</string>
 				<key>Replace</key>
@@ -831,13 +795,15 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>HDMI-audio, 0x59160000</string>
+				<string>10.12.6-KBL-5912000-Port_0x5-DP2HDM</string>
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
 				<data>
 				AQUJAAAEAACHAQAA
 				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleIntelKBLGraphicsFramebuffer</string>
 				<key>Replace</key>
@@ -901,6 +867,8 @@
 	</dict>
 	<key>SystemParameters</key>
 	<dict>
+		<key>#BacklightLevel</key>
+		<integer>0</integer>
 		<key>InjectKexts</key>
 		<string>Detect</string>
 	</dict>
