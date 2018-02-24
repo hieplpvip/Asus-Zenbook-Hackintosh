@@ -32,17 +32,6 @@ DefinitionBlock ("SSDT-HACK.aml", "SSDT", 1, "hack", "hack", 0x00003000)
         Return (Ones != Match(Local0, MEQ, Arg0, MTR, 0, 0))
     }
     
-    // Power management with X86PlatformPlugin.kext
-    External(\_PR.CPU0, DeviceObj)
-    Method (\_PR.CPU0._DSM, 4)
-    {
-        If (!Arg2) { Return (Buffer() { 0x03 } ) }
-        Return (Package()
-        {
-            "plugin-type", 1
-        })
-    }
-    
 	// In DSDT, native GPRW is renamed to XPRW with Clover binpatch.
     // As a result, calls to GPRW land here.
     // The purpose of this implementation is to avoid "instant wake"
@@ -63,6 +52,22 @@ DefinitionBlock ("SSDT-HACK.aml", "SSDT", 1, "hack", "hack", 0x00003000)
         Method(_INI)
         {
             If (CondRefOf(\_SB.PCI0.RP01.PEGP._OFF)) { \_SB.PCI0.RP01.PEGP._OFF() }
+        }
+    }
+    Method(_SB.PCI0.RP01.PEGP._INI) { \_SB.PCI0.RP01.PEGP._OFF() }
+    External(_SB.PCI0.LPCB.EC0, DeviceObj)
+    External(_SB.PCI0.LPCB.EC0.XREG, MethodObj)
+    External(_SB.PCI0.HGOF, MethodObj)
+    Scope(_SB.PCI0.LPCB.EC0)
+    {
+        OperationRegion(RME3, EmbeddedControl, 0x00, 0xFF)
+        Method(_REG, 2)
+        {
+            XREG(Arg0, Arg1) // call original _REG, now renamed XREG
+            If (3 == Arg0 && 1 == Arg1) // EC ready?
+            {
+                 \_SB.PCI0.HGOF() // turn dedicated Nvidia fan off
+            }
         }
     }
     
