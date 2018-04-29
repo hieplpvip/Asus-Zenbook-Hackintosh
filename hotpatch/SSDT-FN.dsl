@@ -1,4 +1,4 @@
-DefinitionBlock ("", "SSDT", 2, "hack", "fn", 0x00000000)
+DefinitionBlock ("SSDT-FN", "SSDT", 2, "hack", "fn", 0)
 {
     External (_SB.ATKD, DeviceObj)
     External (_SB.ATKD.IANE, MethodObj)

@@ -1,4 +1,4 @@
-DefinitionBlock ("SSDT-DEBUG.aml", "SSDT", 1, "hack", "debug", 0x00003000)
+DefinitionBlock ("SSDT-DEBUG", "SSDT", 2, "hack", "debug", 0)
 {
 Device (RMDT)
 {

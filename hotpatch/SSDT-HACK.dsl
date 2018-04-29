@@ -3,7 +3,7 @@
 #define SKYLAKE_PWMMAX 0x56c
 #define CUSTOM_PWMMAX_07a1 0x07a1
 #define CUSTOM_PWMMAX_1499 0x1499
-DefinitionBlock ("SSDT-HACK.aml", "SSDT", 1, "hack", "hack", 0x00003000)
+DefinitionBlock ("SSDT-HACK", "SSDT", 1, "hack", "hack", 0)
 {
     // All _OSI calls in DSDT are routed to XOSI...
     // XOSI simulates "Windows 2012" (which is Windows 8)

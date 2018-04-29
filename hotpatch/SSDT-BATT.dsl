@@ -1,7 +1,7 @@
 // Patch by hieplpvip - Credit Rehabman
 // https://www.tonymacx86.com/threads/guide-how-to-patch-dsdt-for-working-battery-status.232986/
 
-DefinitionBlock ("SSDT-BATT.aml", "SSDT", 1, "hack", "batt", 0x00003000)
+DefinitionBlock ("SSDT-BATT", "SSDT", 2, "hack", "batt", 0)
 {
     External(_SB.PCI0.LPCB.EC0, DeviceObj)
     External(_SB.PCI0.LPCB.EC0.BAT0, DeviceObj)
@@ -513,31 +513,6 @@ DefinitionBlock ("SSDT-BATT.aml", "SSDT", 1, "hack", "batt", 0x00003000)
                 Store (Local2, Index (PBST, 0x02))
                 Store (Arg3, Index (PBST, 0x03))
             }
-        }
-    }
-    
-    // add device SMCD for reading Fan Speed
-    Device (SMCD)
-    {
-        Name (_HID, "FAN0000")
-        Method (FAN0, 0, Serialized)
-        {
-            Store (B1B2 (\_SB.PCI0.LPCB.EC0.TH00, \_SB.PCI0.LPCB.EC0.TH01), Local0)
-            If (LEqual (Local0, 0xFF))
-            {
-                Store (Zero, Local0)
-            }
-            If (Local0)
-            {
-                Store (0x80, Local1)
-                Store (0x02, Local2)
-                Multiply (Local1, Local2, Local3)
-                Multiply (Local0, Local3, Local4)
-                Divide (0x03938700, Local4, Local5, Local6)
-                Multiply (Local6, 0x0A, Local6)
-                Store (Local6, Local0)
-            }
-            Return (Local0)
         }
     }
 }

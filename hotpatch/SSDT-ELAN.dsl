@@ -1,5 +1,5 @@
 // Patch by hieplpvip
-DefinitionBlock ("SSDT-ELAN.aml", "SSDT", 1, "hack", "elan", 0x00003000)
+DefinitionBlock ("SSDT-ELAN", "SSDT", 2, "hack", "elan", 0)
 {    
     // add Method(_STA,0,S) to Device(GPI0)
     External(_SB.PCI0.GPI0, DeviceObj)

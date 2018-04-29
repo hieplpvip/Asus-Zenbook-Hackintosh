@@ -1,4 +1,4 @@
-DefinitionBlock ("SSDT-ALS.aml", "SSDT", 1, "hack", "als", 0x00003000)
+DefinitionBlock ("SSDT-ALS", "SSDT", 2, "hack", "als", 0)
 {
  	External(_SB.PCI0.LPCB.EC0, DeviceObj)
 	External(_SB.PCI0.LPCB.EC0.RALS, MethodObj)
