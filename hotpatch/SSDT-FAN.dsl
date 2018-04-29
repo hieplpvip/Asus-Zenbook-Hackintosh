@@ -14,7 +14,7 @@ DefinitionBlock("SSDT-FAN", "SSDT", 2, "hack", "fan", 0)
         // Add tachometer
         Name (TACH, Package()
         {
-            "System FAN", "FAN0"
+            "System Fan", "FAN0"
         })
         
         // Add CPU heatsink
@@ -24,7 +24,7 @@ DefinitionBlock("SSDT-FAN", "SSDT", 2, "hack", "fan", 0)
         })
         
         // Method to read FAN RPM (tachometer)
-        Method (FAN0, 0, Serialized)
+        Method (FAN0, 0)
         {
             // Check is EC is ready
             If (\_SB.PCI0.LPCB.EC0.ECAV())
