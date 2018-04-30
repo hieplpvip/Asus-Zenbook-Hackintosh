@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Comment</key>
+	<string>This file is for 10.12.6+ with native KabyLake support</string>
 	<key>ACPI</key>
 	<dict>
 		<key>DSDT</key>
@@ -117,6 +119,20 @@
 					<key>Replace</key>
 					<data>
 					SERBVQ==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change _REG to XREG in EC0</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					X1JFRwKgCw==
+					</data>
+					<key>Replace</key>
+					<data>
+					WFJFRwKgCw==
 					</data>
 				</dict>
 				<dict>
@@ -508,17 +524,11 @@
 			<false/>
 			<key>Generate</key>
 			<dict>
-				<key>APLF</key>
-				<true/>
-				<key>APSN</key>
-				<true/>
-				<key>CStates</key>
-				<true/>
-				<key>PStates</key>
-				<true/>
 				<key>PluginType</key>
 				<true/>
 			</dict>
+			<key>NoOemTableId</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>Boot</key>
@@ -535,8 +545,6 @@
 		<false/>
 		<key>Timeout</key>
 		<integer>5</integer>
-		<key>XMPDetection</key>
-		<false/>
 	</dict>
 	<key>CPU</key>
 	<dict>
@@ -554,8 +562,6 @@
 				<string>Inject "name" as (data)"#display" to disable graphics drivers on NVidia</string>
 				<key>Device</key>
 				<string>NVidia</string>
-				<key>Disabled</key>
-				<false/>
 				<key>Key</key>
 				<string>name</string>
 				<key>Value</key>
@@ -568,8 +574,6 @@
 				<string>Inject "IOName" as "#display" to disable graphics drivers on NVidia</string>
 				<key>Device</key>
 				<string>NVidia</string>
-				<key>Disabled</key>
-				<false/>
 				<key>Key</key>
 				<string>IOName</string>
 				<key>Value</key>
@@ -580,8 +584,6 @@
 				<string>Inject bogus class-code to prevent graphics drivers loading for NVidia</string>
 				<key>Device</key>
 				<string>NVidia</string>
-				<key>Disabled</key>
-				<false/>
 				<key>Key</key>
 				<string>class-code</string>
 				<key>Value</key>
@@ -597,6 +599,8 @@
 		</dict>
 		<key>FakeID</key>
 		<dict>
+			<key>#Kaby Lake-Comment</key>
+			<string>To avoid automatic Clover fake device-id (Skylake) injection</string>
 			<key>IntelGFX</key>
 			<string>0x59168086</string>
 		</dict>
@@ -689,7 +693,7 @@
 	<key>KernelAndKextPatches</key>
 	<dict>
 		<key>AppleIntelCPUPM</key>
-		<true/>
+		<false/>
 		<key>AppleRTC</key>
 		<true/>
 		<key>DellSMBIOSPatch</key>
@@ -730,8 +734,6 @@
 				<data>
 				ixnUEQ==
 				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
 				<key>Name</key>
 				<string>AppleHDA</string>
 				<key>Replace</key>
@@ -748,8 +750,6 @@
 				<data>
 				ihnUEQ==
 				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
 				<key>Name</key>
 				<string>AppleHDA</string>
 				<key>Replace</key>
@@ -766,8 +766,6 @@
 				<data>
 				RiV1VCUwNHgA
 				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleBacklight</string>
 				<key>Replace</key>
@@ -784,8 +782,6 @@
 				<data>
 				AABgAgAAUAE=
 				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleIntelKBLGraphicsFramebuffer</string>
 				<key>Replace</key>
@@ -802,13 +798,47 @@
 				<data>
 				AQUJAAAEAACHAQAA
 				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleIntelKBLGraphicsFramebuffer</string>
 				<key>Replace</key>
 				<data>
 				AQUJAAAIAACHAQAA
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Stops the need to remove AppleIntelLpssI2CController</string>
+				<key>Disabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				SU9LaXQ=
+				</data>
+				<key>InfoPlistPatch</key>
+				<true/>
+				<key>Name</key>
+				<string>AppleIntelLpssI2CController</string>
+				<key>Replace</key>
+				<data>
+				SU9LaXM=
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Stops the need to remove AppleIntelLpssI2C</string>
+				<key>Disabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				SU9LaXQ=
+				</data>
+				<key>InfoPlistPatch</key>
+				<true/>
+				<key>Name</key>
+				<string>AppleIntelLpssI2C</string>
+				<key>Replace</key>
+				<data>
+				SU9LaXM=
 				</data>
 			</dict>
 		</array>
@@ -833,7 +863,7 @@
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>C02703500GUDYW3UE</string>
+		<string>C02708401QXDMT5UE</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -861,14 +891,14 @@
 		<key>ProductName</key>
 		<string>MacBookPro14,1</string>
 		<key>SerialNumber</key>
-		<string>C02T42HJHV29</string>
+		<string>C02T93VVHV29</string>
+		<key>SmUUID</key>
+		<string>B470CF42-0A14-4718-B333-0F9C7F2E8750</string>
 		<key>Version</key>
 		<string>1.0</string>
 	</dict>
 	<key>SystemParameters</key>
 	<dict>
-		<key>#BacklightLevel</key>
-		<integer>0</integer>
 		<key>InjectKexts</key>
 		<string>Detect</string>
 	</dict>
