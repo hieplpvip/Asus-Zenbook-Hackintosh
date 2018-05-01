@@ -117,7 +117,7 @@
 				<key>FinerVolumeControl</key>
 				<true/>
 				<key>HasMediaFnKeys</key>
-				<true/>
+				<false/>
 				<key>IdleKBacklightAutoOff</key>
 				<true/>
 				<key>IdleKBacklightAutoOffTimeout</key>
