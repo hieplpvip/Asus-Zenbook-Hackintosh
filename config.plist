@@ -10,8 +10,6 @@
 		<dict>
 			<key>Fixes</key>
 			<dict>
-				<key>FixHDA</key>
-				<true/>
 				<key>FixHeaders</key>
 				<true/>
 				<key>FixIPIC</key>
@@ -613,8 +611,6 @@
 			<key>Inject</key>
 			<true/>
 		</dict>
-		<key>UseIntelHDMI</key>
-		<true/>
 	</dict>
 	<key>DisableDrivers</key>
 	<array>

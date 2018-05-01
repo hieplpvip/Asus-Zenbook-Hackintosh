@@ -82,6 +82,20 @@ DefinitionBlock ("SSDT-HACK", "SSDT", 1, "hack", "hack", 0)
         })
     }
     
+    // inject properties for native audio
+    External(_SB.PCI0.HDEF, DeviceObj)
+    Method(_SB.PCI0.HDEF._DSM, 4)
+    {
+        If (!Arg2) { Return (Buffer() { 0x03 } ) }
+        Return (Package()
+        {
+            "layout-id", Buffer() { 0x03, 0x00, 0x00, 0x00 },
+            "hda-gfx", Buffer() { "onboard-1" },
+            "PinConfigurations", Buffer() { },
+            "MaximumBootBeepVolume", Buffer() { 0x01 },
+        })
+    }
+    
     // add fake ethernet device
     Device (RMNE)
     {
