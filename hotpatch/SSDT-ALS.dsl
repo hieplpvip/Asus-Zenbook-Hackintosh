@@ -18,7 +18,7 @@ DefinitionBlock ("SSDT-ALS", "SSDT", 2, "hack", "als", 0)
 	External (RMDT.P7, MethodObj)
 	
 	Scope (_SB.PCI0.LPCB.EC0)
-       	{
+    {
 		// Ambient light sensor notification, from EMlyDinEsH
 		Method (_QCD, 0, NotSerialized)
 		{
@@ -34,11 +34,10 @@ DefinitionBlock ("SSDT-ALS", "SSDT", 2, "hack", "als", 0)
 	
 	Scope (_SB.ATKD)
 	{
-	Method (ALSS, 0, NotSerialized)
-            {
-                Return (^^PCI0.LPCB.EC0.RALS ())
-            }
+       	Method (ALSS, 0, NotSerialized)
+        {
+            	Return (^^PCI0.LPCB.EC0.RALS ())
+        }
 	}
-	
 }
 	

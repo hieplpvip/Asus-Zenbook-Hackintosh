@@ -277,7 +277,7 @@
 					<key>Comment</key>
 					<string>change Method(_Q0A,0,S) to XQ0A</string>
 					<key>Disabled</key>
-					<false/>
+					<true/>
 					<key>Find</key>
 					<data>
 					X1EwQQA=
@@ -305,7 +305,7 @@
 					<key>Comment</key>
 					<string>change Method(_Q0C,0,S) to XQ0B</string>
 					<key>Disabled</key>
-					<false/>
+					<true/>
 					<key>Find</key>
 					<data>
 					X1EwQwA=
@@ -319,7 +319,7 @@
 					<key>Comment</key>
 					<string>change Method(_Q0D,0,S) to XQ0D</string>
 					<key>Disabled</key>
-					<false/>
+					<true/>
 					<key>Find</key>
 					<data>
 					X1EwRAA=
@@ -361,7 +361,7 @@
 					<key>Comment</key>
 					<string>change Method(_Q10,0,S) to XQ10</string>
 					<key>Disabled</key>
-					<false/>
+					<true/>
 					<key>Find</key>
 					<data>
 					X1ExMAA=
@@ -375,7 +375,7 @@
 					<key>Comment</key>
 					<string>change Method(_Q11,0,S) to XQ11</string>
 					<key>Disabled</key>
-					<false/>
+					<true/>
 					<key>Find</key>
 					<data>
 					X1ExMQg=
@@ -389,7 +389,7 @@
 					<key>Comment</key>
 					<string>change Method(_Q12,0,S) to XQ12</string>
 					<key>Disabled</key>
-					<false/>
+					<true/>
 					<key>Find</key>
 					<data>
 					X1ExMgA=
@@ -401,9 +401,9 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_Q12,0,S) to XQ13</string>
+					<string>change Method(_Q13,0,S) to XQ13</string>
 					<key>Disabled</key>
-					<false/>
+					<true/>
 					<key>Find</key>
 					<data>
 					X1ExMwA=
@@ -415,9 +415,9 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_Q12,0,S) to XQ14</string>
+					<string>change Method(_Q14,0,S) to XQ14</string>
 					<key>Disabled</key>
-					<false/>
+					<true/>
 					<key>Find</key>
 					<data>
 					X1ExNAA=
@@ -429,9 +429,9 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_Q12,0,S) to XQ15</string>
+					<string>change Method(_Q15,0,S) to XQ15</string>
 					<key>Disabled</key>
-					<false/>
+					<true/>
 					<key>Find</key>
 					<data>
 					X1ExNQA=
