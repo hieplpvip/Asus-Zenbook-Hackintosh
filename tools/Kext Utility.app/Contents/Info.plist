@@ -4,43 +4,41 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
+	<key>CFBundleDisplayName</key>
+	<string>Kext Utility</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>ioreg</string>
-			</array>
-			<key>CFBundleTypeName</key>
-			<string>IORegistryExplorer document</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>????</string>
+				<string>*</string>
 			</array>
 			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>NSDocumentClass</key>
-			<string>RexDocument</string>
+			<string>Viewer</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
-	<string>IORegistryExplorer</string>
+	<string>Kext Utility</string>
+	<key>CFBundleIconFile</key>
+	<string>appIcon.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.apple.IORegistryExplorer</string>
+	<string>ru.cvad.KextUtility</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>IORegistryExplorer</string>
+	<string>Kext Utility</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.1</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
+	<string>2.6.6</string>
 	<key>CFBundleVersion</key>
-	<string>2.1</string>
+	<string>2.6.6</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.6.0</string>
+	<key>LSUIElement</key>
+	<false/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright 2000-2008 Apple Inc. All Rights Reserved.</string>
+	<string>© 2016 cvad Powered by Platypus tool sveinbjorn.org</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
