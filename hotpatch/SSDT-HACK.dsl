@@ -234,11 +234,14 @@ DefinitionBlock ("SSDT-HACK", "SSDT", 2, "hack", "hack", 0)
                 Store (And (Arg0, 0x7F), KBLV)
             }
             
+            // **Customizable part
+            // from method SLKB
             Store (0x0900, Local0)
             Add (Local0, 0xF0, Local0)
             ^^PCI0.LPCB.EC0.WRAM (Local0, ^^KBLV)
             Store (DerefOf (Index (PWKB, ^^KBLV)), Local0)
             ^^PCI0.LPCB.EC0.ST9E (0x1F, 0xFF, Local0)
+            // Customizable part**
             Return (Local0)
         }
         
