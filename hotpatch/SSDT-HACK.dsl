@@ -3,7 +3,7 @@
 #define SKYLAKE_PWMMAX 0x56c
 #define CUSTOM_PWMMAX_07a1 0x07a1
 #define CUSTOM_PWMMAX_1499 0x1499
-DefinitionBlock ("SSDT-HACK", "SSDT", 1, "hack", "hack", 0)
+DefinitionBlock ("SSDT-HACK", "SSDT", 2, "hack", "hack", 0)
 {
     // All _OSI calls in DSDT are routed to XOSI...
     // XOSI simulates "Windows 2012" (which is Windows 8)
@@ -54,7 +54,7 @@ DefinitionBlock ("SSDT-HACK", "SSDT", 1, "hack", "hack", 0)
             If (CondRefOf(\_SB.PCI0.RP01.PEGP._OFF)) { \_SB.PCI0.RP01.PEGP._OFF() }
         }
     }
-    Method(_SB.PCI0.RP01.PEGP._INI) { \_SB.PCI0.RP01.PEGP._OFF() }
+    
     External(_SB.PCI0.LPCB.EC0, DeviceObj)
     External(_SB.PCI0.LPCB.EC0.XREG, MethodObj)
     External(_SB.PCI0.HGOF, MethodObj)
@@ -182,25 +182,20 @@ DefinitionBlock ("SSDT-HACK", "SSDT", 1, "hack", "hack", 0)
         Name(_HID, "EC000000")
     }
     
-    // custom configuration for USBInjectAll.kext
-    Device (UIAC)
+    // USB power properties via USBX device
+    Device(_SB.USBX)
     {
-        Name (_HID, "UIA00000")  // _HID: Hardware ID
-        Name (RMCF, Package (0x04)
+        Name(_ADR, 0)
+        Method (_DSM, 4)
         {
-            "AppleBusPowerControllerUSB", 
-            Package (0x08)
+            If (!Arg2) { Return (Buffer() { 0x03 } ) }
+            Return (Package()
             {
-                "kUSBSleepPortCurrentLimit", 
-                0x0834, 
-                "kUSBSleepPowerSupply", 
-                0x125C, 
-                "kUSBWakePortCurrentLimit", 
-                0x0834, 
-                "kUSBWakePowerSupply", 
-                0x125C
-            }
-        })
+                // these values from MacBookPro14,1
+                "kUSBSleepPortCurrentLimit", 0x0BB8, 
+                "kUSBWakePortCurrentLimit", 0x0BB8
+            })
+        }
     }
     
     // enable keyboard backlight
@@ -270,7 +265,6 @@ DefinitionBlock ("SSDT-HACK", "SSDT", 1, "hack", "hack", 0)
     External(_SB.PCI0.RP01.PEGP._ON, MethodObj)
     External(_SB.PCI0.RP01.PEGP._OFF, MethodObj)
 
-    External(RMCF.DPTS, IntObj)
     External(RMCF.SHUT, IntObj)
     External(RMCF.XPEE, IntObj)
     External(RMCF.SSTF, IntObj)
@@ -284,15 +278,9 @@ DefinitionBlock ("SSDT-HACK", "SSDT", 1, "hack", "hack", 0)
             // Shutdown fix, if enabled
             If (CondRefOf(\RMCF.SHUT)) { If (\RMCF.SHUT) { Return } }
         }
-
-        If (CondRefOf(\RMCF.DPTS))
-        {
-            If (\RMCF.DPTS)
-            {
-                // enable discrete graphics
-                If (CondRefOf(\_SB.PCI0.RP01.PEGP._ON)) { \_SB.PCI0.RP01.PEGP._ON() }
-            }
-        }
+        
+        // enable discrete graphics
+        If (CondRefOf(\_SB.PCI0.RP01.PEGP._ON)) { \_SB.PCI0.RP01.PEGP._ON() }
 
         // call into original _PTS method
         If (LNotEqual(Arg0,5)) { ZPTS(Arg0) }
@@ -312,15 +300,9 @@ DefinitionBlock ("SSDT-HACK", "SSDT", 1, "hack", "hack", 0)
 
         // call into original _WAK method
         Local0 = ZWAK(Arg0)
-
-        If (CondRefOf(\RMCF.DPTS))
-        {
-            If (\RMCF.DPTS)
-            {
-                // disable discrete graphics
-                If (CondRefOf(\_SB.PCI0.RP01.PEGP._OFF)) { \_SB.PCI0.RP01.PEGP._OFF() }
-            }
-        }
+        
+        // disable discrete graphics
+        If (CondRefOf(\_SB.PCI0.RP01.PEGP._OFF)) { \_SB.PCI0.RP01.PEGP._OFF() }
 
         If (CondRefOf(\RMCF.SSTF))
         {
