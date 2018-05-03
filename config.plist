@@ -2,14 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Comment</key>
+	<string>This file is for 10.12.6+ with native KabyLake support</string>
 	<key>ACPI</key>
 	<dict>
+		<key>AutoMerge</key>
+		<true/>
 		<key>DSDT</key>
 		<dict>
 			<key>Fixes</key>
 			<dict>
-				<key>FixHDA</key>
-				<true/>
 				<key>FixHeaders</key>
 				<true/>
 				<key>FixIPIC</key>
@@ -24,478 +26,220 @@
 				<dict>
 					<key>Comment</key>
 					<string>change _OSI to XOSI</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					X09TSQ==
-					</data>
+					<data>X09TSQ==</data>
 					<key>Replace</key>
-					<data>
-					WE9TSQ==
-					</data>
+					<data>WE9TSQ==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change _DSM to XDSM</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					X0RTTQ==
-					</data>
+					<data>X0RTTQ==</data>
 					<key>Replace</key>
-					<data>
-					WERTTQ==
-					</data>
+					<data>WERTTQ==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change HDAS to HDEF</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					SERBUw==
-					</data>
+					<data>SERBUw==</data>
 					<key>Replace</key>
-					<data>
-					SERFRg==
-					</data>
+					<data>SERFRg==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change HECI to IMEI</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					SEVDSQ==
-					</data>
+					<data>SEVDSQ==</data>
 					<key>Replace</key>
-					<data>
-					SU1FSQ==
-					</data>
+					<data>SU1FSQ==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change GFX0 to IGPU</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					R0ZYMA==
-					</data>
+					<data>R0ZYMA==</data>
 					<key>Replace</key>
-					<data>
-					SUdQVQ==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change SAT0 to SATA</string>
-					<key>Disabled</key>
-					<true/>
-					<key>Find</key>
-					<data>
-					U0FUMA==
-					</data>
-					<key>Replace</key>
-					<data>
-					U0FUQQ==
-					</data>
+					<data>SUdQVQ==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change B0D3 to HDAU</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					QjBEMw==
-					</data>
+					<data>QjBEMw==</data>
 					<key>Replace</key>
-					<data>
-					SERBVQ==
-					</data>
+					<data>SERBVQ==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change _REG to XREG in EC0</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					X1JFRwKgCw==
-					</data>
+					<data>X1JFRwKgCw==</data>
 					<key>Replace</key>
-					<data>
-					WFJFRwKgCw==
-					</data>
+					<data>WFJFRwKgCw==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change Method(_PTS,1,N) to ZPTS, pair with SSDT-PTSWAK.aml</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					X1BUUwE=
-					</data>
+					<data>X1BUUwE=</data>
 					<key>Replace</key>
-					<data>
-					WlBUUwE=
-					</data>
+					<data>WlBUUwE=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change Method(_PTS,1,S) to ZPTS, pair with SSDT-PTSWAK.aml</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					X1BUUwk=
-					</data>
+					<data>X1BUUwk=</data>
 					<key>Replace</key>
-					<data>
-					WlBUUwk=
-					</data>
+					<data>WlBUUwk=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change Method(_WAK,1,N) to ZWAK, pair with SSDT-PTSWAK.aml</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					X1dBSwE=
-					</data>
+					<data>X1dBSwE=</data>
 					<key>Replace</key>
-					<data>
-					WldBSwE=
-					</data>
+					<data>WldBSwE=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change Method(_WAK,1,S) to ZWAK, pair with SSDT-PTSWAK.aml</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					X1dBSwk=
-					</data>
+					<data>X1dBSwk=</data>
 					<key>Replace</key>
-					<data>
-					WldBSwk=
-					</data>
+					<data>WldBSwk=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change Method(GPRW,2,N) to XPRW</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					R1BSVwI=
-					</data>
+					<data>R1BSVwI=</data>
 					<key>Replace</key>
-					<data>
-					WFBSVwI=
-					</data>
+					<data>WFBSVwI=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>Battery: Rename Method(_BIX,0) to Method(XBIX,0)</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					X0JJWAA=
-					</data>
+					<data>X0JJWAA=</data>
 					<key>Replace</key>
-					<data>
-					WEJJWAA=
-					</data>
+					<data>WEJJWAA=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>Battery: Rename Method(BIFA,0) to Method(XBIF,0)</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					QklGQQA=
-					</data>
+					<data>QklGQQA=</data>
 					<key>Replace</key>
-					<data>
-					WEJJRgA=
-					</data>
+					<data>WEJJRgA=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>Battery: Rename Method(SMBR,3,Serialized) to Method(XSMR,3,Serialized)</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					U01CUgs=
-					</data>
+					<data>U01CUgs=</data>
 					<key>Replace</key>
-					<data>
-					WFNNUgs=
-					</data>
+					<data>WFNNUgs=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>Battery: Rename Method(SMBW,5,Serialized) to Method(XSMW,5,Serialized)</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					U01CVw0=
-					</data>
+					<data>U01CVw0=</data>
 					<key>Replace</key>
-					<data>
-					WFNNVw0=
-					</data>
+					<data>WFNNVw0=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>Battery: Rename Method(FBST,4) to Method(XBST,4)</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					RkJTVAQ=
-					</data>
+					<data>RkJTVAQ=</data>
 					<key>Replace</key>
-					<data>
-					WEJTVAQ=
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_Q0A,0,S) to XQ0A</string>
-					<key>Disabled</key>
-					<true/>
-					<key>Find</key>
-					<data>
-					X1EwQQA=
-					</data>
-					<key>Replace</key>
-					<data>
-					WFEwQQA=
-					</data>
+					<data>WEJTVAQ=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change Method(_Q0B,0,S) to XQ0B</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					X1EwQgA=
-					</data>
+					<data>X1EwQgA=</data>
 					<key>Replace</key>
-					<data>
-					WFEwQgA=
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_Q0C,0,S) to XQ0B</string>
-					<key>Disabled</key>
-					<true/>
-					<key>Find</key>
-					<data>
-					X1EwQwA=
-					</data>
-					<key>Replace</key>
-					<data>
-					WFEwQwA=
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_Q0D,0,S) to XQ0D</string>
-					<key>Disabled</key>
-					<true/>
-					<key>Find</key>
-					<data>
-					X1EwRAA=
-					</data>
-					<key>Replace</key>
-					<data>
-					WFEwRAA=
-					</data>
+					<data>WFEwQgA=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change Method(_Q0E,0,S) to XQ0E</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					X1EwRQA=
-					</data>
+					<data>X1EwRQA=</data>
 					<key>Replace</key>
-					<data>
-					WFEwRQA=
-					</data>
+					<data>WFEwRQA=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change Method(_Q0F,0,S) to XQ0F</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					X1EwRgA=
-					</data>
+					<data>X1EwRgA=</data>
 					<key>Replace</key>
-					<data>
-					WFEwRgA=
-					</data>
+					<data>WFEwRgA=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_Q10,0,S) to XQ10</string>
-					<key>Disabled</key>
-					<true/>
+					<string>change Method(_QDD,0,S) to XQDD</string>
 					<key>Find</key>
-					<data>
-					X1ExMAA=
-					</data>
+					<data>X1FERAA=</data>
 					<key>Replace</key>
-					<data>
-					WFExMAA=
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_Q11,0,S) to XQ11</string>
-					<key>Disabled</key>
-					<true/>
-					<key>Find</key>
-					<data>
-					X1ExMQg=
-					</data>
-					<key>Replace</key>
-					<data>
-					WFExMQg=
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_Q12,0,S) to XQ12</string>
-					<key>Disabled</key>
-					<true/>
-					<key>Find</key>
-					<data>
-					X1ExMgA=
-					</data>
-					<key>Replace</key>
-					<data>
-					WFExMgA=
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_Q13,0,S) to XQ13</string>
-					<key>Disabled</key>
-					<true/>
-					<key>Find</key>
-					<data>
-					X1ExMwA=
-					</data>
-					<key>Replace</key>
-					<data>
-					WFExMwA=
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_Q14,0,S) to XQ14</string>
-					<key>Disabled</key>
-					<true/>
-					<key>Find</key>
-					<data>
-					X1ExNAA=
-					</data>
-					<key>Replace</key>
-					<data>
-					WFExNAA=
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_Q15,0,S) to XQ15</string>
-					<key>Disabled</key>
-					<true/>
-					<key>Find</key>
-					<data>
-					X1ExNQA=
-					</data>
-					<key>Replace</key>
-					<data>
-					WFExNQA=
-					</data>
+					<data>WFFERAA=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change Method(_QCD,0,S) to XQCD</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					X1FDRAA=
-					</data>
+					<data>X1FDRAA=</data>
 					<key>Replace</key>
-					<data>
-					WFFDRAA=
-					</data>
+					<data>WFFDRAA=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change Method(_Q76,0,S) to XQ76</string>
+					<key>Find</key>
+					<data>X1E3NgA=</data>
+					<key>Replace</key>
+					<data>WFE3NgA=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change HPET to XPET</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					SFBFVAg=
-					</data>
+					<data>SFBFVAg=</data>
 					<key>Replace</key>
-					<data>
-					WFBFVAg=
-					</data>
+					<data>WFBFVAg=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change Method(_STA,0,S) in GPI0 to XSTA</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					X1NUQQCgCZNTQlJH
-					</data>
+					<data>X1NUQQCgCZNTQlJH</data>
 					<key>Replace</key>
-					<data>
-					WFNUQQCgCZNTQlJH
-					</data>
+					<data>WFNUQQCgCZNTQlJH</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change Method(_CRS,0,S) in XTPD to XCRS</string>
-					<key>Disabled</key>
-					<false/>
 					<key>Find</key>
-					<data>
-					X0NSUwgIU0JGSQ==
-					</data>
+					<data>X0NSUwgIU0JGSQ==</data>
 					<key>Replace</key>
-					<data>
-					WENSUwgIU0JGSQ==
-					</data>
+					<data>WENSUwgIU0JGSQ==</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>Disable ALS device</string>
+					<key>Disabled</key>
+					<true/>
+					<key>Find</key>
+					<data>FAlfU1RBAKQKCw==</data>
+					<key>Replace</key>
+					<data>FAlfU1RBAKQKAA==</data>
 				</dict>
 			</array>
 		</dict>
@@ -535,8 +279,6 @@
 		<string>dart=0 nv_disable=1 kext-dev-mode=1 -disablegfxfirmware</string>
 		<key>DefaultVolume</key>
 		<string>LastBootedVolume</string>
-		<key>Legacy</key>
-		<string>LegacyBiosDefault</string>
 		<key>NeverHibernate</key>
 		<true/>
 		<key>Secure</key>
@@ -551,45 +293,77 @@
 		<key>UseARTFrequency</key>
 		<true/>
 	</dict>
-	<key>Comment</key>
-	<string>This file is for 10.12.6+ with native KabyLake support</string>
 	<key>Devices</key>
 	<dict>
 		<key>AddProperties</key>
 		<array>
 			<dict>
-				<key>Comment</key>
-				<string>Inject "name" as (data)"#display" to disable graphics drivers on NVidia</string>
 				<key>Device</key>
 				<string>NVidia</string>
 				<key>Key</key>
 				<string>name</string>
 				<key>Value</key>
-				<data>
-				I2Rpc3BsYXkA
-				</data>
+				<data>I2Rpc3BsYXkA</data>
+				<key>Comment</key>
+				<string>Inject &quot;name&quot; as (data)&quot;#display&quot; to disable graphics drivers on NVidia</string>
 			</dict>
 			<dict>
-				<key>Comment</key>
-				<string>Inject "IOName" as "#display" to disable graphics drivers on NVidia</string>
 				<key>Device</key>
 				<string>NVidia</string>
 				<key>Key</key>
 				<string>IOName</string>
 				<key>Value</key>
 				<string>#display</string>
+				<key>Comment</key>
+				<string>Inject &quot;IOName&quot; as &quot;#display&quot; to disable graphics drivers on NVidia</string>
 			</dict>
 			<dict>
-				<key>Comment</key>
-				<string>Inject bogus class-code to prevent graphics drivers loading for NVidia</string>
 				<key>Device</key>
 				<string>NVidia</string>
 				<key>Key</key>
 				<string>class-code</string>
 				<key>Value</key>
-				<data>
-				/////w==
-				</data>
+				<data>/////w==</data>
+				<key>Comment</key>
+				<string>Inject bogus class-code to prevent graphics drivers loading for NVidia</string>
+			</dict>
+			<dict>
+				<key>Device</key>
+				<string>IntelGFX</string>
+				<key>Key</key>
+				<string>hda-gfx</string>
+				<key>Value</key>
+				<data>b25ib2FyZC0xAA==</data>
+				<key>Comment</key>
+				<string>hda-gfx=onboard-1 for HDMI audio</string>
+			</dict>
+			<dict>
+				<key>Device</key>
+				<string>HDA</string>
+				<key>Key</key>
+				<string>hda-gfx</string>
+				<key>Value</key>
+				<data>b25ib2FyZC0xAA==</data>
+				<key>Comment</key>
+				<string>hda-gfx=onboard-1 for HDMI audio</string>
+			</dict>
+			<dict>
+				<key>Device</key>
+				<string>HDA</string>
+				<key>Key</key>
+				<string>layout-id</string>
+				<key>Value</key>
+				<data>AwAAAA==</data>
+				<key>Comment</key>
+				<string>layout-id=3</string>
+			</dict>
+			<dict>
+				<key>Device</key>
+				<string>HDA</string>
+				<key>Key</key>
+				<string>PinConfigurations</string>
+				<key>Value</key>
+				<data></data>
 			</dict>
 		</array>
 		<key>Audio</key>
@@ -614,7 +388,7 @@
 			<true/>
 		</dict>
 		<key>UseIntelHDMI</key>
-		<true/>
+		<false/>
 	</dict>
 	<key>DisableDrivers</key>
 	<array>
@@ -622,32 +396,20 @@
 	</array>
 	<key>GUI</key>
 	<dict>
-		<key>#ScreenResolution</key>
-		<string>1920x1080</string>
 		<key>Custom</key>
 		<dict>
 			<key>Entries</key>
 			<array>
 				<dict>
-					<key>Disabled</key>
-					<false/>
 					<key>Hidden</key>
-					<false/>
-					<key>Ignore</key>
-					<false/>
-					<key>NoCaches</key>
 					<false/>
 					<key>Type</key>
 					<string>OSXRecovery</string>
 				</dict>
 				<dict>
-					<key>Disabled</key>
-					<false/>
-					<key>Ignore</key>
-					<false/>
-					<key>Title</key>
-					<string>Windows</string>
 					<key>Type</key>
+					<string>Windows</string>
+					<key>Title</key>
 					<string>Windows</string>
 				</dict>
 			</array>
@@ -668,6 +430,8 @@
 			<key>Tool</key>
 			<true/>
 		</dict>
+		<key>#ScreenResolution</key>
+		<string>1920x1080</string>
 		<key>Theme</key>
 		<string>BGM</string>
 	</dict>
@@ -678,6 +442,8 @@
 			<key>Inject</key>
 			<false/>
 		</dict>
+		<key>ig-platform-id</key>
+		<string>0x591b0000</string>
 		<key>Inject</key>
 		<dict>
 			<key>ATI</key>
@@ -687,25 +453,22 @@
 			<key>NVidia</key>
 			<false/>
 		</dict>
-		<key>ig-platform-id</key>
-		<string>0x591b0000</string>
 	</dict>
 	<key>KernelAndKextPatches</key>
 	<dict>
-		<key>AppleIntelCPUPM</key>
-		<false/>
 		<key>AppleRTC</key>
 		<true/>
 		<key>DellSMBIOSPatch</key>
 		<false/>
-		<key>ForceKextsToLoad</key>
-		<array>
-			<string>\System\Library\Extensions\IONetworkingFamily.kext</string>
-		</array>
 		<key>KernelLapic</key>
 		<true/>
 		<key>KernelPm</key>
 		<true/>
+		<key>ForceKextsToLoad</key>
+		<array>
+			<string>\System\Library\Extensions\IONetworkingFamily.kext</string>
+			<string>\System\Library\Extensions\AppleIntelKBLGraphicsFramebuffer.kext</string>
+		</array>
 		<key>KernelToPatch</key>
 		<array>
 			<dict>
@@ -714,13 +477,9 @@
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>
-				ILniAAAADzA=
-				</data>
+				<data>ILniAAAADzA=</data>
 				<key>Replace</key>
-				<data>
-				ILniAAAAkJA=
-				</data>
+				<data>ILniAAAAkJA=</data>
 			</dict>
 		</array>
 		<key>KextsToPatch</key>
@@ -730,170 +489,104 @@
 				<string>Patching 11d4198b with 14f11f72 codec</string>
 				<key>Disabled</key>
 				<false/>
-				<key>Find</key>
-				<data>
-				ixnUEQ==
-				</data>
 				<key>Name</key>
 				<string>AppleHDA</string>
+				<key>Find</key>
+				<data>ixnUEQ==</data>
 				<key>Replace</key>
-				<data>
-				ch/xFA==
-				</data>
+				<data>ch/xFA==</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
 				<string>Patching 11d4198a to zero</string>
 				<key>Disabled</key>
 				<false/>
-				<key>Find</key>
-				<data>
-				ihnUEQ==
-				</data>
 				<key>Name</key>
 				<string>AppleHDA</string>
+				<key>Find</key>
+				<data>ihnUEQ==</data>
 				<key>Replace</key>
-				<data>
-				AAAAAA==
-				</data>
+				<data>AAAAAA==</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
 				<string>change F%uT%04x to F%uTxxxx in AppleBacklightInjector.kext</string>
 				<key>Disabled</key>
 				<false/>
-				<key>Find</key>
-				<data>
-				RiV1VCUwNHgA
-				</data>
 				<key>Name</key>
 				<string>com.apple.driver.AppleBacklight</string>
+				<key>Find</key>
+				<data>RiV1VCUwNHgA</data>
 				<key>Replace</key>
-				<data>
-				RiV1VHh4eHgA
-				</data>
+				<data>RiV1VHh4eHgA</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
 				<string>0x591b0000, 32MB BIOS, 19MB framebuffer 9MB cursor bytes</string>
 				<key>Disabled</key>
 				<false/>
-				<key>Find</key>
-				<data>
-				AABgAgAAUAE=
-				</data>
 				<key>Name</key>
 				<string>com.apple.driver.AppleIntelKBLGraphicsFramebuffer</string>
+				<key>Find</key>
+				<data>AABgAgAAUAE=</data>
 				<key>Replace</key>
-				<data>
-				AAAwAQAAkAA=
-				</data>
+				<data>AAAwAQAAkAA=</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>10.12.6-KBL-5912000-Port_0x5-DP2HDM</string>
+				<string>0x591b0000, Port 5, DP2HDMI</string>
 				<key>Disabled</key>
 				<false/>
-				<key>Find</key>
-				<data>
-				AQUJAAAEAACHAQAA
-				</data>
 				<key>Name</key>
 				<string>com.apple.driver.AppleIntelKBLGraphicsFramebuffer</string>
+				<key>Find</key>
+				<data>AQUJAAAEAACHAQAA</data>
 				<key>Replace</key>
-				<data>
-				AQUJAAAIAACHAQAA
-				</data>
+				<data>AQUJAAAIAACHAQAA</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Stops the need to remove AppleIntelLpssI2CController</string>
+				<string>Prevent Apple I2C kexts from attaching to I2C controllers, credit CoolStar</string>
 				<key>Disabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				SU9LaXQ=
-				</data>
-				<key>InfoPlistPatch</key>
 				<true/>
 				<key>Name</key>
 				<string>AppleIntelLpssI2CController</string>
+				<key>Find</key>
+				<data>SU9LaXQ=</data>
 				<key>Replace</key>
-				<data>
-				SU9LaXM=
-				</data>
+				<data>SU9LaXM=</data>
+				<key>InfoPlistPatch</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Stops the need to remove AppleIntelLpssI2C</string>
+				<string>Prevent Apple I2C kexts from attaching to I2C controllers, credit CoolStar</string>
 				<key>Disabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				SU9LaXQ=
-				</data>
-				<key>InfoPlistPatch</key>
 				<true/>
 				<key>Name</key>
 				<string>AppleIntelLpssI2C</string>
+				<key>Find</key>
+				<data>SU9LaXQ=</data>
 				<key>Replace</key>
-				<data>
-				SU9LaXM=
-				</data>
+				<data>SU9LaXM=</data>
+				<key>InfoPlistPatch</key>
+				<true/>
 			</dict>
 		</array>
 	</dict>
 	<key>RtVariables</key>
 	<dict>
-		<key>BooterConfig</key>
-		<string>0x28</string>
 		<key>CsrActiveConfig</key>
 		<string>0x67</string>
+		<key>BooterConfig</key>
+		<string>0x28</string>
 	</dict>
 	<key>SMBIOS</key>
 	<dict>
-		<key>BiosReleaseDate</key>
-		<string>08/08/2017</string>
-		<key>BiosVendor</key>
-		<string>Apple Inc.</string>
-		<key>BiosVersion</key>
-		<string>MBP141.88Z.0167.B00.1708080034</string>
-		<key>Board-ID</key>
-		<string>Mac-B4831CEBD52A0C4C</string>
-		<key>BoardManufacturer</key>
-		<string>Apple Inc.</string>
-		<key>BoardSerialNumber</key>
-		<string>C02703500GUDYW3UE</string>
-		<key>BoardType</key>
-		<integer>10</integer>
-		<key>BoardVersion</key>
-		<string>MacBookPro14,1</string>
-		<key>ChassisAssetTag</key>
-		<string>MacBook-Aluminum</string>
-		<key>ChassisManufacturer</key>
-		<string>Apple Inc.</string>
-		<key>ChassisType</key>
-		<string>0x09</string>
-		<key>Family</key>
-		<string>MacBook Pro</string>
-		<key>FirmwareFeatures</key>
-		<string>0xFC0FE136</string>
-		<key>FirmwareFeaturesMask</key>
-		<string>0xFF1FFF3F</string>
-		<key>LocationInChassis</key>
-		<string>Part Component</string>
-		<key>Manufacturer</key>
-		<string>Apple Inc.</string>
-		<key>Mobile</key>
-		<true/>
-		<key>PlatformFeature</key>
-		<string>0x1A</string>
 		<key>ProductName</key>
 		<string>MacBookPro14,1</string>
-		<key>SerialNumber</key>
-		<string>C02T42HJHV29</string>
-		<key>Version</key>
-		<string>1.0</string>
+		<key>Trust</key>
+		<true/>
 	</dict>
 	<key>SystemParameters</key>
 	<dict>
