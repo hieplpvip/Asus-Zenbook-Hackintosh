@@ -71,6 +71,17 @@ DefinitionBlock ("SSDT-HACK", "SSDT", 2, "hack", "hack", 0)
         }
     }
     
+    // inject properties for integrated graphics on IGPU
+    External(_SB.PCI0.IGPU, DeviceObj)
+    Method(_SB.PCI0.IGPU._DSM, 4)
+    {
+        If (!Arg2) { Return (Buffer() { 0x03 } ) }
+        Return (Package()
+        {
+            "hda-gfx", Buffer() { "onboard-1" },
+        })
+    }
+    
     // add fake ethernet device
     Device (RMNE)
     {
