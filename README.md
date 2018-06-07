@@ -1,11 +1,11 @@
 # ASUS-ZENBOOK-UX410-DSDT-PATCH
-A collection of DSDT/SSDT patches and tools for the ASUS UX401 laptop for macOS 10.12.6
+A collection of DSDT/SSDT patches and tools for the ASUS UX401 laptop for macOS 10.12.6+
 
 #### What you should expect works
 
 * Audio
 * Keyboard
-* Touchpad (partially)
+* Trackpad
 * Battery
 * Fn-keys
 * Brightness
@@ -22,7 +22,7 @@ A collection of DSDT/SSDT patches and tools for the ASUS UX401 laptop for macOS 
 
 * Create automatic scripts
 * Bluetooth
-* WiFi (Dell DW1560 WiFi)
+* WiFi
 
 ## Credits
 

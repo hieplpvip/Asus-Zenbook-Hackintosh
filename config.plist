@@ -222,6 +222,8 @@
 					<data>X1NUQQCgCZNTQlJH</data>
 					<key>Replace</key>
 					<data>WFNUQQCgCZNTQlJH</data>
+					<key>Disabled</key>
+					<true/>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -230,6 +232,8 @@
 					<data>X0NSUwgIU0JGSQ==</data>
 					<key>Replace</key>
 					<data>WENSUwgIU0JGSQ==</data>
+					<key>Disabled</key>
+					<true/>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -548,7 +552,7 @@
 				<key>Comment</key>
 				<string>Prevent Apple I2C kexts from attaching to I2C controllers, credit CoolStar</string>
 				<key>Disabled</key>
-				<true/>
+				<false/>
 				<key>Name</key>
 				<string>AppleIntelLpssI2CController</string>
 				<key>Find</key>
@@ -562,7 +566,7 @@
 				<key>Comment</key>
 				<string>Prevent Apple I2C kexts from attaching to I2C controllers, credit CoolStar</string>
 				<key>Disabled</key>
-				<true/>
+				<false/>
 				<key>Name</key>
 				<string>AppleIntelLpssI2C</string>
 				<key>Find</key>
