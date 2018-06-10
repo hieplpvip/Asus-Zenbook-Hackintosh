@@ -26,8 +26,8 @@ DefinitionBlock ("SSDT-HACK", "SSDT", 2, "hack", "hack", 0)
             //"Windows 2006.1",     // Windows Server 2008
             "Windows 2009",         // Windows 7/Windows Server 2008 R2
             "Windows 2012",         // Windows 8/Windows Server 2012
-            //"Windows 2013",       // Windows 8.1/Windows Server 2012 R2
-            //"Windows 2015",       // Windows 10/Windows Server TP
+            "Windows 2013",         // Windows 8.1/Windows Server 2012 R2
+            "Windows 2015",         // Windows 10/Windows Server TP
         }, Local0)
         Return (Ones != Match(Local0, MEQ, Arg0, MTR, 0, 0))
     }
@@ -40,6 +40,7 @@ DefinitionBlock ("SSDT-HACK", "SSDT", 2, "hack", "hack", 0)
 	Method(GPRW, 2, NotSerialized)
 	{
 		If (0x6d == Arg0) { Return(Package() { 0x6d, 0, }) }
+		If (0x0d == Arg0) { Return(Package() { 0x0d, 0, }) }
 		External(\XPRW, MethodObj)
 		Return(XPRW(Arg0, Arg1))
 	}
@@ -155,6 +156,7 @@ DefinitionBlock ("SSDT-HACK", "SSDT", 2, "hack", "hack", 0)
         If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }
         Return (Package()
         {
+            "device-id",  Buffer() { 0xc1, 0x9c, 0, 0 },
             "compatible", "pci8086,9cc1",
         })
     }
