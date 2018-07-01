@@ -498,7 +498,7 @@
 				<key>Comment</key>
 				<string>Patching 11d4198b with 14f11f72 codec</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Name</key>
 				<string>AppleHDA</string>
 				<key>Find</key>
@@ -510,7 +510,7 @@
 				<key>Comment</key>
 				<string>Patching 11d4198a to zero</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Name</key>
 				<string>AppleHDA</string>
 				<key>Find</key>
