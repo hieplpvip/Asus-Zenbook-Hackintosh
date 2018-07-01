@@ -121,19 +121,26 @@ DefinitionBlock ("SSDT-HACK", "SSDT", 2, "hack", "hack", 0)
     {
         Name(_HID, "SHD10000")
         Method(_INI) { \_SB.PCI0.LPCB.XPET._HID = 0 }
-    }  
+    }
     
     // add alternative HPET device
+    External(HPTB, FieldUnitObj)
     Device(_SB.PCI0.LPCB.HPET)
     {
         Name (_HID, EisaId ("PNP0103"))
         Name (_CID, EisaId ("PNP0C01"))
         Name (_STA, 0x0F)
-        Name (_CRS, ResourceTemplate ()
+        Name (BUF0, ResourceTemplate ()
         {
             IRQNoFlags () {0,8,11,15}
-            Memory32Fixed (ReadWrite, 0xFED00000, 0x00000400)
+            Memory32Fixed (ReadWrite, 0xFED00000, 0x00000400, _Y37)
         })
+        Method (_CRS, 0, Serialized)
+        {
+            CreateDWordField (BUF0, ^_Y37._BAS, HPT0)
+            Store (HPTB, HPT0)
+            Return (BUF0)
+        }
     }
     
     // add SMBUS device
