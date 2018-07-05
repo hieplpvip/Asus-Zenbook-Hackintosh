@@ -244,12 +244,12 @@
 				<dict>
 					<key>Comment</key>
 					<string>Disable ALS device</string>
-					<key>Disabled</key>
-					<true/>
 					<key>Find</key>
 					<data>FAlfU1RBAKQKCw==</data>
 					<key>Replace</key>
 					<data>FAlfU1RBAKQKAA==</data>
+					<key>Disabled</key>
+					<true/>
 				</dict>
 			</array>
 		</dict>
@@ -496,33 +496,7 @@
 		<array>
 			<dict>
 				<key>Comment</key>
-				<string>Patching 11d4198b with 14f11f72 codec</string>
-				<key>Disabled</key>
-				<true/>
-				<key>Name</key>
-				<string>AppleHDA</string>
-				<key>Find</key>
-				<data>ixnUEQ==</data>
-				<key>Replace</key>
-				<data>ch/xFA==</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Patching 11d4198a to zero</string>
-				<key>Disabled</key>
-				<true/>
-				<key>Name</key>
-				<string>AppleHDA</string>
-				<key>Find</key>
-				<data>ihnUEQ==</data>
-				<key>Replace</key>
-				<data>AAAAAA==</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
 				<string>change F%uT%04x to F%uTxxxx in AppleBacklightInjector.kext</string>
-				<key>Disabled</key>
-				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleBacklight</string>
 				<key>Find</key>
@@ -532,21 +506,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>0x591b0000, 32MB BIOS, 19MB framebuffer 9MB cursor bytes</string>
-				<key>Disabled</key>
-				<true/>
-				<key>Name</key>
-				<string>com.apple.driver.AppleIntelKBLGraphicsFramebuffer</string>
-				<key>Find</key>
-				<data>AABgAgAAUAE=</data>
-				<key>Replace</key>
-				<data>AAAwAQAAkAA=</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
 				<string>0x591b0000, Port 5, DP2HDMI</string>
-				<key>Disabled</key>
-				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleIntelKBLGraphicsFramebuffer</string>
 				<key>Find</key>
@@ -557,8 +517,6 @@
 			<dict>
 				<key>Comment</key>
 				<string>Prevent Apple I2C kexts from attaching to I2C controllers, credit CoolStar</string>
-				<key>Disabled</key>
-				<false/>
 				<key>Name</key>
 				<string>AppleIntelLpssI2CController</string>
 				<key>Find</key>
@@ -571,8 +529,6 @@
 			<dict>
 				<key>Comment</key>
 				<string>Prevent Apple I2C kexts from attaching to I2C controllers, credit CoolStar</string>
-				<key>Disabled</key>
-				<false/>
 				<key>Name</key>
 				<string>AppleIntelLpssI2C</string>
 				<key>Find</key>
