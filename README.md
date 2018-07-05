@@ -1,5 +1,5 @@
 # ASUS ZENBOOK UX410
-Clover hotpatches and tools for the ASUS UX410 laptop
+Clover hotpatches and tools for the ASUS UX410 laptop on macOS 10.13.5
 
 #### What you should expect works
 
