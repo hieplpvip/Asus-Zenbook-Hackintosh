@@ -223,7 +223,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_STA,0,S) in GPI0 to XSTA</string>
+					<string>change Method(_STA,0,NS) in GPI0 to XSTA</string>
 					<key>Find</key>
 					<data>X1NUQQCgCZNTQlJH</data>
 					<key>Replace</key>
@@ -233,7 +233,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_CRS,0,S) in XTPD to XCRS</string>
+					<string>change Method(_CRS,0,S) in ETPD to XCRS</string>
 					<key>Find</key>
 					<data>X0NSUwgIU0JGSQ==</data>
 					<key>Replace</key>
