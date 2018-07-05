@@ -26,6 +26,7 @@ Clover hotpatches and tools for the ASUS UX410 laptop on macOS 10.13.5
 * Bluetooth & WiFi (just need to replace Intel card with DW1560, but I don't have money now :(( )
 * Create automatic scripts
 * Post a full guide on Tonymacx86
+* CREATE A BUILD THAT WORKS FOR ALL ZENBOOKS (far future)
 
 ## Credits
 
