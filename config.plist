@@ -534,7 +534,7 @@
 				<key>Comment</key>
 				<string>0x591b0000, 32MB BIOS, 19MB framebuffer 9MB cursor bytes</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleIntelKBLGraphicsFramebuffer</string>
 				<key>Find</key>
