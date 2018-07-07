@@ -38,6 +38,6 @@ Clover hotpatches and tools for the ASUS UX410 laptop on macOS 10.13.5
 
 @RehabMan for everything else
 
-## [Donate me](paypal.me/hieplpvip)
+## [Donate me](https://paypal.me/hieplpvip)
 Any donation is highly appreciated
 
