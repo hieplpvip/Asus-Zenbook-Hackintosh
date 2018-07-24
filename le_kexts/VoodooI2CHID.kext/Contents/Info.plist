@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>17F77</string>
+	<string>17G65</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -285,6 +285,8 @@
 		</dict>
 		<key>VoodooI2CHIDDevice Precision Touchpad HID Event Driver</key>
 		<dict>
+			<key>ASUSFN,deliverNotifications</key>
+			<true/>
 			<key>CFBundleIdentifier</key>
 			<string>com.alexandred.VoodooI2CHID</string>
 			<key>DeviceUsagePairs</key>
@@ -307,6 +309,10 @@
 			</dict>
 			<key>IOProviderClass</key>
 			<string>IOHIDInterface</string>
+			<key>QuietTimeAfterTyping</key>
+			<integer>500</integer>
+			<key>RM,deliverNotifications</key>
+			<true/>
 		</dict>
 		<key>VoodooI2CHIDDevice Stylus HID Event Driver</key>
 		<dict>

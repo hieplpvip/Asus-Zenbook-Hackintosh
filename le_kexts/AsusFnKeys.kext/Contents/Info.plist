@@ -5,25 +5,27 @@
 	<key>BuildMachineOSBuild</key>
 	<string>17G65</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>VoodooGPIO</string>
+	<string>AsusFnKeys</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.coolstar.VoodooGPIO</string>
+	<string>com.apple.AsusFnKeys</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>VoodooGPIO</string>
+	<string>AsusFnKeys</string>
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.0.0</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.1</string>
+	<string>1.0.0</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
@@ -40,47 +42,69 @@
 	<string>9F2000</string>
 	<key>IOKitPersonalities</key>
 	<dict>
-		<key>VoodooGPIOSunrisePointH</key>
+		<key>AsusFnKeys</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
-			<string>org.coolstar.VoodooGPIO</string>
+			<string>com.apple.AsusFnKeys</string>
 			<key>IOClass</key>
-			<string>VoodooGPIOSunrisePointH</string>
+			<string>AsusFnKeys</string>
 			<key>IONameMatch</key>
 			<array>
-				<string>INT345D</string>
+				<string>PNP0c14</string>
+				<string>PNP0C14</string>
+				<string>PnP0C14</string>
+				<string>pnp0c14</string>
+				<string>ASUS010</string>
+				<string>ASUS0100</string>
+				<string>ASUS0010</string>
+				<string>ATK0100</string>
 			</array>
+			<key>IOProbeScore</key>
+			<integer>9999</integer>
 			<key>IOProviderClass</key>
-			<string>IOService</string>
+			<string>IOACPIPlatformDevice</string>
+			<key>Preferences</key>
+			<dict>
+				<key>ALSatBoot</key>
+				<false/>
+				<key>HasMediaButtons</key>
+				<false/>
+				<key>KeyboardBLightLevelAtBoot</key>
+				<integer>1</integer>
+			</dict>
+			<key>RM,deliverNotifications</key>
+			<true/>
 		</dict>
-		<key>VoodooGPIOSunrisePointLP</key>
+		<key>FnKeysHIKeyboard</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
-			<string>org.coolstar.VoodooGPIO</string>
+			<string>com.apple.AsusFnKeys</string>
 			<key>IOClass</key>
-			<string>VoodooGPIOSunrisePointLP</string>
+			<string>FnKeysHIKeyboard</string>
 			<key>IONameMatch</key>
-			<array>
-				<string>INT344B</string>
-			</array>
+			<string>FnKeysHIKeyboardDevice</string>
 			<key>IOProviderClass</key>
-			<string>IOService</string>
+			<string>FnKeysHIKeyboardDevice</string>
 		</dict>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2017 CoolStar. All rights reserved.</string>
+	<string>Copyright © 2018 hieplpvip. Credits: EMlyDinEsH(OSXLatitude)</string>
 	<key>OSBundleCompatibleVersion</key>
-	<string>1.1</string>
+	<string>1.0.0</string>
 	<key>OSBundleLibraries</key>
 	<dict>
 		<key>com.apple.iokit.IOACPIFamily</key>
-		<string>1.4</string>
+		<string>1.0.0d1</string>
+		<key>com.apple.iokit.IOHIDSystem</key>
+		<string>1.6.5</string>
+		<key>com.apple.kpi.bsd</key>
+		<string>10.0.0</string>
 		<key>com.apple.kpi.iokit</key>
-		<string>13.0</string>
+		<string>9.6.0</string>
 		<key>com.apple.kpi.libkern</key>
-		<string>13.0</string>
-		<key>com.apple.kpi.mach</key>
-		<string>13.0</string>
+		<string>9.6.0</string>
+		<key>com.apple.kpi.unsupported</key>
+		<string>9.6.0</string>
 	</dict>
 </dict>
 </plist>
