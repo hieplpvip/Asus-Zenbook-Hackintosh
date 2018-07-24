@@ -2,10 +2,18 @@
 
 DefinitionBlock("SSDT-ATK", "SSDT", 2, "hack", "atk", 0)
 {
-    External(_SB.ATKD, DeviceObj)
-    External(_SB.PCI0.LPCB.EC0.WRAM, MethodObj)
-    External(_SB.PCI0.LPCB.EC0.ST9E, MethodObj)
-    External(_SB.KBLV, FieldUnitObj)
+    External (_SB.ALS, DeviceObj)
+    External (_SB.ATKD, DeviceObj)
+    External (_SB.ATKD.IANE, MethodObj)
+    External (ATKP, IntObj)
+    External (_SB.KBLV, FieldUnitObj)
+    External (_SB.PCI0.LPCB.EC0, DeviceObj)
+    External (_SB.PCI0.LPCB.EC0.WRAM, MethodObj)
+    External (_SB.PCI0.LPCB.EC0.ST9E, MethodObj)
+    External (_SB.PCI0.LPCB.EC0.RALS, MethodObj)
+    External (_SB.PCI0.LPCB.EC0.ALSC, MethodObj)
+    External (_SB.PCI0.LPCB.EC0.LID._LID, MethodObj)
+    External (_SB.PCI0.LPCB.EC0.XQ80, MethodObj)
     Scope (_SB.ATKD)
     {
         Name (BOFF, Zero)
@@ -34,7 +42,7 @@ DefinitionBlock("SSDT-ATK", "SSDT", 2, "hack", "atk", 0)
             }
             Else
             {
-                Store (And (Arg0, 0x7F), KBLV)
+                Store (And (Arg0, 0x7F), ^^KBLV)
             }
             
             // **Customizable part from method SLKB
@@ -59,7 +67,74 @@ DefinitionBlock("SSDT-ATK", "SSDT", 2, "hack", "atk", 0)
                 Return (BOFF)
             }
             
-            Return (KBLV)
+            Return (^^KBLV)
         }
+        
+        Method (ALSS, 0, NotSerialized)
+        {
+            Return (^^PCI0.LPCB.EC0.RALS ())
+        }
+        
+        Method (EALS, 1, NotSerialized)
+        {
+            Return (^^PCI0.LPCB.EC0.ALSC (Arg0))
+        }
+        
+        Method (LIDS, 0, NotSerialized)
+        {
+            Return (^^PCI0.LPCB.EC0.LID._LID ())
+        }
+    }
+    
+    Scope (_SB.PCI0.LPCB.EC0)
+    {
+        // Ambient light sensor notification, from EMlyDinEsH
+        Method (_QCD, 0, NotSerialized)
+        {
+            // Notify (^^^^ALS, 0x80)
+            If (ATKP)
+            {
+                ^^^^ATKD.IANE (0xC6)
+            }
+        }
+
+        Method (_Q76, 0, NotSerialized)  // Fn+A
+        {
+            If (ATKP)
+            {
+                ^^^^ATKD.IANE (0x7A)
+            }
+        }
+        
+        Method (_Q0E, 0, NotSerialized) // F5 key
+        {
+            If (ATKP)
+            {
+                \_SB.ATKD.IANE (0x20)
+            }
+        }
+
+        Method (_Q0F, 0, NotSerialized) // F6 key
+        {
+            If (ATKP)
+            {
+                \_SB.ATKD.IANE (0x10)
+            }
+        }
+       
+        Method (_Q80, 0, NotSerialized) // LID open/close
+        {
+            If (ATKP)
+            {
+                \_SB.ATKD.IANE (0x80)
+            }
+            // Call original method, now is XQ80
+            ^XQ80 ()
+        }
+    }
+    
+    Scope (_SB.ALS)
+    {
+        Name(_CID, "smc-als")
     }
 }

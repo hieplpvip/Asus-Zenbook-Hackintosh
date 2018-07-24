@@ -167,15 +167,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_Q0B,0,S) to XQ0B</string>
-					<key>Find</key>
-					<data>X1EwQgA=</data>
-					<key>Replace</key>
-					<data>WFEwQgA=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_Q0E,0,S) to XQ0E</string>
+					<string>change Method(_Q0E,0,NS) to XQ0E</string>
 					<key>Find</key>
 					<data>X1EwRQA=</data>
 					<key>Replace</key>
@@ -183,7 +175,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_Q0F,0,S) to XQ0F</string>
+					<string>change Method(_Q0F,0,NS) to XQ0F</string>
 					<key>Find</key>
 					<data>X1EwRgA=</data>
 					<key>Replace</key>
@@ -191,15 +183,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_QDD,0,S) to XQDD</string>
-					<key>Find</key>
-					<data>X1FERAA=</data>
-					<key>Replace</key>
-					<data>WFFERAA=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_QCD,0,S) to XQCD</string>
+					<string>change Method(_QCD,0,NS) to XQCD</string>
 					<key>Find</key>
 					<data>X1FDRAA=</data>
 					<key>Replace</key>
@@ -207,11 +191,19 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_Q76,0,S) to XQ76</string>
+					<string>change Method(_Q76,0,NS) to XQ76</string>
 					<key>Find</key>
 					<data>X1E3NgA=</data>
 					<key>Replace</key>
 					<data>WFE3NgA=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change Method(_Q80,0,NS) to XQ80</string>
+					<key>Find</key>
+					<data>X1E4MAA=</data>
+					<key>Replace</key>
+					<data>WFE4MAA=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>

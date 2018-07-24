@@ -6,7 +6,7 @@
 #define CUSTOM_PWMMAX_07a1 0x07a1
 #define CUSTOM_PWMMAX_1499 0x1499
 
-DefinitionBlock("SSDT-pnlf", "SSDT", 2, "hack", "pnlf", 0)
+DefinitionBlock("SSDT-PNLF", "SSDT", 2, "hack", "pnlf", 0)
 {
     External(RMCF.BKLT, IntObj)
     External(RMCF.LMAX, IntObj)
