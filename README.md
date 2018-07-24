@@ -1,5 +1,6 @@
 # ASUS ZENBOOK UX410
-Clover hotpatches and tools for the ASUS UX410 laptop on macOS 10.13.6
+Clover hotpatches and tools for the ASUS UX410 laptop on macOS 10.13.6. 
+This should work well for UX430 too.
 
 #### What you should expect works
 
@@ -16,13 +17,17 @@ Clover hotpatches and tools for the ASUS UX410 laptop on macOS 10.13.6
 
 * Factory Intel WiFi card.
 
-## Notes:
+## Notes
 - Trackpad: VoodooI2C has two modes: GPIO pinning and polling. For better performance, GPIO pinning mode should be used. However, ASUS laptops (UX410, UX430, etc) have problems with GPIO pinning. Therefore, polling mode is used. New ASUS laptops seem to fix this. If you want to test, compile SSDT-ELAN with your custom pin (follow [this guide](https://voodooi2c.github.io/#GPIO%20Pinning/GPIO%20Pinning) to know) and enable these 2 patch in config.plist: "change Method(_STA,0,NS) in GPI0 to XSTA" and "change Method(_CRS,0,S) in ETPD to XCRS".
 - SSDT-UIAC is made specially for my laptop. On yours USB ports may be different. See [this guide](https://www.tonymacx86.com/threads/guide-creating-a-custom-ssdt-for-usbinjectall-kext.211311/) for how to create one for yours.
 
+## WIP
+
+* [VoodooI2C](https://github.com/hieplpvip/VoodooI2C/tree/native)
+* [AsusFnKeys](https://github.com/hieplpvip/AsusFnKeys)
+
 ## To-Do
 
-* Create my own version of VoodooI2C: https://github.com/hieplpvip/VoodooI2C (WIP)
 * Bluetooth & WiFi (just need to replace Intel card with DW1560, but I don't have money now :(( )
 * Create automatic scripts
 * Post a full guide on Tonymacx86
@@ -40,4 +45,3 @@ Clover hotpatches and tools for the ASUS UX410 laptop on macOS 10.13.6
 
 ## [Donate me](https://paypal.me/hieplpvip)
 Any donation is highly appreciated
-
