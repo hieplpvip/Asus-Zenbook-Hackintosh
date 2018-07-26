@@ -121,16 +121,6 @@ DefinitionBlock("SSDT-ATK", "SSDT", 2, "hack", "atk", 0)
                 \_SB.ATKD.IANE (0x10)
             }
         }
-       
-        Method (_Q80, 0, NotSerialized) // LID open/close
-        {
-            If (ATKP)
-            {
-                \_SB.ATKD.IANE (0x80)
-            }
-            // Call original method, now is XQ80
-            ^XQ80 ()
-        }
     }
     
     Scope (_SB.ALS)

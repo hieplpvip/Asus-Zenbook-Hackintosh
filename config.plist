@@ -199,14 +199,6 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_Q80,0,NS) to XQ80</string>
-					<key>Find</key>
-					<data>X1E4MAA=</data>
-					<key>Replace</key>
-					<data>WFE4MAA=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
 					<string>change HPET to XPET</string>
 					<key>Find</key>
 					<data>SFBFVAg=</data>
