@@ -47,35 +47,17 @@
 			<key>ApplePanels</key>
 			<dict>
 				<key>F14Txxxx</key>
-				<data>
-				ABEAAAA0AFIAcwCUAL4A+gE2AXIBxQIvArkDYAQaBQoG
-				DgcQ
-				</data>
+				<data>ABEAAAA0AFIAcwCUAL4A+gE2AXIBxQIvArkDYAQaBQoGDgcQ</data>
 				<key>F15Txxxx</key>
-				<data>
-				ABEAAAA2AFQAfQCyAPUBSQGxAisCuANZBBME7AXzBzQI
-				rwrZ
-				</data>
+				<data>ABEAAAA2AFQAfQCyAPUBSQGxAisCuANZBBME7AXzBzQIrwrZ</data>
 				<key>F16Txxxx</key>
-				<data>
-				ABEAAAAYACcAOgBSAHEAlgDEAPwBQAGTAfYCbgL+A6oE
-				eAVs
-				</data>
+				<data>ABEAAAAYACcAOgBSAHEAlgDEAPwBQAGTAfYCbgL+A6oEeAVs</data>
 				<key>F17Txxxx</key>
-				<data>
-				ABEAAAAfADQATwBxAJsAzwEOAV0BuwIvArkDYAQpBR4G
-				RAeh
-				</data>
+				<data>ABEAAAAfADQATwBxAJsAzwEOAV0BuwIvArkDYAQpBR4GRAeh</data>
 				<key>F18Txxxx</key>
-				<data>
-				ABEAAABTAIwA1QExAaICLgLYA64ErAXlB1kJHAs7DdAQ
-				6hSZ
-				</data>
+				<data>ABEAAABTAIwA1QExAaICLgLYA64ErAXlB1kJHAs7DdAQ6hSZ</data>
 				<key>F24Txxxx</key>
-				<data>
-				ABEAAQA0AFIAcwCUAL4A+gE2AXIBxQIvArkDYAQaBQoG
-				DgcQ
-				</data>
+				<data>ABEAAQA0AFIAcwCUAL4A+gE2AXIBxQIvArkDYAQaBQoGDgcQ</data>
 			</dict>
 			<key>CFBundleIdentifier</key>
 			<string>com.apple.driver.AppleBacklight</string>
