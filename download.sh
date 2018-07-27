@@ -127,6 +127,9 @@ if [ $? -ne 0 ]; then
     sudo /usr/libexec/PlistBuddy -c "Set :IOKitPersonalities:'ACPI Poller':IONameMatch FAN00000" le_kexts/ACPIPoller.kext/Contents/Info.plist
     sudo /usr/libexec/PlistBuddy -c "Set :IOKitPersonalities:'ACPI Poller':Methods:0 FCPU" le_kexts/ACPIPoller.kext/Contents/Info.plist
 
+    sudo /usr/libexec/PlistBuddy -c "Set :IOKitPersonalities:FakeSMC:Configuration:smc-compatible smc-huronriver" le_kexts/FakeSMC.kext/Contents/Info.plist
+    sudo /usr/libexec/PlistBuddy -c "Set :IOKitPersonalities:FakeSMC:Configuration:smc-compatible smc-huronriver" clover_kexts/FakeSMC.kext/Contents/Info.plist
+
     for thefile in $( find le_kexts \( -type f -name Info.plist -not -path '*/Lilu.kext/*' -not -path '*/LiluFriend.kext/*' -print0 \) | xargs -0 grep -l '<key>as.vit9696.Lilu</key>' ); do
         name="`sudo /usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' $thefile`"
         version="`sudo /usr/libexec/PlistBuddy -c 'Print :OSBundleCompatibleVersion' $thefile`"
