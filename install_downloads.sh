@@ -47,7 +47,7 @@ function nothing
 function install_kext
 {
     if [ "$1" != "" ]; then
-        echo installing $1 to $KEXTDEST
+        echo -e '\t'$1
         $SUDO rm -Rf $SLE/`basename $1` $KEXTDEST/`basename $1`
         $SUDO cp -Rf $1 $KEXTDEST
         $TAG -a Gray $KEXTDEST/`basename $1`
@@ -57,7 +57,7 @@ function install_kext
 function install_app
 {
     if [ "$1" != "" ]; then
-        echo installing $1 to /Applications
+        echo -e '\t'$1' to /Applications'
         $SUDO rm -Rf /Applications/`basename $1`
         $SUDO cp -Rf $1 /Applications
         $TAG -a Gray /Applications/`basename $1`
@@ -67,7 +67,7 @@ function install_app
 function install_binary
 {
     if [ "$1" != "" ]; then
-        echo installing $1 to /usr/bin
+        echo -e '\t'$1' to /usr/bin'
         $SUDO rm -f /usr/bin/`basename $1`
         $SUDO cp -f $1 /usr/bin
         $TAG -a Gray /usr/bin/`basename $1`
@@ -108,36 +108,61 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-# unzip/install tools
-check_directory ./downloads/tools/*.zip
-if [ $? -ne 0 ]; then
-    echo Installing tools...
-    cd ./downloads/tools
-    for tool in *.zip; do
-        install $tool
-    done
-    echo
-    cd ../..
-fi
+PS3='Do you want to install tools: '
+options=("Yes" "No")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Yes")
+            # install tools
+            check_directory ./downloads/tools/*.zip
+            if [ $? -ne 0 ]; then
+                echo Installing tools...
+                cd ./downloads/tools
+                for tool in *.zip; do
+                    install $tool
+                done
+                cd ../..
+            fi
+            echo
+            break;;
+        "No")
+            echo
+            break;;
+        *) echo "Invalid";;
+    esac
+done
 
-if [ "$1" != "toolsonly" ]; then
+PS3='Do you want to install kexts to '$KEXTDEST': '
+options=("Yes" "No")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Yes")
+            # install kexts
+            check_directory ./downloads/le_kexts/*.kext
+            if [ $? -ne 0 ]; then
+                echo 'Installing kexts to '$KEXTDEST'...'
+                cd ./downloads/le_kexts
+                for kext in *.kext; do
+                    install_kext $kext
+                done
+                echo
+                cd ../..
+            fi
 
-# unzip/install kexts
-check_directory ./downloads/le_kexts/*.kext
-if [ $? -ne 0 ]; then
-    echo Installing kexts...
-    cd ./downloads/le_kexts
-    for kext in *.kext; do
-        install_kext $kext
-    done
-    echo
-    cd ../..
-fi
+            # force cache rebuild with output
+            echo Rebuilding kextcache...
+            $SUDO kextcache -i /
+            echo
 
-# force cache rebuild with output
-echo Rebuilding kextcache...
-$SUDO kextcache -i /
-echo
+            break;;
+        "No")
+            echo
+            break;;
+        *) echo "Invalid";;
+    esac
+done
 
 # install/update kexts on EFI/Clover/kexts/Other
 EFI=`./mount_efi.sh`
@@ -145,12 +170,10 @@ echo Installing kexts to EFI/Clover/kexts/Other
 rm -Rf $EFI/EFI/CLOVER/kexts/Other/*.kext
 cd ./downloads/clover_kexts
 for kext in *.kext; do
-    echo installing $kext
+    echo -e '\t'$kext
     cp -Rf $kext $EFI/EFI/CLOVER/kexts/Other
 done
 echo
 cd ../..
-
-fi # "toolsonly"
 
 echo Done. Enjoy!

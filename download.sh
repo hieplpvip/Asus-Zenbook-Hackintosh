@@ -47,6 +47,21 @@ function download_raw()
     echo
 }
 
+PS3='Which version of VoodooI2C do you want to use: '
+options=("alexandred" "hieplpvip (better multitouch)")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "alexandred")
+            i2c=0
+            break;;
+        "hieplpvip (better multitouch)")
+            i2c=1
+            break;;
+        *) echo "Invalid";;
+    esac
+done
+
 sudo rm -Rf ./downloads
 mkdir ./downloads && cd ./downloads
 
@@ -65,8 +80,13 @@ download_latest_notbitbucket "https://github.com" "https://github.com/acidanther
 download_latest_notbitbucket "https://github.com" "https://github.com/PMheart/LiluFriend/releases" "RELEASE" "nbb_PMheart-LiluFriend.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AppleBacklightFixup/releases" "AppleBacklightFixup-" "nbb_hieplpvip-AppleBacklightFixup.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AsusFnKeys/releases" "AsusFnKeys-UX410-" "nbb_hieplpvip-AsusFnKeys.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/VoodooI2C/releases" "VoodooI2C-UX410-" "nbb_hieplpvip-VoodooI2C.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/OS-X-Voodoo-PS2-Controller/releases" "VoodooPS2-UX410-" "nbb_hieplpvip-VoodooPS2.zip"
+if [ $i2c -eq 1 ]; then
+    download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/VoodooI2C/releases" "VoodooI2C-UX410-" "nbb_hieplpvip-VoodooI2C.zip"
+else
+    download_latest_notbitbucket "https://github.com" "https://github.com/alexandred/VoodooI2C/releases" "VoodooI2C-v" "nbb_alexandred-VoodooI2C.zip"
+fi
+
 cd ..
 
 # download tools
