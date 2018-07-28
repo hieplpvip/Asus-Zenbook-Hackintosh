@@ -39,6 +39,14 @@ function download_latest_notbitbucket()
     echo
 }
 
+function download_raw()
+{
+    echo "downloading $2"
+    echo $1
+    curl $curl_options --output "$2" "$1"
+    echo
+}
+
 if [ ! -d ./downloads ]; then mkdir ./downloads; fi && sudo rm -Rf downloads/* && cd ./downloads
 
 # download kexts
@@ -65,6 +73,8 @@ mkdir ./tools && cd ./tools
 download os-x-maciasl-patchmatic RehabMan-patchmatic
 download os-x-maciasl-patchmatic RehabMan-MaciASL
 download acpica iasl iasl.zip
+download_raw https://raw.githubusercontent.com/black-dragon74/OSX-Debug/master/IORegistryExplorer.zip IORegistryExplorer.zip
+download os-x-fakesmc-kozlek RehabMan-FakeSMC
 cd ..
 
 LEKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AppleBacklightFixup|AsusFnKeys|FakeSMC|IntelGraphicsFixup|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
