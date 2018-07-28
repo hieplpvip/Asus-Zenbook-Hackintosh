@@ -47,7 +47,8 @@ function download_raw()
     echo
 }
 
-if [ ! -d ./downloads ]; then mkdir ./downloads; fi && sudo rm -Rf downloads/* && cd ./downloads
+sudo rm -Rf ./downloads
+mkdir ./downloads && cd ./downloads
 
 # download kexts
 mkdir ./kexts && cd ./kexts
@@ -60,7 +61,7 @@ download os-x-usb-inject-all RehabMan-USBInjectAll
 #download os-x-acpi-debug RehabMan-Debug
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/Lilu/releases" "RELEASE" "nbb_acidanthera-Lilu.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AppleALC/releases" "RELEASE" "nbb_acidanthera-AppleALC.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/lvs1974/IntelGraphicsFixup/releases" "RELEASE" "nbb_lvs1974-IntelGraphicsFixup.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/WhateverGreen/releases" "RELEASE" "nbb_acidanthera-WhateverGreen.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/PMheart/LiluFriend/releases" "RELEASE" "nbb_PMheart-LiluFriend.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AppleBacklightFixup/releases" "AppleBacklightFixup-" "nbb_hieplpvip-AppleBacklightFixup.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AsusFnKeys/releases" "AsusFnKeys-UX410-" "nbb_hieplpvip-AsusFnKeys.zip"
@@ -76,8 +77,8 @@ download acpica iasl iasl.zip
 download_raw https://raw.githubusercontent.com/black-dragon74/OSX-Debug/master/IORegistryExplorer.zip IORegistryExplorer.zip
 cd ..
 
-LEKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AppleBacklightFixup|AsusFnKeys|FakeSMC|IntelGraphicsFixup|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
-CLOVERKEXTS="ACPIBatteryManager|AppleALC|AppleBacklightFixup|AsusFnKeys|FakeSMC.kext|IntelGraphicsFixup|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
+LEKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AppleBacklightFixup|AsusFnKeys|FakeSMC|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
+CLOVERKEXTS="ACPIBatteryManager|AppleALC|AppleBacklightFixup|AsusFnKeys|FakeSMC.kext|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
 
 function check_directory
 {

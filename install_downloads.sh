@@ -105,7 +105,7 @@ function install
 
 if [ "$(id -u)" != "0" ]; then
     echo "This script requires superuser access..."
-    echo
+    exit 1
 fi
 
 # unzip/install tools
