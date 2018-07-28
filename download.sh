@@ -60,6 +60,13 @@ download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/OS-X-Voodoo-PS2-Controller/releases" "VoodooPS2-UX410-" "nbb_hieplpvip-VoodooPS2.zip"
 cd ..
 
+# download tools
+mkdir ./tools && cd ./tools
+download os-x-maciasl-patchmatic RehabMan-patchmatic
+download os-x-maciasl-patchmatic RehabMan-MaciASL
+download acpica iasl iasl.zip
+cd ..
+
 LEKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AppleBacklightFixup|AsusFnKeys|FakeSMC|IntelGraphicsFixup|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
 CLOVERKEXTS="ACPIBatteryManager|AppleALC|AppleBacklightFixup|AsusFnKeys|FakeSMC.kext|IntelGraphicsFixup|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
 
