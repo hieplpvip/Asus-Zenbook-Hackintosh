@@ -2,10 +2,6 @@
 
 #set -x
 
-if [ "$(id -u)" != "0" ]; then
-echo "This script requires superuser access..."
-fi
-
 curl_options="--retry 5 --location --progress-bar"
 curl_options_silent="--retry 5 --location --silent"
 

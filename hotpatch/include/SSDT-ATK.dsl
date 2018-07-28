@@ -1,7 +1,9 @@
 // Enable keyboard backlight
 
-DefinitionBlock("SSDT-ATK", "SSDT", 2, "hack", "atk", 0)
+#ifndef NO_DEFINITIONBLOCK
+DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
 {
+#endif
     External (_SB.ALS, DeviceObj)
     External (_SB.ATKD, DeviceObj)
     External (_SB.ATKD.IANE, MethodObj)
@@ -127,4 +129,6 @@ DefinitionBlock("SSDT-ATK", "SSDT", 2, "hack", "atk", 0)
     {
         Name(_CID, "smc-als")
     }
+#ifndef NO_DEFINITIONBLOCK
 }
+#endif

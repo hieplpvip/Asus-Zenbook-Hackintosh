@@ -1,4 +1,4 @@
-DefinitionBlock ("SSDT-DEBUG", "SSDT", 2, "hack", "debug", 0)
+DefinitionBlock ("", "SSDT", 2, "hack", "debug", 0)
 {
 Device (RMDT)
 {

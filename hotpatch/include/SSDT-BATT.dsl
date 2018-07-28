@@ -1,8 +1,10 @@
 // Patch by hieplpvip - Credit Rehabman
 // https://www.tonymacx86.com/threads/guide-how-to-patch-dsdt-for-working-battery-status.232986/
 
-DefinitionBlock ("SSDT-BATT", "SSDT", 2, "hack", "batt", 0)
+#ifndef NO_DEFINITIONBLOCK
+DefinitionBlock ("", "SSDT", 2, "hack", "batt", 0)
 {
+#endif
     External(_SB.PCI0.LPCB.EC0, DeviceObj)
     External(_SB.PCI0.LPCB.EC0.BAT0, DeviceObj)
     External(MBLF, IntObj)
@@ -515,4 +517,6 @@ DefinitionBlock ("SSDT-BATT", "SSDT", 2, "hack", "batt", 0)
             }
         }
     }
+#ifndef NO_DEFINITIONBLOCK
 }
+#endif

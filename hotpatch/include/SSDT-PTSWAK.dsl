@@ -1,7 +1,9 @@
 // Overriding _PTS and _WAK
 
-DefinitionBlock("SSDT-PTSWAK", "SSDT", 2, "hack", "ptswak", 0)
+#ifndef NO_DEFINITIONBLOCK
+DefinitionBlock("", "SSDT", 2, "hack", "ptswak", 0)
 {
+#endif
     External(ZPTS, MethodObj)
     External(ZWAK, MethodObj)
 
@@ -61,4 +63,6 @@ DefinitionBlock("SSDT-PTSWAK", "SSDT", 2, "hack", "ptswak", 0)
         // return value from original _WAK
         Return (Local0)
     }
+#ifndef NO_DEFINITIONBLOCK
 }
+#endif

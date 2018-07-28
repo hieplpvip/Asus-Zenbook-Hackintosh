@@ -1,5 +1,7 @@
-DefinitionBlock ("SSDT-HACK", "SSDT", 2, "hack", "hack", 0)
+#ifndef NO_DEFINITIONBLOCK
+DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
 {
+#endif
     // All _OSI calls in DSDT are routed to XOSI...
     // As written, this XOSI simulates "Windows 2015" (which is Windows 10)
     // Note: According to ACPI spec, _OSI("Windows") must also return true
@@ -194,4 +196,6 @@ DefinitionBlock ("SSDT-HACK", "SSDT", 2, "hack", "hack", 0)
             })
         }
     }
+#ifndef NO_DEFINITIONBLOCK
 }
+#endif

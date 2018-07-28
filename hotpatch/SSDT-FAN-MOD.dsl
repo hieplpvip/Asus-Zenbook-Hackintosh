@@ -4,7 +4,7 @@
 
 // Please configure the options in Device ANKD before compiling this SSDT
 
-DefinitionBlock("SSDT-FAN", "SSDT", 2, "hack", "fan", 0)
+DefinitionBlock("", "SSDT", 2, "hack", "fan", 0)
 {
     // Declare externals
     External (\_SB.PCI0.LPCB.EC0.ECAV, MethodObj)
@@ -12,7 +12,6 @@ DefinitionBlock("SSDT-FAN", "SSDT", 2, "hack", "fan", 0)
     External (\_SB.PCI0.LPCB.EC0.ST83, MethodObj)
     External (\_SB.PCI0.LPCB.EC0.ST98, MethodObj)
     External (\_SB.PCI0.LPCB.EC0.TACH, MethodObj)
-    External (\_SB.ATKD.CKBL, MethodObj)
 
 
     // Create a Nick's device to take care of this SSDT's configurations
@@ -125,10 +124,7 @@ DefinitionBlock("SSDT-FAN", "SSDT", 2, "hack", "fan", 0)
         // Method to control FAN wrt TEMP
         // Name in ACPIPoller.kext's Info.plist should be FCPU with HID FAN00000
         Method (FCPU, 0)
-        {
-            // Call method CKBL to change keyboard backlight based on ALS
-            \_SB.ATKD.CKBL ()
-            
+        {            
             // If UCFC is set to 0, terminate
             If (\ANKD.UCFC == 0)
             {
