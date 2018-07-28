@@ -107,6 +107,7 @@ function install
 
 if [ "$(id -u)" != "0" ]; then
     echo "This script requires superuser access..."
+    echo
 fi
 
 # unzip/install tools
@@ -117,6 +118,7 @@ if [ $? -ne 0 ]; then
     for tool in *.zip; do
         install $tool
     done
+    echo
     cd ../..
 fi
 
@@ -130,11 +132,14 @@ if [ $? -ne 0 ]; then
     for kext in *.kext; do
         install_kext $kext
     done
+    echo
     cd ../..
 fi
 
 # force cache rebuild with output
+echo Rebuilding kextcache...
 $SUDO kextcache -i /
+echo
 
 # install/update kexts on EFI/Clover/kexts/Other
 EFI=`./mount_efi.sh`
@@ -142,9 +147,12 @@ echo Installing kexts to EFI/Clover/kexts/Other
 rm -Rf $EFI/EFI/CLOVER/kexts/Other/*.kext
 cd ./downloads/clover_kexts
 for kext in *.kext; do
+    echo installing $kext
     cp -Rf $kext $EFI/EFI/CLOVER/kexts/Other
 done
+echo
 cd ../..
 
 fi # "toolsonly"
 
+echo Done. Enjoy!
