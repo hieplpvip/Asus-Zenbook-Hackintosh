@@ -74,7 +74,6 @@ download os-x-maciasl-patchmatic RehabMan-patchmatic
 download os-x-maciasl-patchmatic RehabMan-MaciASL
 download acpica iasl iasl.zip
 download_raw https://raw.githubusercontent.com/black-dragon74/OSX-Debug/master/IORegistryExplorer.zip IORegistryExplorer.zip
-download os-x-fakesmc-kozlek RehabMan-FakeSMC
 cd ..
 
 LEKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AppleBacklightFixup|AsusFnKeys|FakeSMC|IntelGraphicsFixup|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
@@ -133,6 +132,9 @@ if [ $? -ne 0 ]; then
     echo Unzipping kexts...
     cd ./kexts
     for kext in *.zip; do
+        if [[ "`echo $kext | grep FakeSMC`" != "" ]]; then
+            cp -R $kext ../tools
+        fi
         unzip_kext $kext
     done
 
@@ -162,5 +164,3 @@ if [ $? -ne 0 ]; then
     done
     cd ..
 fi
-
-echo "Install kexts in downloads/clover_kexts to Clover and kexts in downloads/le_kexts to /Library/Extensions"

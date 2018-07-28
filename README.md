@@ -21,9 +21,31 @@ Clover hotpatches and tools for the Asus Zenbook laptop on macOS 10.13.6.
 
 * Factory Intel WiFi card.
 
-## How to install
+## Basic Instruction
 
-* Coming soon
+### 1. BIOS Settings
+
+* Activate Advanced Mode
+* Set DVMT to 64M
+* Disable Secure Boot
+
+### 2. Preparing USB
+
+* Follow this [guide](https://www.tonymacx86.com/threads/guide-booting-the-os-x-installer-on-laptops-with-clover.148093/)
+* For the drivers, don't forget AptioMemoryFix.efi, ApfsDriverLoader.efi, HFSPlus.efi
+
+### 3. Post Installation
+
+* Install Clover UEFI as described in the guide linked by the previous section.
+* In Terminal:
+```
+mkdir ~/hackintosh
+cd ~/hackintosh
+git clone https://github.com/hieplpvip/ASUS-ZENBOOK-HACKINTOSH.git zenbook
+cd zenbook
+sudo ./download.sh && sudo ./install_downloads.sh
+sudo ./make_acpi.sh && sudo ./install_acpi.sh
+```
 
 ## Notes
 - Trackpad: VoodooI2C has two modes: GPIO pinning and polling. For better performance, GPIO pinning mode should be used. However, ASUS laptops (UX410, UX430, etc) have problems with GPIO pinning. Therefore, polling mode is used. New ASUS laptops seem to fix this. If you want to test, compile SSDT-ELAN with your custom pin (follow [this guide](https://voodooi2c.github.io/#GPIO%20Pinning/GPIO%20Pinning) to know) and enable these 2 patch in config.plist: "change Method(_STA,0,NS) in GPI0 to XSTA" and "change Method(_CRS,0,S) in ETPD to XCRS".
