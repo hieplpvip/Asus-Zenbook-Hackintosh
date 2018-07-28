@@ -7,8 +7,8 @@ DefinitionBlock("", "SSDT", 2, "hack", "ptswak", 0)
     External(ZPTS, MethodObj)
     External(ZWAK, MethodObj)
 
-    External(_SB.PCI0.RP01.PEGP._ON, MethodObj)
-    External(_SB.PCI0.RP01.PEGP._OFF, MethodObj)
+    External(RMCF.RMON, MethodObj)
+    External(RMCF.RMOF, MethodObj)
 
     External(RMCF.SHUT, IntObj)
     External(RMCF.XPEE, IntObj)
@@ -25,7 +25,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "ptswak", 0)
         }
         
         // enable discrete graphics
-        If (CondRefOf(\_SB.PCI0.RP01.PEGP._ON)) { \_SB.PCI0.RP01.PEGP._ON() }
+        If (CondRefOf(\RMCF.RMON)) { \RMCF.RMON() }
 
         // call into original _PTS method
         If (LNotEqual(Arg0,5)) { ZPTS(Arg0) }
@@ -47,7 +47,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "ptswak", 0)
         Local0 = ZWAK(Arg0)
         
         // disable discrete graphics
-        If (CondRefOf(\_SB.PCI0.RP01.PEGP._OFF)) { \_SB.PCI0.RP01.PEGP._OFF() }
+        If (CondRefOf(\RMCF.RMOF)) { \RMCF.RMOF() }
 
         If (CondRefOf(\RMCF.SSTF))
         {

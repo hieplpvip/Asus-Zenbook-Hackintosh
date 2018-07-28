@@ -46,20 +46,9 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
 		Return(XPRW(Arg0, Arg1))
 	}
     
-    // disable the discrete GPU 
-    External(_SB.PCI0.RP01.PEGP._OFF, MethodObj)
-    Device(RMD1)
-    {
-        Name(_HID, "RMD10000")
-        Method(_INI)
-        {
-            If (CondRefOf(\_SB.PCI0.RP01.PEGP._OFF)) { \_SB.PCI0.RP01.PEGP._OFF() }
-        }
-    }
-    
     External(_SB.PCI0.LPCB.EC0, DeviceObj)
     External(_SB.PCI0.LPCB.EC0.XREG, MethodObj)
-    External(_SB.PCI0.HGOF, MethodObj)
+    External(RMCF.HGOF, MethodObj)
     Scope(_SB.PCI0.LPCB.EC0)
     {
         OperationRegion(RME3, EmbeddedControl, 0x00, 0xFF)
@@ -68,7 +57,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
             XREG(Arg0, Arg1) // call original _REG, now renamed XREG
             If (3 == Arg0 && 1 == Arg1) // EC ready?
             {
-                 \_SB.PCI0.HGOF() // turn dedicated Nvidia fan off
+                 If (CondRefOf(\RMCF.HGOF)) { \RMCF.HGOF() } // turn dedicated Nvidia fan off
             }
         }
     }
