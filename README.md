@@ -1,6 +1,10 @@
-# ASUS ZENBOOK UX410
-Clover hotpatches and tools for the ASUS UX410 laptop on macOS 10.13.6. 
-This should work well for UX430 too.
+# ASUS ZENBOOK
+Clover hotpatches and tools for the Asus Zenbook laptop on macOS 10.13.6. 
+
+#### Supported models:
+
+* UX410
+* UX430
 
 #### What you should expect works
 
@@ -16,6 +20,10 @@ This should work well for UX430 too.
 #### Will never work
 
 * Factory Intel WiFi card.
+
+## How to install
+
+* Coming soon
 
 ## Notes
 - Trackpad: VoodooI2C has two modes: GPIO pinning and polling. For better performance, GPIO pinning mode should be used. However, ASUS laptops (UX410, UX430, etc) have problems with GPIO pinning. Therefore, polling mode is used. New ASUS laptops seem to fix this. If you want to test, compile SSDT-ELAN with your custom pin (follow [this guide](https://voodooi2c.github.io/#GPIO%20Pinning/GPIO%20Pinning) to know) and enable these 2 patch in config.plist: "change Method(_STA,0,NS) in GPI0 to XSTA" and "change Method(_CRS,0,S) in ETPD to XCRS".

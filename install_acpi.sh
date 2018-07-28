@@ -33,6 +33,13 @@ case "$1" in
         cp $BUILDDIR/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
         ls $ACPIPATCHED
     ;;
+    install_ux430)
+        rm -f $ACPIPATCHED/DSDT.aml
+        rm -f $ACPIPATCHED/SSDT-*.aml
+        cp $BUILDDIR/SSDT-UX430-KABYLAKE.aml $ACPIPATCHED
+        cp $BUILDDIR/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
+        ls $ACPIPATCHED
+    ;;
 
 # unknown models
     *)
