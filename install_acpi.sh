@@ -26,17 +26,19 @@ fi
 
 case "$1" in
 # model specific scripts
-    install_ux410)
+    install_ux410_kaby)
         rm -f $ACPIPATCHED/DSDT.aml
         rm -f $ACPIPATCHED/SSDT-*.aml
         cp $BUILDDIR/SSDT-UX410-KABYLAKE.aml $ACPIPATCHED
+        cp $BUILDDIR/SSDT-IGPU.aml $ACPIPATCHED
         cp $BUILDDIR/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
         ls $ACPIPATCHED
     ;;
-    install_ux430)
+    install_ux430_kaby)
         rm -f $ACPIPATCHED/DSDT.aml
         rm -f $ACPIPATCHED/SSDT-*.aml
         cp $BUILDDIR/SSDT-UX430-KABYLAKE.aml $ACPIPATCHED
+        cp $BUILDDIR/SSDT-IGPU.aml $ACPIPATCHED
         cp $BUILDDIR/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
         ls $ACPIPATCHED
     ;;

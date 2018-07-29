@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Comment</key>
-	<string>This file is for 10.12.6+ with native KabyLake support</string>
 	<key>ACPI</key>
 	<dict>
 		<key>AutoMerge</key>
@@ -321,56 +319,11 @@
 				<key>Comment</key>
 				<string>Inject bogus class-code to prevent graphics drivers loading for NVidia</string>
 			</dict>
-			<dict>
-				<key>Device</key>
-				<string>IntelGFX</string>
-				<key>Key</key>
-				<string>hda-gfx</string>
-				<key>Value</key>
-				<data>b25ib2FyZC0xAA==</data>
-				<key>Comment</key>
-				<string>hda-gfx=onboard-1 for HDMI audio</string>
-			</dict>
-			<dict>
-				<key>Device</key>
-				<string>HDA</string>
-				<key>Key</key>
-				<string>hda-gfx</string>
-				<key>Value</key>
-				<data>b25ib2FyZC0xAA==</data>
-				<key>Comment</key>
-				<string>hda-gfx=onboard-1 for HDMI audio</string>
-			</dict>
-			<dict>
-				<key>Device</key>
-				<string>HDA</string>
-				<key>Key</key>
-				<string>layout-id</string>
-				<key>Value</key>
-				<data>AwAAAA==</data>
-				<key>Comment</key>
-				<string>layout-id=3</string>
-			</dict>
-			<dict>
-				<key>Device</key>
-				<string>HDA</string>
-				<key>Key</key>
-				<string>PinConfigurations</string>
-				<key>Value</key>
-				<data></data>
-			</dict>
 		</array>
 		<key>Audio</key>
 		<dict>
 			<key>Inject</key>
-			<string>3</string>
-		</dict>
-		<key>FakeID</key>
-		<dict>
-			<key>#Kaby Lake-Comment</key>
-			<string>To avoid automatic Clover fake device-id (Skylake) injection</string>
-			<key>IntelGFX</key>
-			<string>0x59168086</string>
+			<string>0</string>
 		</dict>
 		<key>USB</key>
 		<dict>
@@ -381,8 +334,6 @@
 			<key>Inject</key>
 			<true/>
 		</dict>
-		<key>UseIntelHDMI</key>
-		<false/>
 	</dict>
 	<key>DisableDrivers</key>
 	<array>
@@ -431,20 +382,9 @@
 	</dict>
 	<key>Graphics</key>
 	<dict>
-		<key>EDID</key>
-		<dict>
-			<key>Inject</key>
-			<false/>
-		</dict>
-		<key>ig-platform-id</key>
-		<string>0x591b0000</string>
 		<key>Inject</key>
 		<dict>
-			<key>ATI</key>
-			<false/>
 			<key>Intel</key>
-			<true/>
-			<key>NVidia</key>
 			<false/>
 		</dict>
 	</dict>
@@ -458,36 +398,8 @@
 		<true/>
 		<key>KernelPm</key>
 		<true/>
-		<key>ForceKextsToLoad</key>
-		<array>
-			<string>\System\Library\Extensions\IONetworkingFamily.kext</string>
-			<string>\System\Library\Extensions\AppleIntelKBLGraphicsFramebuffer.kext</string>
-		</array>
-		<key>KernelToPatch</key>
-		<array>
-			<dict>
-				<key>Comment</key>
-				<string>MSR 0xE2 _xcpm_idle instant reboot(c) Pike R. Alpha</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>ILniAAAADzA=</data>
-				<key>Replace</key>
-				<data>ILniAAAAkJA=</data>
-			</dict>
-		</array>
 		<key>KextsToPatch</key>
 		<array>
-			<dict>
-				<key>Comment</key>
-				<string>0x591b0000, Port 5, DP2HDMI</string>
-				<key>Name</key>
-				<string>com.apple.driver.AppleIntelKBLGraphicsFramebuffer</string>
-				<key>Find</key>
-				<data>AQUJAAAEAACHAQAA</data>
-				<key>Replace</key>
-				<data>AQUJAAAIAACHAQAA</data>
-			</dict>
 			<dict>
 				<key>Comment</key>
 				<string>Prevent Apple I2C kexts from attaching to I2C controllers, credit CoolStar</string>
@@ -558,7 +470,7 @@
 	<key>SMBIOS</key>
 	<dict>
 		<key>ProductName</key>
-		<string>MacBookPro14,1</string>
+		<string>smbios_productname_placeholder</string>
 		<key>Trust</key>
 		<true/>
 	</dict>
