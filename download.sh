@@ -62,8 +62,7 @@ do
     esac
 done
 
-sudo rm -Rf ./downloads
-mkdir ./downloads && cd ./downloads
+if [ ! -d ./downloads ]; then mkdir ./downloads; fi && rm -Rf downloads/* && cd ./downloads
 
 # download kexts
 mkdir ./kexts && cd ./kexts
@@ -121,10 +120,10 @@ function unzip_kext
             # install the kext when it exists regardless of filter
             kextname="`basename $kext`"
             if [[ "`echo $kextname | grep -E $LEKEXTS`" != "" ]]; then
-                sudo cp -R $kext ../le_kexts
+                cp -R $kext ../le_kexts
             fi
             if [[ "`echo $kextname | grep -E $CLOVERKEXTS`" != "" ]]; then
-                sudo cp -R $kext ../clover_kexts
+                cp -R $kext ../clover_kexts
             fi
         done
     fi
@@ -134,17 +133,17 @@ function unzip_kext
             # install the kext when it exists regardless of filter
             kextname="`basename $kext`"
             if [[ "`echo $kextname | grep -E $LEKEXTS`" != "" ]]; then
-                sudo cp -R $kext ../le_kexts
+                cp -R $kext ../le_kexts
             fi
             if [[ "`echo $kextname | grep -E $CLOVERKEXTS`" != "" ]]; then
-                sudo cp -R $kext ../clover_kexts
+                cp -R $kext ../clover_kexts
             fi
         done
     fi
 }
 
-sudo rm -Rf ./le_kexts
-sudo rm -Rf ./clover_kexts
+rm -rf ./le_kexts
+rm -rf ./clover_kexts
 mkdir ./le_kexts
 mkdir ./clover_kexts
 
@@ -160,28 +159,28 @@ if [ $? -ne 0 ]; then
     done
 
     cd ..
-    sudo /usr/libexec/PlistBuddy -c "Set :IOKitPersonalities:'ACPI Poller':IONameMatch FAN00000" le_kexts/ACPIPoller.kext/Contents/Info.plist
-    sudo /usr/libexec/PlistBuddy -c "Set :IOKitPersonalities:'ACPI Poller':Methods:0 FCPU" le_kexts/ACPIPoller.kext/Contents/Info.plist
+    /usr/libexec/PlistBuddy -c "Set :IOKitPersonalities:'ACPI Poller':IONameMatch FAN00000" le_kexts/ACPIPoller.kext/Contents/Info.plist
+    /usr/libexec/PlistBuddy -c "Set :IOKitPersonalities:'ACPI Poller':Methods:0 FCPU" le_kexts/ACPIPoller.kext/Contents/Info.plist
 
-    sudo /usr/libexec/PlistBuddy -c "Set :IOKitPersonalities:FakeSMC:Configuration:smc-compatible smc-huronriver" le_kexts/FakeSMC.kext/Contents/Info.plist
-    sudo /usr/libexec/PlistBuddy -c "Set :IOKitPersonalities:FakeSMC:Configuration:smc-compatible smc-huronriver" clover_kexts/FakeSMC.kext/Contents/Info.plist
+    /usr/libexec/PlistBuddy -c "Set :IOKitPersonalities:FakeSMC:Configuration:smc-compatible smc-huronriver" le_kexts/FakeSMC.kext/Contents/Info.plist
+    /usr/libexec/PlistBuddy -c "Set :IOKitPersonalities:FakeSMC:Configuration:smc-compatible smc-huronriver" clover_kexts/FakeSMC.kext/Contents/Info.plist
 
     for thefile in $( find le_kexts \( -type f -name Info.plist -not -path '*/Lilu.kext/*' -not -path '*/LiluFriend.kext/*' -print0 \) | xargs -0 grep -l '<key>as.vit9696.Lilu</key>' ); do
-        name="`sudo /usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' $thefile`"
-        version="`sudo /usr/libexec/PlistBuddy -c 'Print :OSBundleCompatibleVersion' $thefile`"
+        name="`/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' $thefile`"
+        version="`/usr/libexec/PlistBuddy -c 'Print :OSBundleCompatibleVersion' $thefile`"
         if [[ -z "${version}" ]]; then
-            version="`sudo /usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' $thefile`"
+            version="`/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' $thefile`"
         fi
-        sudo /usr/libexec/PlistBuddy -c "Add :OSBundleLibraries:$name string $version" le_kexts/LiluFriend.kext/Contents/Info.plist
+        /usr/libexec/PlistBuddy -c "Add :OSBundleLibraries:$name string $version" le_kexts/LiluFriend.kext/Contents/Info.plist
     done
 
     for thefile in $( find clover_kexts \( -type f -name Info.plist -not -path '*/Lilu.kext/*' -not -path '*/LiluFriend.kext/*' -print0 \) | xargs -0 grep -l '<key>as.vit9696.Lilu</key>' ); do
-        name="`sudo /usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' $thefile`"
-        version="`sudo /usr/libexec/PlistBuddy -c 'Print :OSBundleCompatibleVersion' $thefile`"
+        name="`/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' $thefile`"
+        version="`/usr/libexec/PlistBuddy -c 'Print :OSBundleCompatibleVersion' $thefile`"
         if [[ -z "${version}" ]]; then
-            version="`sudo /usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' $thefile`"
+            version="`/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' $thefile`"
         fi
-        sudo /usr/libexec/PlistBuddy -c "Add :OSBundleLibraries:$name string $version" clover_kexts/LiluFriend.kext/Contents/Info.plist
+        /usr/libexec/PlistBuddy -c "Add :OSBundleLibraries:$name string $version" clover_kexts/LiluFriend.kext/Contents/Info.plist
     done
     cd ..
 fi
