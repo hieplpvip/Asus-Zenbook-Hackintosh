@@ -20,6 +20,7 @@ function download()
     else
         curl $curl_options --output "$3" "$url"
     fi
+    rm /tmp/org.rehabman.download.txt
     echo
 }
 
@@ -36,6 +37,7 @@ function download_latest_notbitbucket()
     local url=$1$scrape
     echo $url
     curl $curl_options --output "$4" "$url"
+    rm /tmp/org.rehabman.download.txt
     echo
 }
 

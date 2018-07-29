@@ -67,6 +67,7 @@ for ((part=0; 1; part++)); do
         break
     fi
 done
+rm /tmp/org_rehabman_diskutil.plist
 
 # should not happen
 if [[ -z "$EFIDevice" ]]; then
