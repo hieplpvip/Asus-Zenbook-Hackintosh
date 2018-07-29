@@ -35,29 +35,31 @@ Please read all before starting
 
 ### 2. Preparing USB
 
-* Follow this [guide](https://www.tonymacx86.com/threads/guide-booting-the-os-x-installer-on-laptops-with-clover.148093/)
-* Use config.plist from this repo
-* For the drivers, use AptioMemoryFix.efi, ApfsDriverLoader.efi, HFSPlus.efi
-* For the kexts, run this in Terminal:
-```
-cd ~
-git clone https://github.com/hieplpvip/ASUS-ZENBOOK-HACKINTOSH.git zenbook
-cd zenbook && sudo ./download.sh
-```
-Copy the kexts in downloads/clover_kexts to Clover.
-
-### 3. Post Installation
-
-* Install Clover UEFI as described in the guide linked by the previous section.
-* In Terminal:
+* Open Terminal:
 ```
 cd ~
 git clone https://github.com/hieplpvip/ASUS-ZENBOOK-HACKINTOSH.git zenbook
 cd zenbook
-sudo ./download.sh && sudo ./install_downloads.sh
-sudo ./make_acpi.sh && sudo ./install_acpi.sh
+sudo ./download.sh && sudo ./make_acpi.sh && sudo ./make_config.sh
 ```
-* Copy config.plist to Clover
+* Follow this [guide](https://www.tonymacx86.com/threads/guide-booting-the-os-x-installer-on-laptops-with-clover.148093/) to create installer
+* Use `config_[model].plist` in `config` folder
+* For the drivers, use `AptioMemoryFix.efi`, `ApfsDriverLoader.efi`, `HFSPlus.efi`
+* Copy the kexts in `downloads/clover_kexts` to `/EFI/CLOVER/kexts/other`
+* Copy `*.aml` files in `build/[model]` to `/EFI/CLOVER/ACPI/patched`
+* Copy `zenbook` folder to your USB for later use
+
+### 3. Post Installation
+
+* Install Clover UEFI as described in the previous section
+* In Terminal:
+```
+cd <zenbook folder on your usb>
+sudo ./install_downloads.sh
+sudo ./install_acpi.sh [model] [fanpref]
+```
+model: install_ux410_kabylake, install_ux430_kabylake
+fanpref: READ, MOD
 
 ### 4. Completing Hackintosh
 
