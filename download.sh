@@ -72,6 +72,8 @@ download os-x-fakesmc-kozlek RehabMan-FakeSMC
 #download os-x-voodoo-ps2-controller RehabMan-Voodoo
 download os-x-acpi-battery-driver RehabMan-Battery
 download os-x-null-ethernet RehabMan-NullEthernet
+download os-x-fake-pci-id RehabMan-FakePCIID
+download os-x-brcmpatchram RehabMan-BrcmPatchRAM
 download os-x-acpi-poller RehabMan-Poller
 download os-x-usb-inject-all RehabMan-USBInjectAll
 #download os-x-acpi-debug RehabMan-Debug
@@ -79,6 +81,8 @@ download_latest_notbitbucket "https://github.com" "https://github.com/acidanther
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AppleALC/releases" "RELEASE" "nbb_acidanthera-AppleALC.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/WhateverGreen/releases" "RELEASE" "nbb_acidanthera-WhateverGreen.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/PMheart/LiluFriend/releases" "RELEASE" "nbb_PMheart-LiluFriend.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/lvs1974/AirportBrcmFixup/releases" "RELEASE" "nbb_lvs1974-AirportBrcmFixup.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/lvs1974/BT4LEContiunityFixup/releases" "Release_" "nbb_lvs1974-BT4LEContiunityFixup.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AppleBacklightFixup/releases" "AppleBacklightFixup-" "nbb_hieplpvip-AppleBacklightFixup.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AsusFnKeys/releases" "AsusFnKeys-UX410-" "nbb_hieplpvip-AsusFnKeys.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/OS-X-Voodoo-PS2-Controller/releases" "VoodooPS2-UX410-" "nbb_hieplpvip-VoodooPS2.zip"
@@ -98,8 +102,8 @@ download acpica iasl iasl.zip
 download_raw https://raw.githubusercontent.com/black-dragon74/OSX-Debug/master/IORegistryExplorer.zip IORegistryExplorer.zip
 cd ..
 
-LEKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AppleBacklightFixup|AsusFnKeys|FakeSMC|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
-CLOVERKEXTS="ACPIBatteryManager|AppleALC|AppleBacklightFixup|AsusFnKeys|FakeSMC.kext|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
+LEKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AppleBacklightFixup|AsusFnKeys|AirportBrcmFixup|BrcmPatchRAM2|BrcmFirmwareRepo|BT4LEContiunityFixup|FakePCIID.kext|FakePCIID_Broadcom_WiFi|FakeSMC|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
+CLOVERKEXTS="ACPIBatteryManager|AppleALC|AppleBacklightFixup|AsusFnKeys|AirportBrcmFixup|BrcmPatchRAM2|BrcmFirmwareData|BT4LEContiunityFixup|FakePCIID.kext|FakePCIID_Broadcom_WiFi|FakeSMC.kext|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
 
 function check_directory
 {
