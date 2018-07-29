@@ -40,7 +40,7 @@ Please read all before starting
 cd ~
 git clone https://github.com/hieplpvip/ASUS-ZENBOOK-HACKINTOSH.git zenbook
 cd zenbook
-sudo ./download.sh && sudo ./make_acpi.sh && sudo ./make_config.sh
+./download.sh && ./make_acpi.sh && ./make_config.sh
 ```
 * Follow this [guide](https://www.tonymacx86.com/threads/guide-booting-the-os-x-installer-on-laptops-with-clover.148093/) to create installer
 * Use `config_[model].plist` in `config` folder
