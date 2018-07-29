@@ -1,4 +1,6 @@
 #!/bin/bash
+sudo rm -rf config
+mkdir config
 printf "!! creating config/config_ux410_kabylake.plist\n"
 cp config_parts/config_master.plist config/config_ux410_kabylake.plist
 /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" config/config_ux410_kabylake.plist
