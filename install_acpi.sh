@@ -8,10 +8,10 @@ select opt in "${options[@]}"
 do
     case $opt in
         "UX410 (KabyLake)")
-            $model=ux410_kaby
+            model=ux410_kaby
             break;;
         "UX430 (KabyLake)")
-            $model=ux430_kaby
+            model=ux430_kaby
             break;;
         *) echo "Invalid";;
     esac
@@ -26,7 +26,7 @@ do
         "READ")
             FANPREF=READ
             break;;
-        "UX430 (KabyLake)")
+        "MOD")
             FANPREF=MOD
             break;;
         *) echo "Invalid";;

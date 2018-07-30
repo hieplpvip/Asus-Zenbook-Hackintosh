@@ -56,10 +56,8 @@ cd zenbook
 ```
 cd <zenbook folder on your usb>
 sudo ./install_downloads.sh
-sudo ./install_acpi.sh [model] [fanpref]
+sudo ./install_acpi.sh
 ```
-- model: install_ux410_kabylake, install_ux430_kabylake
-- fanpref: READ, MOD
 
 ### 4. Completing Hackintosh
 
