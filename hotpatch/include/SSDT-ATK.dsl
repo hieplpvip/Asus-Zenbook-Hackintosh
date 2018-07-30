@@ -108,6 +108,11 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
             }
         }
         
+        Method (_Q0A, 0, NotSerialized) // F1 key
+        {
+            // Empty method
+        }
+        
         Method (_Q0E, 0, NotSerialized) // F5 key
         {
             If (ATKP)
