@@ -63,6 +63,23 @@ do
         *) echo "Invalid";;
     esac
 done
+echo
+
+PS3='Do you want to use NullEthernet?'$'\n''Yes if you use USB Wifi'$'\n''No if you have replaced your wifi card with a supported one: '
+options=("Yes" "No")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Yes")
+            nullethernet=1
+            break;;
+        "No")
+            nullethernet=0
+            break;;
+        *) echo "Invalid";;
+    esac
+done
+echo
 
 if [ ! -d ./downloads ]; then mkdir ./downloads; fi && rm -Rf downloads/* && cd ./downloads
 
@@ -71,12 +88,10 @@ mkdir ./kexts && cd ./kexts
 download os-x-fakesmc-kozlek RehabMan-FakeSMC
 #download os-x-voodoo-ps2-controller RehabMan-Voodoo
 download os-x-acpi-battery-driver RehabMan-Battery
-download os-x-null-ethernet RehabMan-NullEthernet
 download os-x-fake-pci-id RehabMan-FakePCIID
 download os-x-brcmpatchram RehabMan-BrcmPatchRAM
 download os-x-acpi-poller RehabMan-Poller
 download os-x-usb-inject-all RehabMan-USBInjectAll
-#download os-x-acpi-debug RehabMan-Debug
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/Lilu/releases" "RELEASE" "nbb_acidanthera-Lilu.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AppleALC/releases" "RELEASE" "nbb_acidanthera-AppleALC.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/WhateverGreen/releases" "RELEASE" "nbb_acidanthera-WhateverGreen.zip"
@@ -90,6 +105,9 @@ if [ $i2c -eq 1 ]; then
     download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/VoodooI2C/releases" "VoodooI2C-ASUS-" "nbb_hieplpvip-VoodooI2C.zip"
 else
     download_latest_notbitbucket "https://github.com" "https://github.com/alexandred/VoodooI2C/releases" "VoodooI2C-v" "nbb_alexandred-VoodooI2C.zip"
+fi
+if [ $nullethernet -eq 1 ]; then
+    download os-x-null-ethernet RehabMan-NullEthernet
 fi
 
 cd ..
