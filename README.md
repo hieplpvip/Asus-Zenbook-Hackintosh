@@ -1,11 +1,11 @@
 # ASUS ZENBOOK
-Clover hotpatches and tools for the Asus Zenbook laptop on macOS 10.13.6. 
+Clover hotpatches and tools for the Asus Zenbook laptop on macOS 10.13.6.
 
 #### Supported models:
 
 * UX410 (KabyLake)
 * UX430 (KabyLake)
-Contact me to add support for your laptop.
+* Contact me to add support for your laptop.
 
 #### What you should expect works
 
@@ -58,8 +58,8 @@ cd <zenbook folder on your usb>
 sudo ./install_downloads.sh
 sudo ./install_acpi.sh [model] [fanpref]
 ```
-model: install_ux410_kabylake, install_ux430_kabylake
-fanpref: READ, MOD
+- model: install_ux410_kabylake, install_ux430_kabylake
+- fanpref: READ, MOD
 
 ### 4. Completing Hackintosh
 
