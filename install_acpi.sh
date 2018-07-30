@@ -2,50 +2,59 @@
 
 #set -x
 
-if [[ "$1" == "" ]]; then
-    echo "Usage: ./install_acpi.sh [model] [fanpref]"
-    echo "Use ./install_acpi.sh help for a listing of supported models."
-    echo "fanpref is default to READ (other: MOD)"
-exit
-fi
+PS3='Select model: '
+options=("UX410 (KabyLake)" "UX430 (KabyLake)")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "UX410 (KabyLake)")
+            $model=ux410_kaby
+            break;;
+        "UX430 (KabyLake)")
+            $model=ux430_kaby
+            break;;
+        *) echo "Invalid";;
+    esac
+done
+echo
 
-if [[ "$1" == "help" ]]; then
-    grep -o install_.*\) $0 | grep -v grep | tr ')' ' '
-    exit
-fi
+PS3='Select CPU fan mode: '
+options=("READ" "MOD")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "READ")
+            FANPREF=READ
+            break;;
+        "UX430 (KabyLake)")
+            FANPREF=MOD
+            break;;
+        *) echo "Invalid";;
+    esac
+done
+echo
 
 EFIDIR=`./mount_efi.sh`
 BUILDDIR=./build
 ACPIPATCHED=$EFIDIR/EFI/CLOVER/ACPI/patched
 
-if [[ "$2" != "" ]]; then
-    FANPREF=$2
-else
-    FANPREF=READ
-fi
-
-case "$1" in
+case "$model" in
 # model specific scripts
-    install_ux410_kaby)
+    ux410_kaby)
         rm -f $ACPIPATCHED/DSDT.aml
         rm -f $ACPIPATCHED/SSDT-*.aml
-        cp $BUILDDIR/ux410/SSDT-UX410-KABYLAKE.aml $ACPIPATCHED
-        cp $BUILDDIR/ux410/SSDT-IGPU.aml $ACPIPATCHED
+        cp $BUILDDIR/ux410-kabylake/SSDT-UX410-KABYLAKE.aml $ACPIPATCHED
+        cp $BUILDDIR/ux410-kabylake/SSDT-IGPU.aml $ACPIPATCHED
         cp $BUILDDIR/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
         ls $ACPIPATCHED
     ;;
-    install_ux430_kaby)
+    ux430_kaby)
         rm -f $ACPIPATCHED/DSDT.aml
         rm -f $ACPIPATCHED/SSDT-*.aml
-        cp $BUILDDIR/ux410/SSDT-UX430-KABYLAKE.aml $ACPIPATCHED
-        cp $BUILDDIR/ux410/SSDT-IGPU.aml $ACPIPATCHED
+        cp $BUILDDIR/ux430-kabylake/SSDT-UX430-KABYLAKE.aml $ACPIPATCHED
+        cp $BUILDDIR/ux430-kabylake/SSDT-IGPU.aml $ACPIPATCHED
         cp $BUILDDIR/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
         ls $ACPIPATCHED
-    ;;
-
-# unknown models
-    *)
-        echo "Error: Unknown model, \"$1\", specifed."
     ;;
 esac
 
