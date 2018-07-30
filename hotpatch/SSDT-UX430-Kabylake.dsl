@@ -3,7 +3,7 @@
 DefinitionBlock ("", "SSDT", 2, "hack", "ux430k", 0)
 {
     #define NO_DEFINITIONBLOCK
-    #include "include/layout3_HDEF.asl"
+    #include "include/layout13_HDEF.asl"
     #include "include/SSDT-ATK.dsl"
     #include "include/SSDT-BATT.dsl"
     #include "include/SSDT-HACK.dsl"
