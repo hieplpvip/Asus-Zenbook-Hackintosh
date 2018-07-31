@@ -1,14 +1,20 @@
 #!/bin/bash
 PS3='Select model: '
-options=("UX410 (KabyLake)" "UX430 (KabyLake)")
+options=("UX410 (KabyLake)" "UX430 (KabyLake)" "UX430 (KabyLake-R)")
 select opt in "${options[@]}"
 do
     case $opt in
         "UX410 (KabyLake)")
             config="config/config_ux410_kabylake.plist"
+            product="MacBookPro14,1"
             break;;
         "UX430 (KabyLake)")
             config="config/config_ux430_kabylake.plist"
+            product="MacBookPro14,1"
+            break;;
+        "UX430 (KabyLake-R)")
+            config="config/config_ux430_kabylaker.plist"
+            product="MacBookPro14,1"
             break;;
         *) echo "Invalid";;
     esac
@@ -31,6 +37,7 @@ if [ -f $BAKconfig ]; then
     /usr/libexec/PlistBuddy -c "Delete :SMBIOS" $EFIconfig
     /usr/libexec/PlistBuddy -c "Add :SMBIOS dict" $EFIconfig
     ./merge_plist.sh "SMBIOS" $BAKconfig $EFIconfig
+    ./usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName $product" $EFIconfig
 fi
 
 echo
