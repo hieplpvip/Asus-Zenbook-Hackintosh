@@ -53,6 +53,8 @@ printf "\n"
 printf "!! creating config/config_ux430_kabylaker.plist\n"
 cp config_parts/config_master.plist config/config_ux430_kabylaker.plist
 /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro15,2" config/config_ux430_kabylaker.plist
+/usr/libexec/PlistBuddy -c "Set :ACPI:DSDT:Patches:23:Disabled NO" config/config_ux430_kabylaker.plist
+/usr/libexec/PlistBuddy -c "Set :ACPI:DSDT:Patches:24:Disabled NO" config/config_ux430_kabylaker.plist
 ./merge_plist.sh "KernelAndKextPatches" config_parts/config_KabyLake.plist config/config_ux430_kabylaker.plist
 #./merge_plist.sh "KernelAndKextPatches:KextsToPatch" config_parts/config_KabyLake_hdmi_audio.plist config/config_ux430_kabylaker.plist
 disableTRIM config/config_ux430_kabylaker.plist

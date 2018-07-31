@@ -18,7 +18,7 @@ DefinitionBlock ("SSDT-ELAN", "SSDT", 2, "hack", "elan", 0)
                 "\\_SB.PCI0.GPI0", 0x00, ResourceConsumer, ,
                 )
                 {
-                    0x34
+                    0x55
                 }
         })
         Method (_CRS, 0, Serialized)
