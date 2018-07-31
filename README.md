@@ -64,6 +64,16 @@ sudo ./install_acpi.sh
 
 * To fix iMessage, follow this [guide](https://www.tonymacx86.com/threads/an-idiots-guide-to-imessage.196827/). I recommend using config.plist created from that guide to do a fresh install.
 
+### 5. Update
+
+To update your build to latest one from this repo, in Terminal:
+```
+cd ~/zenbook
+git stash
+git pull
+./download.sh && ./make_acpi.sh && ./make_config.sh && sudo ./install_downloads.sh && sudo ./install_acpi.sh
+```
+
 ## Issues
 * If you have any problems, open a new issues, attach output from this [tool](https://www.tonymacx86.com/threads/tool-generate-proper-problem-reporting-files.235953/).
 
