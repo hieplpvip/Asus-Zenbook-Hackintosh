@@ -85,10 +85,9 @@ git pull
 * [VoodooI2C](https://github.com/hieplpvip/VoodooI2C/tree/native)
 * [AsusFnKeys](https://github.com/hieplpvip/AsusFnKeys)
 
-## To-Do
+## Guide on tonymacx86:
 
-* Bluetooth & WiFi (just need to replace Intel card with DW1560)
-* Post a full guide on Tonymacx86
+[[Guide] Asus Zenbook using Clover UEFI hotpatch](https://www.tonymacx86.com/threads/guide-asus-zenbook-using-clover-uefi-hotpatch.257448/)
 
 ## Credits
 
@@ -97,6 +96,8 @@ git pull
 @Shinji3rd (see https://www.tonymacx86.com/threads/guide-asus-zenbook-ux310uak-macos-sierra-installation-guide.224591)
 
 @alexandred for the the touchpad driver.
+
+@black.dragon74 for custom FAN control (see https://osxlatitude.com/forums/topic/10244-how-to-implement-custom-fan-control-on-asus-laptops/)
 
 @RehabMan for everything else
 
