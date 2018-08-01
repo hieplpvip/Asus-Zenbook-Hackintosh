@@ -10,6 +10,8 @@ TAGCMD=`pwd`/tools/tag
 SLE=/System/Library/Extensions
 LE=/Library/Extensions
 
+OLDKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AppleBacklightFixup|AsusFnKeys|AirportBrcmFixup|BrcmPatchRAM2|BrcmFirmwareRepo|BT4LEContiunityFixup|FakePCIID|FakeSMC|WhateverGreen|IntelGraphicsFixup|NvidiaGraphicsFixup|CoreDisplayFixup|Shiki|Lilu|LiluFriend|NullEthernet|USBInjectAll|VoodooI2C|VoodooPS2Controller"
+
 # extract minor version (eg. 10.9 vs. 10.10 vs. 10.11)
 MINOR_VER=$([[ "$(sw_vers -productVersion)" =~ [0-9]+\.([0-9]+) ]] && echo ${BASH_REMATCH[1]})
 
@@ -139,6 +141,13 @@ select opt in "${options[@]}"
 do
     case $opt in
         "Yes")
+            # remove old kexts
+            for kext in $KEXTDEST/*.kext; do
+                kextname="`basename $kext`"
+                if [[ "`echo $kextname | grep -E $OLDKEXTS`" != "" ]]; then
+                    rm -Rf $kext
+                fi
+            done
             # install kexts
             check_directory ./downloads/le_kexts/*.kext
             if [ $? -ne 0 ]; then
