@@ -56,8 +56,7 @@ cd zenbook
 * In Terminal:
 ```
 cd <zenbook folder on your usb>
-sudo ./install_downloads.sh
-sudo ./install_acpi.sh
+sudo ./install_downloads.sh && sudo ./install_acpi.sh && sudo ./install_config.sh
 ```
 
 ### 4. Completing Hackintosh
@@ -71,7 +70,7 @@ To update your build to latest one from this repo, in Terminal:
 cd ~/zenbook
 git stash
 git pull
-./download.sh && ./make_acpi.sh && ./make_config.sh && sudo ./install_downloads.sh && sudo ./install_acpi.sh
+./download.sh && ./make_acpi.sh && ./make_config.sh && sudo ./install_downloads.sh && sudo ./install_acpi.sh && sudo ./install_config.sh
 ```
 
 ## Issues
