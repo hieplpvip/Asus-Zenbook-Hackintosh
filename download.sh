@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#set -x
-
 curl_options="--retry 5 --location --progress-bar"
 curl_options_silent="--retry 5 --location --silent"
 

@@ -1,6 +1,10 @@
 #!/bin/bash
 
-#set -x
+if [ "$(id -u)" != "0" ] && [ "$(sudo -n echo 'sudo' 2> /dev/null)" != "sudo" ]; then
+    echo "This script must be run as root!"
+    sudo $0 $@
+    exit 0
+fi
 
 PS3='Select model: '
 options=("UX410 (KabyLake)" "UX430 (KabyLake)" "UX430 (KabyLake-R)")

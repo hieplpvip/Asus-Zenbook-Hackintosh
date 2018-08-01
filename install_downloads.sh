@@ -1,10 +1,12 @@
 #!/bin/bash
 
-#set -x
+if [ "$(id -u)" != "0" ] && [ "$(sudo -n echo 'sudo' 2> /dev/null)" != "sudo" ]; then
+    echo "This script must be run as root!"
+    sudo $0 $@
+    exit 0
+fi
 
 SUDO=sudo
-#SUDO='echo #'
-#SUDO=nothing
 TAG=tag_file
 TAGCMD=`pwd`/tools/tag
 SLE=/System/Library/Extensions
@@ -39,11 +41,6 @@ function check_directory
             return 0
         fi
     done
-}
-
-function nothing
-{
-    :
 }
 
 function install_kext
