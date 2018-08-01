@@ -16,6 +16,22 @@ do
 done
 echo
 
+country="US"
+list="AE AF AR AT AU AZ BD BE BG BN BR BT BY CA CH CL CN CO CR CY CZ DE DK DO EC EE EG ES FI FR GB GR GT GU HK HN HR HU ID IE IL IN IS IT JM JO JP KH KR KZ LA LI LK LT LU LV MA MM MN MO MT MV MX MY NI NL NO NP NZ PA PE PH PK PL PR PT PY RO RS RU SA SE SG SI SK SV TH TR TT TW UA US UY VE VI VN ZA"
+while :
+do
+    read -p "Enter Wifi country code ('list' to see available codes): " country
+    if [[ $list =~ (^|[[:space:]])$country($|[[:space:]]) ]]; then
+        echo
+        break
+    elif [ $country = 'list' ]; then
+        echo $list
+    else
+        echo Invalid country code $country
+    fi
+    echo
+done
+
 function disableTRIM()
 # $1 is path to config.plist
 {
@@ -34,28 +50,45 @@ function disableTRIM()
     fi
 }
 
-printf "!! creating config/config_ux410_kabylake.plist\n"
+function patchCountryCode()
+# $1 is path to config.plist
+{
+    plistFile=$1
+    args=`/usr/libexec/PlistBuddy -c "Print :Boot:Arguments" $plistFile`' brcmfx-country='$country
+    /usr/libexec/PlistBuddy -c "Set :Boot:Arguments $args" $plistFile
+}
+
+function enableI2CPatch()
+# $1 is path to config.plist
+{
+    plistFile=$1
+    /usr/libexec/PlistBuddy -c "Set :ACPI:DSDT:Patches:23:Disabled NO" $plistFile
+    /usr/libexec/PlistBuddy -c "Set :ACPI:DSDT:Patches:24:Disabled NO" $plistFile
+}
+
+echo creating config/config_ux410_kabylake.plist
 cp config_parts/config_master.plist config/config_ux410_kabylake.plist
 /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" config/config_ux410_kabylake.plist
 ./merge_plist.sh "KernelAndKextPatches" config_parts/config_KabyLake.plist config/config_ux410_kabylake.plist
 ./merge_plist.sh "KernelAndKextPatches:KextsToPatch" config_parts/config_KabyLake_hdmi_audio.plist config/config_ux410_kabylake.plist
 disableTRIM config/config_ux410_kabylake.plist
-printf "\n"
+patchCountryCode config/config_ux410_kabylake.plist
+echo
 
-printf "!! creating config/config_ux430_kabylake.plist\n"
+echo creating config/config_ux430_kabylake.plist
 cp config_parts/config_master.plist config/config_ux430_kabylake.plist
 /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" config/config_ux430_kabylake.plist
 ./merge_plist.sh "KernelAndKextPatches" config_parts/config_KabyLake.plist config/config_ux430_kabylake.plist
 ./merge_plist.sh "KernelAndKextPatches:KextsToPatch" config_parts/config_KabyLake_hdmi_audio.plist config/config_ux430_kabylake.plist
 disableTRIM config/config_ux430_kabylake.plist
-printf "\n"
+patchCountryCode config/config_ux430_kabylake.plist
+echo
 
-printf "!! creating config/config_ux430_kabylaker.plist\n"
+echo creating config/config_ux430_kabylaker.plist
 cp config_parts/config_master.plist config/config_ux430_kabylaker.plist
 /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" config/config_ux430_kabylaker.plist # use MacBookPro14,1 for now, as support for MacBookPro15,2 isn't officialy out
-#/usr/libexec/PlistBuddy -c "Set :ACPI:DSDT:Patches:23:Disabled NO" config/config_ux430_kabylaker.plist
-#/usr/libexec/PlistBuddy -c "Set :ACPI:DSDT:Patches:24:Disabled NO" config/config_ux430_kabylaker.plist
 ./merge_plist.sh "KernelAndKextPatches" config_parts/config_KabyLake.plist config/config_ux430_kabylaker.plist
 ./merge_plist.sh "KernelAndKextPatches:KextsToPatch" config_parts/config_KabyLake_hdmi_audio.plist config/config_ux430_kabylaker.plist
 disableTRIM config/config_ux430_kabylaker.plist
-printf "\n"
+patchCountryCode config/config_ux430_kabylaker.plist
+echo
