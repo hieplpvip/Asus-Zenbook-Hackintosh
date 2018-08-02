@@ -137,7 +137,7 @@ do
             for kext in $KEXTDEST/*.kext; do
                 kextname="`basename $kext`"
                 if [[ "`echo $kextname | grep -E $OLDKEXTS`" != "" ]]; then
-                    rm -Rf $kext
+                    sudo rm -Rf $kext
                 fi
             done
             # install kexts
