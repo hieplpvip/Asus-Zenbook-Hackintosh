@@ -44,6 +44,15 @@ echo
 EFIDIR=`./mount_efi.sh`
 BUILDDIR=./build
 ACPIPATCHED=$EFIDIR/EFI/CLOVER/ACPI/patched
+BAKPATCHED=$EFIDIR/EFI/CLOVER/ACPI/bak_patched
+
+if [ -d $ACPIPATCHED ]; then
+    echo Backing up patched ACPI...
+    rm -rf $BAKPATCHED
+    mv $ACPIPATCHED $BAKPATCHED
+fi
+
+mkdir -p $ACPIPATCHED
 
 case "$model" in
 # model specific scripts
