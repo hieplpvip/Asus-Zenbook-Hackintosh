@@ -47,6 +47,10 @@ if [ -f $BAKconfig ]; then
     /usr/libexec/PlistBuddy -c "Add :SMBIOS dict" $EFIconfig
     ./tools/merge_plist.sh "SMBIOS" $BAKconfig $EFIconfig
     /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName $product" $EFIconfig
+    echo
+    echo "Restoring theme..."
+    theme=`/usr/libexec/PlistBuddy -c "Print :GUI:Theme" $BAKconfig`
+    /usr/libexec/PlistBuddy -c "Set :GUI:Theme $theme" $EFIconfig
 fi
 
 echo
