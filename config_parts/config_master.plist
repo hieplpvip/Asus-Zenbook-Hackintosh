@@ -22,6 +22,12 @@
 			<false/>
 			<key>Fixes</key>
 			<dict>
+				<key>FixTMR</key>
+				<true/>
+				<key>FixRTC</key>
+				<true/>
+				<key>FixIPIC</key>
+				<true/>
 				<key>FixMutex</key>
 				<true/>
 			</dict>
