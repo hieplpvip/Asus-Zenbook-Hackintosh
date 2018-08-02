@@ -102,11 +102,6 @@ function install
     fi
 }
 
-if [ "$(id -u)" != "0" ]; then
-    echo "This script requires superuser access..."
-    exit 1
-fi
-
 PS3='Do you want to install tools: '
 options=("Yes" "No")
 select opt in "${options[@]}"
@@ -172,12 +167,21 @@ done
 
 # install/update kexts on EFI/Clover/kexts/Other
 EFI=`./mount_efi.sh`
+CLOVERKEXT=$EFI/EFI/CLOVER/kexts
+BAKKEXT=$EFI/EFI/CLOVER/bak_kexts
+if [ -d $CLOVERKEXT ]; then
+    echo Backing up kexts in Clover...
+    rm -rf $BAKKEXT
+    mv $CLOVERKEXT $BAKKEXT
+fi
+
 echo Installing kexts to EFI/Clover/kexts/Other
-rm -Rf $EFI/EFI/CLOVER/kexts/Other/*.kext
+mkdir -p $CLOVERKEXT/Other
+#rm -Rf $EFI/EFI/CLOVER/kexts/Other/*.kext
 cd ./downloads/clover_kexts
 for kext in *.kext; do
     echo -e '\t'$kext
-    cp -Rf $kext $EFI/EFI/CLOVER/kexts/Other
+    cp -Rf $kext $CLOVERKEXT/Other
 done
 echo
 cd ../..
