@@ -79,7 +79,13 @@ do
 done
 echo
 
-if [ ! -d ./downloads ]; then mkdir ./downloads; fi && rm -Rf downloads/* && cd ./downloads
+if [ ! -d ./downloads ]; then mkdir ./downloads; fi
+cd ./downloads
+rm -rf ./necessary_le_kexts
+rm -rf ./le_kexts
+rm -rf ./clover_kexts
+rm -rf ./kexts
+rm -rf ./tools
 
 # download kexts
 mkdir ./kexts && cd ./kexts
@@ -169,9 +175,6 @@ function unzip_kext
     fi
 }
 
-rm -rf ./necessary_le_kexts
-rm -rf ./le_kexts
-rm -rf ./clover_kexts
 mkdir ./necessary_le_kexts
 mkdir ./le_kexts
 mkdir ./clover_kexts
