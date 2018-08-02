@@ -152,11 +152,6 @@ do
                 cd ../..
             fi
 
-            # force cache rebuild with output
-            echo Rebuilding kextcache...
-            $SUDO kextcache -i /
-            echo
-
             break;;
         "No")
             echo
@@ -165,13 +160,32 @@ do
     esac
 done
 
+# install Bluetooth kexts to /L/E. these kexts dont work in Clover
+check_directory ./downloads/necessary_le_kexts/*.kext
+if [ $? -ne 0 ]; then
+    echo 'Installing Bluetooth kexts to '$KEXTDEST'... These kexts dont work in Clover'
+    cd ./downloads/necessary_le_kexts
+    for kext in *.kext; do
+        install_kext $kext
+    done
+    echo
+    cd ../..
+fi
+
+# force cache rebuild with output
+echo Rebuilding kextcache...
+$SUDO kextcache -i /
+echo
+
 # install/update kexts on EFI/Clover/kexts/Other
 EFI=`./mount_efi.sh`
 CLOVERKEXT=$EFI/EFI/CLOVER/kexts
-BAKKEXT=$EFI/EFI/CLOVER/bak_kexts
+BAKdir=$EFI/EFI/CLOVER/kexts_backup
+if [ ! -d $BAKdir ]; then mkdir $BAKdir; fi
+
+BAKKEXT=$BAKdir/`date +%Y%m%d%H%M%S`
 if [ -d $CLOVERKEXT ]; then
     echo Backing up kexts in Clover...
-    rm -rf $BAKKEXT
     mv $CLOVERKEXT $BAKKEXT
 fi
 

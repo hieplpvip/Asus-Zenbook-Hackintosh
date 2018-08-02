@@ -118,8 +118,9 @@ download acpica iasl iasl.zip
 download_raw https://raw.githubusercontent.com/black-dragon74/OSX-Debug/master/IORegistryExplorer.zip IORegistryExplorer.zip
 cd ..
 
-LEKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AppleBacklightFixup|AsusFnKeys|AirportBrcmFixup|BrcmPatchRAM2|BrcmFirmwareRepo|BT4LEContiunityFixup|FakePCIID.kext|FakePCIID_Broadcom_WiFi|FakeSMC|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
-CLOVERKEXTS="ACPIBatteryManager|AppleALC|AppleBacklightFixup|AsusFnKeys|AirportBrcmFixup|BrcmPatchRAM2|BrcmFirmwareData|BT4LEContiunityFixup|FakePCIID.kext|FakePCIID_Broadcom_WiFi|FakeSMC.kext|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
+NECESSARYLEKEXTS="BrcmPatchRAM2|BrcmFirmwareRepo"
+LEKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AppleBacklightFixup|AsusFnKeys|AirportBrcmFixup|BT4LEContiunityFixup|FakePCIID.kext|FakePCIID_Broadcom_WiFi|FakeSMC|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
+CLOVERKEXTS="ACPIBatteryManager|AppleALC|AppleBacklightFixup|AsusFnKeys|AirportBrcmFixup|BT4LEContiunityFixup|FakePCIID.kext|FakePCIID_Broadcom_WiFi|FakeSMC.kext|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
 
 function check_directory
 {
@@ -139,8 +140,10 @@ function unzip_kext
     check_directory $out/Release/*.kext
     if [ $? -ne 0 ]; then
         for kext in $out/Release/*.kext; do
-            # install the kext when it exists regardless of filter
             kextname="`basename $kext`"
+            if [[ "`echo $kextname | grep -E $NECESSARYLEKEXTS`" != "" ]]; then
+                cp -R $kext ../necessary_le_kexts
+            fi
             if [[ "`echo $kextname | grep -E $LEKEXTS`" != "" ]]; then
                 cp -R $kext ../le_kexts
             fi
@@ -152,8 +155,10 @@ function unzip_kext
     check_directory $out/*.kext
     if [ $? -ne 0 ]; then
         for kext in $out/*.kext; do
-            # install the kext when it exists regardless of filter
             kextname="`basename $kext`"
+            if [[ "`echo $kextname | grep -E $NECESSARYLEKEXTS`" != "" ]]; then
+                cp -R $kext ../necessary_le_kexts
+            fi
             if [[ "`echo $kextname | grep -E $LEKEXTS`" != "" ]]; then
                 cp -R $kext ../le_kexts
             fi
@@ -164,8 +169,10 @@ function unzip_kext
     fi
 }
 
+rm -rf ./necessary_le_kexts
 rm -rf ./le_kexts
 rm -rf ./clover_kexts
+mkdir ./necessary_le_kexts
 mkdir ./le_kexts
 mkdir ./clover_kexts
 

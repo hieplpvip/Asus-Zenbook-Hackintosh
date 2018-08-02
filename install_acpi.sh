@@ -41,14 +41,16 @@ do
 done
 echo
 
-EFIDIR=`./mount_efi.sh`
+EFI=`./mount_efi.sh`
 BUILDDIR=./build
-ACPIPATCHED=$EFIDIR/EFI/CLOVER/ACPI/patched
-BAKPATCHED=$EFIDIR/EFI/CLOVER/ACPI/bak_patched
+ACPIPATCHED=$EFI/EFI/CLOVER/ACPI/patched
 
+BAKdir=$EFI/EFI/CLOVER/ACPI/patched_backup
+if [ ! -d $BAKdir ]; then mkdir $BAKdir; fi
+
+BAKPATCHED=$BAKdir/`date +%Y%m%d%H%M%S`
 if [ -d $ACPIPATCHED ]; then
     echo Backing up patched ACPI...
-    rm -rf $BAKPATCHED
     mv $ACPIPATCHED $BAKPATCHED
 fi
 

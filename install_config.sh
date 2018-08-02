@@ -31,10 +31,12 @@ echo
 echo Mounting EFI...
 EFI=`./mount_efi.sh`
 EFIconfig=$EFI/EFI/CLOVER/config.plist
-BAKconfig=$EFI/EFI/CLOVER/config_bak.plist
+BAKdir=$EFI/EFI/CLOVER/config_backup
+if [ ! -d $BAKdir ]; then mkdir $BAKdir; fi
+
+BAKconfig=$BAKdir/config_`date +%Y%m%d%H%M%S`.plist
 if [ -f $EFIconfig ]; then
-    echo "Found config.plist in EFI. Rename to config_bak.plist"
-    rm -f $BAKconfig
+    echo "Found config.plist in EFI. Backing up..."
     mv $EFIconfig $BAKconfig
 fi
 
