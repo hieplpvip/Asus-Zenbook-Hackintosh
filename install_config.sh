@@ -45,7 +45,7 @@ if [ -f $BAKconfig ]; then
     echo "Restoring SMBIOS..."
     /usr/libexec/PlistBuddy -c "Delete :SMBIOS" $EFIconfig
     /usr/libexec/PlistBuddy -c "Add :SMBIOS dict" $EFIconfig
-    ./merge_plist.sh "SMBIOS" $BAKconfig $EFIconfig
+    ./tools/merge_plist.sh "SMBIOS" $BAKconfig $EFIconfig
     /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName $product" $EFIconfig
 fi
 
