@@ -1,14 +1,14 @@
 #!/bin/bash
 
 PS3='Which filesystem are you using: '
-options=("APFS" "HFS+")
+options=("APFS (TRIM will be disabled)" "HFS+ (TRIM will be enabled)")
 select opt in "${options[@]}"
 do
     case $opt in
-        "APFS")
+        "APFS (TRIM will be disabled)")
             apfs=1
             break;;
-        "HFS+")
+        "HFS+ (TRIM will be enabled)")
             apfs=0
             break;;
         *) echo "Invalid";;
@@ -16,7 +16,6 @@ do
 done
 echo
 
-country="US"
 list="AE AF AR AT AU AZ BD BE BG BN BR BT BY CA CH CL CN CO CR CY CZ DE DK DO EC EE EG ES FI FR GB GR GT GU HK HN HR HU ID IE IL IN IS IT JM JO JP KH KR KZ LA LI LK LT LU LV MA MM MN MO MT MV MX MY NI NL NO NP NZ PA PE PH PK PL PR PT PY RO RS RU SA SE SG SI SK SV TH TR TT TW UA US UY VE VI VN ZA"
 while :
 do
