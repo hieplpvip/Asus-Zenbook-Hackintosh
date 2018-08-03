@@ -1,3 +1,5 @@
+Files built by make_acpi.sh
+
 ux410-kabylake: contains patched acpi files for UX410 (KabyLake)
 
 ux430-kabylake: contains patched acpi files for UX430 (KabyLake)

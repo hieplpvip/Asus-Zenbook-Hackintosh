@@ -1,3 +1,5 @@
+Files downloaded by download.sh
+
 le_kexts contains kexts that CAN be installed to /Library/Extensions
 
 clover_kexts contains kexts that MUST be installed to CLOVER/kexts/other
