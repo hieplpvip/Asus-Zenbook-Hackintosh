@@ -46,6 +46,16 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
 		Return(XPRW(Arg0, Arg1))
 	}
     
+    External(RMCF.RMOF, MethodObj)
+    Device(RMD1)
+    {
+        Name(_HID, "RMD10000")
+        Method(_INI)
+        {
+            If (CondRefOf(\RMCF.RMOF)) { \RMCF.RMOF() }
+        }
+    }
+    
     External(_SB.PCI0.LPCB.EC0, DeviceObj)
     External(_SB.PCI0.LPCB.EC0.XREG, MethodObj)
     External(RMCF.HGOF, MethodObj)
@@ -57,7 +67,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
             XREG(Arg0, Arg1) // call original _REG, now renamed XREG
             If (3 == Arg0 && 1 == Arg1) // EC ready?
             {
-                 If (CondRefOf(\RMCF.HGOF)) { \RMCF.HGOF() } // turn dedicated Nvidia fan off
+                 If (CondRefOf(\RMCF.HGOF)) { \RMCF.HGOF(1) } // turn dedicated Nvidia fan off
             }
         }
     }
