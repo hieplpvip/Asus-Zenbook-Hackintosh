@@ -25,7 +25,7 @@ do
 done
 echo
 
-PS3='Select CPU fan mode: '
+PS3='READ: allows apps like HWMonitor and iStat Menus to read CPU Fan Speed'$'\n''MOD: READ + custom fan control (quietest yet coolest)'$'\n''Select CPU Fan mode: '
 options=("READ" "MOD")
 select opt in "${options[@]}"
 do
