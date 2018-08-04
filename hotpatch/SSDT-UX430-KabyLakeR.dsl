@@ -10,5 +10,6 @@ DefinitionBlock ("", "SSDT", 2, "hack", "ux430kr", 0)
     #include "include/SSDT-PNLF.dsl"
     #include "include/SSDT-PTSWAK.dsl"
     #include "include/SSDT-RP01_PEGP.dsl"
+    #include "include/SSDT-AppleALC.dsl"
     #include "include/SSDT-UIAC-UX430-KABYR.dsl"
 }
