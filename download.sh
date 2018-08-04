@@ -93,6 +93,7 @@ download os-x-fakesmc-kozlek RehabMan-FakeSMC
 #download os-x-voodoo-ps2-controller RehabMan-Voodoo
 download os-x-acpi-battery-driver RehabMan-Battery
 download os-x-fake-pci-id RehabMan-FakePCIID
+download os-x-eapd-codec-commander RehabMan-CodecCommander
 download os-x-brcmpatchram RehabMan-BrcmPatchRAM
 download os-x-acpi-poller RehabMan-Poller
 download os-x-usb-inject-all RehabMan-USBInjectAll
@@ -124,7 +125,7 @@ download acpica iasl iasl.zip
 download_raw https://raw.githubusercontent.com/black-dragon74/OSX-Debug/master/IORegistryExplorer.zip IORegistryExplorer.zip
 cd ..
 
-NECESSARYLEKEXTS="BrcmPatchRAM2|BrcmFirmwareRepo"
+NECESSARYLEKEXTS="BrcmPatchRAM2|BrcmFirmwareRepo|CodecCommander"
 LEKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AppleBacklightFixup|AsusFnKeys|AirportBrcmFixup|BT4LEContiunityFixup|FakePCIID.kext|FakePCIID_Broadcom_WiFi|FakeSMC|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
 CLOVERKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AppleBacklightFixup|AsusFnKeys|AirportBrcmFixup|BT4LEContiunityFixup|FakePCIID.kext|FakePCIID_Broadcom_WiFi|FakeSMC|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
 

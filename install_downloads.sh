@@ -12,7 +12,7 @@ TAGCMD=`pwd`/tools/tag
 SLE=/System/Library/Extensions
 LE=/Library/Extensions
 
-OLDKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|aDummyHDA|AppleBacklightInjector|AppleBacklightFixup|IntelBacklight|Asus|AirportBrcmFixup|BrcmPatchRAM2|BrcmFirmware|BT4LEContiunityFixup|FakePCIID|FakeSMC|WhateverGreen|IntelGraphicsFixup|NvidiaGraphicsFixup|CoreDisplayFixup|Shiki|Lilu|NullEthernet|USBInjectAll|VoodooI2C|VoodooPS2Controller"
+OLDKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|aDummyHDA|AppleBacklightInjector|AppleBacklightFixup|IntelBacklight|Asus|AirportBrcmFixup|BrcmPatchRAM2|BrcmFirmware|BT4LEContiunityFixup|CodecCommander|FakePCIID|FakeSMC|WhateverGreen|IntelGraphicsFixup|NvidiaGraphicsFixup|CoreDisplayFixup|Shiki|Lilu|NullEthernet|USBInjectAll|VoodooI2C|VoodooPS2Controller"
 
 # extract minor version (eg. 10.9 vs. 10.10 vs. 10.11)
 MINOR_VER=$([[ "$(sw_vers -productVersion)" =~ [0-9]+\.([0-9]+) ]] && echo ${BASH_REMATCH[1]})
@@ -163,7 +163,7 @@ done
 # install Bluetooth kexts to /L/E. these kexts dont work in Clover
 check_directory ./downloads/necessary_le_kexts/*.kext
 if [ $? -ne 0 ]; then
-    echo 'Installing Bluetooth kexts to '$KEXTDEST'... These kexts dont work in Clover'
+    echo 'Installing necessary kexts to '$KEXTDEST'... These kexts won'"'"'t work in Clover'
     cd ./downloads/necessary_le_kexts
     for kext in *.kext; do
         install_kext $kext
