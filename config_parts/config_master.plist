@@ -28,6 +28,8 @@
 				<true/>
 				<key>FixIPIC</key>
 				<true/>
+				<key>FixHPET</key>
+				<true/>
 				<key>FixMutex</key>
 				<true/>
 			</dict>
@@ -208,14 +210,6 @@
 					<data>X1E3NgA=</data>
 					<key>Replace</key>
 					<data>WFE3NgA=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change HPET to XPET</string>
-					<key>Find</key>
-					<data>SFBFVAg=</data>
-					<key>Replace</key>
-					<data>WFBFVAg=</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
