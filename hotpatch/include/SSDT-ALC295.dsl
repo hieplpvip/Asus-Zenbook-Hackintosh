@@ -29,8 +29,6 @@ DefinitionBlock ("", "SSDT", 1, "hack", "alc295", 0)
             },
             "Perform Reset", ">n",
             "Perform Reset on External Wake", ">n",
-            "Send Delay", 10,
-            "Sleep Nodes", ">n",
         },
     })
 #ifndef NO_DEFINITIONBLOCK
