@@ -62,7 +62,7 @@ case "$model" in
         rm -f $ACPIPATCHED/DSDT.aml
         rm -f $ACPIPATCHED/SSDT-*.aml
         cp $BUILDDIR/ux410-kabylake/SSDT-UX410-KabyLake.aml $ACPIPATCHED
-        cp $BUILDDIR/ux410-kabylake/SSDT-IGPU.aml $ACPIPATCHED
+#cp $BUILDDIR/ux410-kabylake/SSDT-IGPU.aml $ACPIPATCHED
         cp $BUILDDIR/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
         ls $ACPIPATCHED
     ;;
@@ -70,7 +70,7 @@ case "$model" in
         rm -f $ACPIPATCHED/DSDT.aml
         rm -f $ACPIPATCHED/SSDT-*.aml
         cp $BUILDDIR/ux430-kabylake/SSDT-UX430-KabyLake.aml $ACPIPATCHED
-        cp $BUILDDIR/ux430-kabylake/SSDT-IGPU.aml $ACPIPATCHED
+#cp $BUILDDIR/ux430-kabylake/SSDT-IGPU.aml $ACPIPATCHED
         cp $BUILDDIR/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
         ls $ACPIPATCHED
     ;;
@@ -79,7 +79,7 @@ case "$model" in
         rm -f $ACPIPATCHED/SSDT-*.aml
         cp $BUILDDIR/ux430-kabylaker/SSDT-UX430-KabyLakeR.aml $ACPIPATCHED
         #cp $BUILDDIR/ux430-kabylaker/SSDT-ELAN.aml $ACPIPATCHED
-        cp $BUILDDIR/ux430-kabylaker/SSDT-IGPU.aml $ACPIPATCHED
+#cp $BUILDDIR/ux430-kabylaker/SSDT-IGPU.aml $ACPIPATCHED
         cp $BUILDDIR/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
         ls $ACPIPATCHED
     ;;

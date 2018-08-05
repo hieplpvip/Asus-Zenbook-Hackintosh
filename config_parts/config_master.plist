@@ -394,10 +394,16 @@
 	</dict>
 	<key>Graphics</key>
 	<dict>
+		<key>ig-platform-id</key>
+		<string>0x591b0000</string>
 		<key>Inject</key>
 		<dict>
-			<key>Intel</key>
+			<key>ATI</key>
 			<false/>
+			<key>Intel</key>
+			<true/>
+			<key>NVidia</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>KernelAndKextPatches</key>
