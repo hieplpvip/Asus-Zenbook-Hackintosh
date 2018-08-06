@@ -231,16 +231,6 @@
 					<key>Disabled</key>
 					<true/>
 				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>Disable ALS device</string>
-					<key>Find</key>
-					<data>FAlfU1RBAKQKCw==</data>
-					<key>Replace</key>
-					<data>FAlfU1RBAKQKAA==</data>
-					<key>Disabled</key>
-					<true/>
-				</dict>
 			</array>
 		</dict>
 		<key>DropTables</key>
@@ -377,6 +367,16 @@
 				<key>Comment</key>
 				<string>Inject bogus device-id to prevent graphics drivers loading for AMD</string>
 			</dict>
+			<dict>
+				<key>Device</key>
+				<string>IntelGFX</string>
+				<key>Key</key>
+				<string>hda-gfx</string>
+				<key>Value</key>
+				<data>b25ib2FyZC0xAA==</data>
+				<key>Comment</key>
+				<string>hda-gfx=onboard-1 for HDMI audio</string>
+			</dict>
 		</array>
 		<key>Audio</key>
 		<dict>
@@ -385,10 +385,8 @@
 		</dict>
 		<key>FakeID</key>
 		<dict>
-			<key>#Kaby Lake-Comment</key>
-			<string>To avoid automatic Clover fake device-id (Skylake) injection</string>
 			<key>IntelGFX</key>
-			<string>0x59168086</string>
+			<string>fakeid_intelgfx_placeholder</string>
 		</dict>
 		<key>USB</key>
 		<dict>
@@ -452,7 +450,7 @@
 	<key>Graphics</key>
 	<dict>
 		<key>ig-platform-id</key>
-		<string>0x591b0000</string>
+		<string>ig-platform-id_placeholder</string>
 		<key>Inject</key>
 		<dict>
 			<key>ATI</key>

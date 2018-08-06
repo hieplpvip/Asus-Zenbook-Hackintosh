@@ -67,6 +67,8 @@ function enableI2CPatch()
 
 echo creating config/config_ux410_kabylake.plist
 cp config_parts/config_master.plist config/config_ux410_kabylake.plist
+/usr/libexec/PlistBuddy -c "Set :Devices:FakeID:IntelGFX 0x59168086" config/config_ux410_kabylake.plist
+/usr/libexec/PlistBuddy -c "Set :Graphics:ig-platform-id 0x591b0000" config/config_ux410_kabylake.plist
 /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" config/config_ux410_kabylake.plist
 ./tools/merge_plist.sh "KernelAndKextPatches" config_parts/config_KabyLake.plist config/config_ux410_kabylake.plist
 ./tools/merge_plist.sh "KernelAndKextPatches:KextsToPatch" config_parts/config_KabyLake_hdmi_audio.plist config/config_ux410_kabylake.plist
@@ -76,6 +78,8 @@ echo
 
 echo creating config/config_ux430_kabylake.plist
 cp config_parts/config_master.plist config/config_ux430_kabylake.plist
+/usr/libexec/PlistBuddy -c "Set :Devices:FakeID:IntelGFX 0x59168086" config/config_ux430_kabylake.plist
+/usr/libexec/PlistBuddy -c "Set :Graphics:ig-platform-id 0x591b0000" config/config_ux430_kabylake.plist
 /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" config/config_ux430_kabylake.plist
 ./tools/merge_plist.sh "KernelAndKextPatches" config_parts/config_KabyLake.plist config/config_ux430_kabylake.plist
 ./tools/merge_plist.sh "KernelAndKextPatches:KextsToPatch" config_parts/config_KabyLake_hdmi_audio.plist config/config_ux430_kabylake.plist
@@ -85,6 +89,8 @@ echo
 
 echo creating config/config_ux430_kabylaker.plist
 cp config_parts/config_master.plist config/config_ux430_kabylaker.plist
+/usr/libexec/PlistBuddy -c "Set :Devices:FakeID:IntelGFX 0x59168086" config/config_ux430_kabylaker.plist
+/usr/libexec/PlistBuddy -c "Set :Graphics:ig-platform-id 0x591b0000" config/config_ux430_kabylaker.plist
 /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" config/config_ux430_kabylaker.plist # use MacBookPro14,1 for now, as support for MacBookPro15,2 isn't officialy out
 ./tools/merge_plist.sh "KernelAndKextPatches" config_parts/config_KabyLake.plist config/config_ux430_kabylaker.plist
 ./tools/merge_plist.sh "KernelAndKextPatches:KextsToPatch" config_parts/config_KabyLake_hdmi_audio.plist config/config_ux430_kabylaker.plist
