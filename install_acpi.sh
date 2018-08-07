@@ -7,10 +7,13 @@ if [ "$(id -u)" != "0" ] && [ "$(sudo -n echo 'sudo' 2> /dev/null)" != "sudo" ];
 fi
 
 PS3='Select model: '
-options=("UX410 (KabyLake)" "UX430 (KabyLake)" "UX430 (KabyLake-R)")
+options=("UX310 (KabyLake)" "UX410 (KabyLake)" "UX430 (KabyLake)" "UX430 (KabyLake-R)")
 select opt in "${options[@]}"
 do
     case $opt in
+        "UX310 (KabyLake)")
+            model=ux310_kaby
+            break;;
         "UX410 (KabyLake)")
             model=ux410_kaby
             break;;
@@ -58,6 +61,14 @@ mkdir -p $ACPIPATCHED
 
 case "$model" in
 # model specific scripts
+    ux310_kaby)
+        rm -f $ACPIPATCHED/DSDT.aml
+        rm -f $ACPIPATCHED/SSDT-*.aml
+        cp $BUILDDIR/ux310-kabylake/SSDT-UX310-KabyLake.aml $ACPIPATCHED
+#cp $BUILDDIR/ux310-kabylake/SSDT-IGPU.aml $ACPIPATCHED
+        cp $BUILDDIR/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
+        ls $ACPIPATCHED
+    ;;
     ux410_kaby)
         rm -f $ACPIPATCHED/DSDT.aml
         rm -f $ACPIPATCHED/SSDT-*.aml

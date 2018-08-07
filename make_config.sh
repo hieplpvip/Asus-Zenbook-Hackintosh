@@ -65,6 +65,17 @@ function enableI2CPatch()
     /usr/libexec/PlistBuddy -c "Set :ACPI:DSDT:Patches:24:Disabled NO" $plistFile
 }
 
+echo creating config/config_ux310_kabylake.plist
+cp config_parts/config_master.plist config/config_ux310_kabylake.plist
+/usr/libexec/PlistBuddy -c "Set :Devices:FakeID:IntelGFX 0x59168086" config/config_ux310_kabylake.plist
+/usr/libexec/PlistBuddy -c "Set :Graphics:ig-platform-id 0x591b0000" config/config_ux310_kabylake.plist
+/usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" config/config_ux310_kabylake.plist
+./tools/merge_plist.sh "KernelAndKextPatches" config_parts/config_KabyLake.plist config/config_ux310_kabylake.plist
+./tools/merge_plist.sh "KernelAndKextPatches:KextsToPatch" config_parts/config_KabyLake_hdmi_audio.plist config/config_ux310_kabylake.plist
+disableTRIM config/config_ux310_kabylake.plist
+patchCountryCode config/config_ux310_kabylake.plist
+echo
+
 echo creating config/config_ux410_kabylake.plist
 cp config_parts/config_master.plist config/config_ux410_kabylake.plist
 /usr/libexec/PlistBuddy -c "Set :Devices:FakeID:IntelGFX 0x59168086" config/config_ux410_kabylake.plist

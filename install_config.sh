@@ -7,10 +7,14 @@ if [ "$(id -u)" != "0" ] && [ "$(sudo -n echo 'sudo' 2> /dev/null)" != "sudo" ];
 fi
 
 PS3='Select model: '
-options=("UX410 (KabyLake)" "UX430 (KabyLake)" "UX430 (KabyLake-R)")
+options=("UX310 (KabyLake)" "UX410 (KabyLake)" "UX430 (KabyLake)" "UX430 (KabyLake-R)")
 select opt in "${options[@]}"
 do
     case $opt in
+        "UX310 (KabyLake)")
+            config="config/config_ux310_kabylake.plist"
+            product="MacBookPro14,1"
+            break;;
         "UX410 (KabyLake)")
             config="config/config_ux410_kabylake.plist"
             product="MacBookPro14,1"

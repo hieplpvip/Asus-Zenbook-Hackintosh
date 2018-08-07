@@ -5,6 +5,11 @@ $IASL -vw 2095 -vw 2146 -vw 2089 -vw 4089 -vi -vr -p build/SSDT-ELAN.aml hotpatc
 $IASL -vw 2095 -vw 2146 -vw 2089 -vw 4089 -vi -vr -p build/SSDT-FAN-MOD.aml hotpatch/SSDT-FAN-MOD.dsl
 $IASL -vw 2095 -vw 2146 -vw 2089 -vw 4089 -vi -vr -p build/SSDT-FAN-READ.aml hotpatch/SSDT-FAN-READ.dsl
 
+#ux310 kabylake
+if [ ! -d ./build/ux310-kabylake ]; then mkdir ./build/ux310-kabylake; fi && rm -Rf build/ux310-kabylake/*
+#cp build/SSDT-IGPU.aml build/ux310-kabylake/SSDT-IGPU.aml
+$IASL -vw 2095 -vw 2146 -vw 2089 -vw 4089 -vi -vr -p build/ux310-kabylake/SSDT-UX310-KabyLake.aml hotpatch/SSDT-UX310-KabyLake.dsl
+
 #ux410 kabylake
 if [ ! -d ./build/ux410-kabylake ]; then mkdir ./build/ux410-kabylake; fi && rm -Rf build/ux410-kabylake/*
 #cp build/SSDT-IGPU.aml build/ux410-kabylake/SSDT-IGPU.aml
