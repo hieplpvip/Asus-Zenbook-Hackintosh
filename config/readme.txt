@@ -1,5 +1,9 @@
 Files built by make_config.sh
 
+config_ux303_broadwell.plist: UX303 (Broadwell)
+
+config_ux310_kabylake.plist: UX310 (KabyLake)
+
 config_ux410_kabylake.plist: UX410 (KabyLake)
 
 config_ux430_kabylake.plist: UX430 (KabyLake)
