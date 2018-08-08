@@ -102,10 +102,10 @@ download_latest_notbitbucket "https://github.com" "https://github.com/acidanther
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AppleALC/releases" "RELEASE" "nbb_hieplpvip-AppleALC.zip" # use my AppleALC fork until support for UX430 is added to AppleALC
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/WhateverGreen/releases" "RELEASE" "nbb_acidanthera-WhateverGreen.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/PMheart/LiluFriend/releases" "RELEASE" "nbb_PMheart-LiluFriend.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/lvs1974/AirportBrcmFixup/releases" "RELEASE" "nbb_lvs1974-AirportBrcmFixup.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/lvs1974/BT4LEContiunityFixup/releases" "Release_BT4LEContiunityFixup" "nbb_lvs1974-BT4LEContiunityFixup.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AirportBrcmFixup/releases" "RELEASE" "nbb_acidanthera-AirportBrcmFixup.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/BT4LEContiunityFixup/releases" "Release_BT4LEContiunityFixup" "nbb_acidanthera-BT4LEContiunityFixup.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AppleBacklightFixup/releases" "RELEASE" "nbb_hieplpvip-AppleBacklightFixup.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AsusFnKeys/releases" "AsusFnKeys-ASUS-" "nbb_hieplpvip-AsusFnKeys.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AsusFnKeys/releases" "RELEASE" "nbb_hieplpvip-AsusFnKeys.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/OS-X-Voodoo-PS2-Controller/releases" "VoodooPS2-ASUS-" "nbb_hieplpvip-VoodooPS2.zip"
 if [ $i2c -eq 1 ]; then
     download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/VoodooI2C/releases" "VoodooI2C-ASUS-" "nbb_hieplpvip-VoodooI2C.zip"
