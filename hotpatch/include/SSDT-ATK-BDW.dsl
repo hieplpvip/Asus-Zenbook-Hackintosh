@@ -1,5 +1,3 @@
-// Enable keyboard backlight
-
 #ifndef NO_DEFINITIONBLOCK
 DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
 {
@@ -7,15 +5,12 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
     External (_SB.ALS, DeviceObj)
     External (_SB.ATKD, DeviceObj)
     External (_SB.ATKD.IANE, MethodObj)
+    External (_SB.ATKD.ALSC, MethodObj)
     External (ATKP, IntObj)
     External (_SB.KBLV, FieldUnitObj)
     External (_SB.PCI0.LPCB.EC0, DeviceObj)
     External (_SB.PCI0.LPCB.EC0.WRAM, MethodObj)
-    External (_SB.PCI0.LPCB.EC0.ST9E, MethodObj)
     External (_SB.PCI0.LPCB.EC0.RALS, MethodObj)
-    External (_SB.PCI0.LPCB.EC0.ALSC, MethodObj)
-    External (_SB.PCI0.LPCB.EC0.LID._LID, MethodObj)
-    External (_SB.PCI0.LPCB.EC0.XQ80, MethodObj)
     Scope (_SB.ATKD)
     {
         Name (BOFF, Zero)
@@ -23,52 +18,51 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
         {
             If (Or (LEqual (Arg0, 0xED), LEqual (Arg0, 0xFD)))
             {
-                If (And (LEqual (Arg0, 0xED), LEqual (BOFF, 0xEA)))
+                If (And (LEqual (Arg0, 0xED), LEqual (^BOFF, 0xEA)))
                 {
                     Store (Zero, Local0)
-                    Store (Arg0, BOFF)
-                }
-                ElseIf (And (LEqual (Arg0, 0xFD), LEqual (BOFF, 0xFA)))
-                {
-                    Store (Zero, Local0)
-                    Store (Arg0, BOFF)
+                    Store (Arg0, ^BOFF)
                 }
                 Else
                 {
-                    Return (BOFF)
+                    If (And (LEqual (Arg0, 0xFD), LEqual (^BOFF, 0xFA)))
+                    {
+                        Store (Zero, Local0)
+                        Store (Arg0, ^BOFF)
+                    }
+                    Else
+                    {
+                        Return (^BOFF)
+                    }
                 }
-            }
-            ElseIf (Or (LEqual (Arg0, 0xEA), LEqual (Arg0, 0xFA)))
-            {
-                Store (Arg0, BOFF)
             }
             Else
             {
-                Store (And (Arg0, 0x7F), ^^KBLV)
+                If (Or (LEqual (Arg0, 0xEA), LEqual (Arg0, 0xFA)))
+                {
+                    Store (^^KBLV, Local0)
+                    Store (Arg0, ^BOFF)
+                }
+                Else
+                {
+                    Store (Arg0, Local0)
+                    Store (Arg0, ^^KBLV)
+                }
             }
-            
-            // **Customizable part from method SLKB
-            Store (0x0900, Local0)
-            Add (Local0, 0xF0, Local0)
-            ^^PCI0.LPCB.EC0.WRAM (Local0, ^^KBLV)
-            Store (DerefOf (Index (PWKB, ^^KBLV)), Local0)
-            ^^PCI0.LPCB.EC0.ST9E (0x1F, 0xFF, Local0)
-            // End customizable part**
+            Store (DerefOf (Index (KBPW, Local0)), Local1)
+            ^^PCI0.LPCB.EC0.WRAM (0x04B1, Local1)
             Return (Local0)
         }
-        
-        Name (PWKB, Buffer (0x04)
+        Name (KBPW, Buffer (0x10)
         {
-             0x00, 0x55, 0xAA, 0xFF                         
+            0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF
         })
-        
         Method (GKBL, 1, NotSerialized)
         {
             If (LEqual (Arg0, 0xFF))
             {
-                Return (BOFF)
+                Return (^BOFF)
             }
-            
             Return (^^KBLV)
         }
         
@@ -79,12 +73,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
         
         Method (EALS, 1, NotSerialized)
         {
-            Return (^^PCI0.LPCB.EC0.ALSC (Arg0))
-        }
-        
-        Method (LIDS, 0, NotSerialized)
-        {
-            Return (^^PCI0.LPCB.EC0.LID._LID ())
+            Return (^ALSC (Arg0))
         }
     }
     
@@ -93,7 +82,6 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
         // Ambient light sensor notification, from EMlyDinEsH
         Method (_QCD, 0, NotSerialized)
         {
-            // Notify (^^^^ALS, 0x80)
             If (ATKP)
             {
                 ^^^^ATKD.IANE (0xC6)

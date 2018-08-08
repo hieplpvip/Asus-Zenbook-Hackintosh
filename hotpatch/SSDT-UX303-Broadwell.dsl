@@ -10,6 +10,6 @@ DefinitionBlock ("", "SSDT", 2, "hack", "ux303bdw", 0)
     #include "include/SSDT-PNLF.dsl"
     #include "include/SSDT-PTSWAK.dsl"
     //#include "include/SSDT-RP01_PEGP.dsl"
-    //#include "include/SSDT-CX8050.dsl"
+    #include "include/SSDT-CX20752.dsl"
     //#include "include/SSDT-UIAC-UX303-BDW.dsl"
 }
