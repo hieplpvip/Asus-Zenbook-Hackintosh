@@ -116,6 +116,14 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
                 \_SB.ATKD.IANE (0x10)
             }
         }
+        
+        Method (_Q11, 0, NotSerialized) // F8 key
+        {
+            If (ATKP)
+            {
+                \_SB.ATKD.IANE (0x61)
+            }
+        }
     }
     
     Scope (_SB.ALS)

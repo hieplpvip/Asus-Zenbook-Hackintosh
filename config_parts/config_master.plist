@@ -205,6 +205,14 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
+					<string>change Method(_Q11,0,NS) to XQ11</string>
+					<key>Find</key>
+					<data>X1ExMQg=</data>
+					<key>Replace</key>
+					<data>WFExMQg=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
 					<string>change Method(_Q76,0,NS) to XQ76</string>
 					<key>Find</key>
 					<data>X1E3NgA=</data>
