@@ -45,7 +45,6 @@ DefinitionBlock ("", "SSDT", 1, "hack", "cx8050", 0)
                     "On Sleep", ">n",
                     "On Wake", ">y",
                 },
-
             },
             "Perform Reset", ">n",
             "Perform Reset on External Wake", ">n",
