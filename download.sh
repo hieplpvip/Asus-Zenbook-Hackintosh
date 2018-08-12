@@ -98,8 +98,8 @@ download os-x-brcmpatchram RehabMan-BrcmPatchRAM
 download os-x-acpi-poller RehabMan-Poller
 download os-x-usb-inject-all RehabMan-USBInjectAll
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/Lilu/releases" "RELEASE" "nbb_acidanthera-Lilu.zip"
-#download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AppleALC/releases" "RELEASE" "nbb_acidanthera-AppleALC.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AppleALC/releases" "RELEASE" "nbb_hieplpvip-AppleALC.zip" # use my AppleALC fork until support for UX430 is added to AppleALC
+download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AppleALC/releases" "RELEASE" "nbb_acidanthera-AppleALC.zip"
+#download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AppleALC/releases" "RELEASE" "nbb_hieplpvip-AppleALC.zip" # use my AppleALC fork until support for UX430 is added to AppleALC
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/WhateverGreen/releases" "RELEASE" "nbb_acidanthera-WhateverGreen.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/PMheart/LiluFriend/releases" "RELEASE" "nbb_PMheart-LiluFriend.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AirportBrcmFixup/releases" "RELEASE" "nbb_acidanthera-AirportBrcmFixup.zip"
