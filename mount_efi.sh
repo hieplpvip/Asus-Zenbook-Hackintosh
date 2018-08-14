@@ -1,6 +1,12 @@
 #!/bin/bash
 
-#set -x
+if [ "$(id -u)" != "0" ]; then
+    if [ "$(sudo -n echo 'sudo' 2> /dev/null)" != "sudo" ]; then
+        echo "This script must be run as root!"
+    fi
+    sudo $0 $@
+    exit 0
+fi
 
 # Note: Based on CloverPackage MountESP script.
 
@@ -11,38 +17,38 @@ else
 fi
 
 # find whole disk for the destination volume
-DiskDevice=$(LC_ALL=C sudo diskutil info "$DestVolume" 2>/dev/null | sed -n 's/.*Part [oO]f Whole: *//p')
+DiskDevice=$(LC_ALL=C diskutil info "$DestVolume" 2>/dev/null | sed -n 's/.*Part [oO]f Whole: *//p')
 if [[ -z "$DiskDevice" ]]; then
     echo "Error: Not able to find volume with the name \"$DestVolume\""
     exit 1
 fi
 
 # check if target volume is a logical Volume instead of physical
-if [[ "$(echo $(LC_ALL=C sudo diskutil list | grep -i 'Logical Volume' | awk '{print tolower($0)}'))" == *"logical volume"* ]]; then
+if [[ "$(echo $(LC_ALL=C diskutil list | grep -i 'Logical Volume' | awk '{print tolower($0)}'))" == *"logical volume"* ]]; then
     # ok, we have a logical volume somewhere.. so that can assume that we can use "diskutil cs"
-    LC_ALL=C sudo diskutil cs info $DiskDevice > /dev/null 2>&1
+    LC_ALL=C diskutil cs info $DiskDevice > /dev/null 2>&1
     if [[ $? -eq 0 ]] ; then
         # logical volumes does not have an EFI partition (or not suitable for us?)
         # find the partition uuid
-        UUID=$(LC_ALL=C sudo diskutil info "${DiskDevice}" 2>/dev/null | sed -n 's/.*artition UUID: *//p')
+        UUID=$(LC_ALL=C diskutil info "${DiskDevice}" 2>/dev/null | sed -n 's/.*artition UUID: *//p')
         # with the partition uuid we can find the real disk in in diskutil list output
         if [[ -n "$UUID" ]]; then
-            realDisk=$(LC_ALL=C sudo diskutil list | grep -B 1 "$UUID" | grep -i 'logical volume' | awk '{print $4}' | sed -e 's/,//g' | sed -e 's/ //g')
+            realDisk=$(LC_ALL=C diskutil list | grep -B 1 "$UUID" | grep -i 'logical volume' | awk '{print $4}' | sed -e 's/,//g' | sed -e 's/ //g')
             if [[ -n "$realDisk" ]]; then
-                DiskDevice=$(LC_ALL=C sudo diskutil info "${realDisk}" 2>/dev/null | sed -n 's/.*Part [oO]f Whole: *//p')
+                DiskDevice=$(LC_ALL=C diskutil info "${realDisk}" 2>/dev/null | sed -n 's/.*Part [oO]f Whole: *//p')
             fi
         fi
     fi
 fi
 
 # check if target volume is APFS, and therefore part of an APFS container
-if [[ "$(echo $(LC_ALL=C sudo diskutil list "$DiskDevice" | grep -i 'APFS Container Scheme' | awk '{print tolower($0)}'))" == *"apfs container scheme"* ]]; then
+if [[ "$(echo $(LC_ALL=C diskutil list "$DiskDevice" | grep -i 'APFS Container Scheme' | awk '{print tolower($0)}'))" == *"apfs container scheme"* ]]; then
     # ok, this disk is an APFS partition, extract physical store device
-    realDisk=$(LC_ALL=C sudo diskutil list "$DiskDevice" 2>/dev/null | sed -n 's/.*Physical Store *//p')
-    DiskDevice=$(LC_ALL=C sudo diskutil info "$realDisk" 2>/dev/null | sed -n 's/.*Part [oO]f Whole: *//p')
+    realDisk=$(LC_ALL=C diskutil list "$DiskDevice" 2>/dev/null | sed -n 's/.*Physical Store *//p')
+    DiskDevice=$(LC_ALL=C diskutil info "$realDisk" 2>/dev/null | sed -n 's/.*Part [oO]f Whole: *//p')
 fi
 
-PartitionScheme=$(LC_ALL=C sudo diskutil info "$DiskDevice" 2>/dev/null | sed -nE 's/.*(Partition Type|Content \(IOContent\)): *//p')
+PartitionScheme=$(LC_ALL=C diskutil info "$DiskDevice" 2>/dev/null | sed -nE 's/.*(Partition Type|Content \(IOContent\)): *//p')
 # Check if the disk is an MBR disk
 if [[ "$PartitionScheme" == "FDisk_partition_scheme" ]]; then
     echo "Error: Volume \"$DestVolume\" is part of an MBR disk"
@@ -55,7 +61,7 @@ if [[ "$PartitionScheme" != "GUID_partition_scheme" ]]; then
 fi
 
 # Find the associated EFI partition on DiskDevice
-sudo diskutil list -plist "/dev/$DiskDevice" 2>/dev/null >/tmp/org_rehabman_diskutil.plist
+diskutil list -plist "/dev/$DiskDevice" 2>/dev/null >/tmp/org_rehabman_diskutil.plist
 for ((part=0; 1; part++)); do
     content=`/usr/libexec/PlistBuddy -c "Print :AllDisksAndPartitions:0:Partitions:$part:Content" /tmp/org_rehabman_diskutil.plist 2>&1`
     if [[ "$content" == *"Does Not Exist"* ]]; then
@@ -77,12 +83,12 @@ fi
 
 # Get the EFI mount point if the partition is currently mounted
 code=0
-EFIMountPoint=$(LC_ALL=C sudo diskutil info "$EFIDevice" 2>/dev/null | sed -n 's/.*Mount Point: *//p')
+EFIMountPoint=$(LC_ALL=C diskutil info "$EFIDevice" 2>/dev/null | sed -n 's/.*Mount Point: *//p')
 if [[ -z "$EFIMountPoint" ]]; then
     # try to mount the EFI partition
     EFIMountPoint="/Volumes/EFI"
-    [ ! -d "$EFIMountPoint" ] && sudo mkdir -p "$EFIMountPoint"
-    sudo diskutil mount -mountPoint "$EFIMountPoint" /dev/$EFIDevice >/dev/null 2>&1
+    [ ! -d "$EFIMountPoint" ] && mkdir -p "$EFIMountPoint"
+    diskutil mount -mountPoint "$EFIMountPoint" /dev/$EFIDevice >/dev/null 2>&1
     code=$?
 fi
 echo "${EFIMountPoint// /\\ }"
