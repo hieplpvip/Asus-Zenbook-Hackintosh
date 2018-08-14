@@ -10,6 +10,7 @@ Clover hotpatches and tools for the Asus Zenbook laptop on macOS 10.13.6
 - UX410 (KabyLake)
 - UX430 (KabyLake)
 - UX430 (KabyLake-R) (partially)
+
 To add support for your laptop, please provide full specs and original ACPI files from Clover. Recent models (KabyLake, KabyLake-R) are preferred.
 
 ## What's working now
