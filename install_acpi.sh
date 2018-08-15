@@ -90,7 +90,7 @@ case "$model" in
         rm -f $ACPIPATCHED/SSDT-*.aml
         cp $BUILDDIR/ux430-kabylaker/SSDT-UX430-KabyLakeR.aml $ACPIPATCHED
         cp $BUILDDIR/ux430-kabylaker/SSDT-IGPU.aml $ACPIPATCHED
-        cp $BUILDDIR/ux430-kabylaker/SSDT-ELAN.aml $ACPIPATCHED
+#cp $BUILDDIR/ux430-kabylaker/SSDT-ELAN.aml $ACPIPATCHED
         cp $BUILDDIR/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
         ls $ACPIPATCHED
     ;;

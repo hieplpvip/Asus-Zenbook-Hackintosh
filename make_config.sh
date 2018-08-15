@@ -130,7 +130,7 @@ echo creating config/config_ux430_kabylaker.plist
 cp config_parts/config_master.plist config/config_ux430_kabylaker.plist
 /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" config/config_ux430_kabylaker.plist # use MacBookPro14,1 for now, as support for MacBookPro15,2 isn't officialy out
 ./tools/merge_plist.sh "KernelAndKextPatches" config_parts/config_KabyLake.plist config/config_ux430_kabylaker.plist
-enableI2CPatch config/config_ux430_kabylaker.plist
+#enableI2CPatch config/config_ux430_kabylaker.plist
 disableTRIM config/config_ux430_kabylaker.plist
 patchCountryCode config/config_ux430_kabylaker.plist
 echo
