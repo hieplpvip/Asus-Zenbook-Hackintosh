@@ -103,7 +103,7 @@ download_latest_notbitbucket "https://github.com" "https://github.com/acidanther
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/WhateverGreen/releases" "RELEASE" "nbb_acidanthera-WhateverGreen.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/PMheart/LiluFriend/releases" "RELEASE" "nbb_PMheart-LiluFriend.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AirportBrcmFixup/releases" "RELEASE" "nbb_acidanthera-AirportBrcmFixup.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/BT4LEContiunityFixup/releases" "Release_BT4LEContiunityFixup" "nbb_acidanthera-BT4LEContiunityFixup.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/BT4LEContiunityFixup/releases" "RELEASE" "nbb_acidanthera-BT4LEContiunityFixup.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AppleBacklightFixup/releases" "RELEASE" "nbb_hieplpvip-AppleBacklightFixup.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AsusFnKeys/releases" "RELEASE" "nbb_hieplpvip-AsusFnKeys.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/OS-X-Voodoo-PS2-Controller/releases" "VoodooPS2-ASUS-" "nbb_hieplpvip-VoodooPS2.zip"
