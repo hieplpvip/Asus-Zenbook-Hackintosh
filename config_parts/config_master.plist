@@ -284,13 +284,6 @@
 		<key>Timeout</key>
 		<integer>5</integer>
 	</dict>
-	<key>CPU</key>
-	<dict>
-		<key>HWPEnable</key>
-		<true/>
-		<key>UseARTFrequency</key>
-		<true/>
-	</dict>
 	<key>Devices</key>
 	<dict>
 		<key>AddProperties</key>
