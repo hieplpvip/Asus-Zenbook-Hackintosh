@@ -9,7 +9,7 @@ fi
 SLE=/System/Library/Extensions
 LE=/Library/Extensions
 
-OLDKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|aDummyHDA|AppleBacklightInjector|AppleBacklightFixup|IntelBacklight|Asus|AirportBrcmFixup|BrcmPatchRAM2|BrcmFirmware|BT4LEContiunityFixup|CodecCommander|FakePCIID|FakeSMC|WhateverGreen|IntelGraphicsFixup|NvidiaGraphicsFixup|CoreDisplayFixup|Shiki|Lilu|NullEthernet|USBInjectAll|VoodooI2C|VoodooPS2Controller"
+OLDKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|aDummyHDA|AppleBacklightInjector|AppleBacklightFixup|IntelBacklight|Asus|AirportBrcmFixup|BrcmPatchRAM2|BrcmFirmware|BT4LEContiunityFixup|CodecCommander|FakePCIID|FakeSMC|WhateverGreen|IntelGraphicsFixup|NvidiaGraphicsFixup|CoreDisplayFixup|Shiki|Lilu|NullEthernet|USBInjectAll|VoodooI2C|VoodooPS2Controller|Injector"
 
 for kext in $LE/*.kext; do
     kextname="`basename $kext`"

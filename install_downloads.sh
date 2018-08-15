@@ -46,7 +46,7 @@ function check_directory
 function install_kext
 {
     if [ "$1" != "" ]; then
-        echo -e '\t'$1
+        echo -e '\t'`basename $1`
         $SUDO rm -Rf $SLE/`basename $1` $KEXTDEST/`basename $1`
         $SUDO cp -Rf $1 $KEXTDEST
         $TAG -a Gray $KEXTDEST/`basename $1`
@@ -56,7 +56,7 @@ function install_kext
 function install_app
 {
     if [ "$1" != "" ]; then
-        echo -e '\t'$1' to /Applications'
+        echo -e '\t'`basename $1`' to /Applications'
         $SUDO rm -Rf /Applications/`basename $1`
         $SUDO cp -Rf $1 /Applications
         $TAG -a Gray /Applications/`basename $1`
@@ -66,7 +66,7 @@ function install_app
 function install_binary
 {
     if [ "$1" != "" ]; then
-        echo -e '\t'$1' to /usr/bin'
+        echo -e '\t'`basename $1`' to /usr/bin'
         $SUDO rm -f /usr/bin/`basename $1`
         $SUDO cp -f $1 /usr/bin
         $TAG -a Gray /usr/bin/`basename $1`
@@ -150,6 +150,28 @@ do
                 done
                 echo
                 cd ../..
+            fi
+
+            break;;
+        "No")
+            echo
+            break;;
+        *) echo "Invalid";;
+    esac
+done
+
+PS3='Do you want to use custom power management via X86PlatformPluginInjector.kext: '
+options=("Yes" "No")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Yes")
+            # install X86PlatformPluginInjector.kext
+            check_directory ./kexts/X86PlatformPluginInjector.kext
+            if [ $? -ne 0 ]; then
+                echo 'Installing X86PlatformPluginInjector.kext to '$KEXTDEST'...'
+                install_kext ./kexts/X86PlatformPluginInjector.kext
+                echo
             fi
 
             break;;
