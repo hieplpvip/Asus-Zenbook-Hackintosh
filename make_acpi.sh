@@ -27,6 +27,6 @@ $IASL -vw 2095 -vw 2146 -vw 2089 -vw 4089 -vi -vr -p build/ux430-kabylake/SSDT-U
 
 #ux430 kabylake-r
 if [ ! -d ./build/ux430-kabylaker ]; then mkdir ./build/ux430-kabylaker; fi && rm -Rf build/ux430-kabylaker/*
-#cp build/SSDT-ELAN.aml build/ux430-kabylaker/SSDT-ELAN.aml
+cp build/SSDT-ELAN.aml build/ux430-kabylaker/SSDT-ELAN.aml
 cp build/SSDT-IGPU.aml build/ux430-kabylaker/SSDT-IGPU.aml
 $IASL -vw 2095 -vw 2146 -vw 2089 -vw 4089 -vi -vr -p build/ux430-kabylaker/SSDT-UX430-KabyLakeR.aml hotpatch/SSDT-UX430-KabyLakeR.dsl
