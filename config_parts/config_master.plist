@@ -261,6 +261,14 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
+					<string>change Method(_Q0B,0,NS) to XQ0B</string>
+					<key>Find</key>
+					<data>X1EwQgA=</data>
+					<key>Replace</key>
+					<data>WFEwQgA=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
 					<string>change Method(_Q0E,0,NS) to XQ0E</string>
 					<key>Find</key>
 					<data>X1EwRQA=</data>

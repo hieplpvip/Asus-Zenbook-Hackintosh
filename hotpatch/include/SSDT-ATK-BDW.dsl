@@ -98,7 +98,18 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
         
         Method (_Q0A, 0, NotSerialized) // F1 key
         {
-            // Empty method
+            If (ATKP)
+            {
+                \_SB.ATKD.IANE (0x5E)
+            }
+        }
+        
+        Method (_Q0B, 0, NotSerialized) // F2 key
+        {
+            If (ATKP)
+            {
+                \_SB.ATKD.IANE (0x7D)
+            }
         }
         
         Method (_Q0E, 0, NotSerialized) // F5 key
