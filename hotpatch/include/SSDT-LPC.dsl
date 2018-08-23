@@ -1,7 +1,7 @@
 // To fix unsupported 8-series LPC devices
 
 #ifndef NO_DEFINITIONBLOCK
-DefinitionBlock("", "SSDT", 2, "hack", "_LPC", 0)
+DefinitionBlock("", "SSDT", 2, "hack", "lpc", 0)
 {
 #endif
     External(_SB.PCI0.LPCB, DeviceObj)
@@ -60,4 +60,3 @@ DefinitionBlock("", "SSDT", 2, "hack", "_LPC", 0)
 #ifndef NO_DEFINITIONBLOCK
 }
 #endif
-//EOF

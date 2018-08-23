@@ -93,23 +93,6 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
             })
         }
     }
-
-    // inject USB properties
-    External(_SB.PCI0.XHC, DeviceObj)
-    Method (_SB.PCI0.XHC._DSM, 4, NotSerialized)
-    {
-        If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }
-        Return (Package()
-        {
-            "subsystem-id", Buffer() { 0x2f, 0x9d, 0x00, 0x00 },
-            "subsystem-vendor-id", Buffer() { 0x86, 0x80, 0x00, 0x00 },
-            "AAPL,current-available", 2100,
-            "AAPL,current-extra", 2200,
-            "AAPL,current-extra-in-sleep", 1600,
-            "AAPL,device-internal", 0x02,
-            "AAPL,max-port-current-in-sleep", 2100,
-        })
-    }
     
     // add SMBUS device
     Device(_SB.PCI0.SBUS.BUS0)
@@ -128,18 +111,6 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
         }
     }
     
-    // add LPC device
-    External(_SB.PCI0.LPCB, DeviceObj)
-    Method (_SB.PCI0.LPCB._DSM, 4, NotSerialized)
-    {
-        If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }
-        Return (Package()
-        {
-            "device-id",  Buffer() { 0xc1, 0x9c, 0, 0 },
-            "compatible", "pci8086,9cc1",
-        })
-    }
-    
     // macOS expect PMCR for PPMC to load correctly credit syscl
     Device (_SB.PCI0.PMCR)
     {
@@ -150,22 +121,6 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
     Device(_SB.EC)
     {
         Name(_HID, "EC000000")
-    }
-    
-    // USB power properties via USBX device
-    Device(_SB.USBX)
-    {
-        Name(_ADR, 0)
-        Method (_DSM, 4)
-        {
-            If (!Arg2) { Return (Buffer() { 0x03 } ) }
-            Return (Package()
-            {
-                // these values from MacBookPro14,1
-                "kUSBSleepPortCurrentLimit", 0x0BB8, 
-                "kUSBWakePortCurrentLimit", 0x0BB8
-            })
-        }
     }
 #ifndef NO_DEFINITIONBLOCK
 }
