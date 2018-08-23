@@ -12,7 +12,7 @@ TAGCMD=`pwd`/tools/tag
 SLE=/System/Library/Extensions
 LE=/Library/Extensions
 
-OLDKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|aDummyHDA|AppleBacklightInjector|AppleBacklightFixup|IntelBacklight|Asus|AirportBrcmFixup|BrcmPatchRAM2|BrcmFirmware|BT4LEContiunityFixup|CodecCommander|FakePCIID|FakeSMC|WhateverGreen|IntelGraphicsFixup|NvidiaGraphicsFixup|CoreDisplayFixup|Shiki|Lilu|NullEthernet|USBInjectAll|VoodooI2C|VoodooPS2Controller"
+OLDKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|aDummyHDA|cloverHDA|AppleBacklightInjector|AppleBacklightFixup|IntelBacklight|Asus|AirportBrcmFixup|BrcmPatchRAM2|BrcmFirmware|BT4LEContiunityFixup|CodecCommander|FakePCIID|FakeSMC|WhateverGreen|IntelGraphicsFixup|NvidiaGraphicsFixup|CoreDisplayFixup|Shiki|Lilu|NullEthernet|USBInjectAll|VoodooI2C|VoodooPS2Controller"
 
 # extract minor version (eg. 10.9 vs. 10.10 vs. 10.11)
 MINOR_VER=$([[ "$(sw_vers -productVersion)" =~ [0-9]+\.([0-9]+) ]] && echo ${BASH_REMATCH[1]})
@@ -211,7 +211,7 @@ if [ -d $CLOVERKEXT ]; then
     mv $CLOVERKEXT $BAKKEXT
 fi
 
-echo Installing kexts to EFI/Clover/kexts/Other
+echo Installing kexts to EFI/Clover/kexts/Other...
 mkdir -p $CLOVERKEXT/Other
 #rm -Rf $EFI/EFI/CLOVER/kexts/Other/*.kext
 cd ./downloads/clover_kexts
@@ -221,5 +221,9 @@ for kext in *.kext; do
 done
 echo
 cd ../..
+
+echo Installing AsusFnKeysDaemon...
+./downloads/kexts/nbb_hieplpvip-AsusFnKeys/install_daemon.sh
+echo
 
 echo Done. Enjoy!
