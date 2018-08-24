@@ -102,6 +102,22 @@ function install
     fi
 }
 
+PS3='Select model: '
+options=("UX430 (KabyLake)" "Other")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "UX430 (KabyLake)")
+            alcplugfix=295
+            break;;
+        "Other")
+            alcplugfix=0
+            break;;
+        *) echo "Invalid";;
+    esac
+done
+echo
+
 PS3='Do you want to install tools: '
 options=("Yes" "No")
 select opt in "${options[@]}"
@@ -225,5 +241,17 @@ cd ../..
 echo Installing AsusFnKeysDaemon...
 ./downloads/kexts/nbb_hieplpvip-AsusFnKeys/install_daemon.sh
 echo
+
+case $alcplugfix in
+    295)
+        echo Installing ALCPlugFix...
+        cd ./alcplugfix/alc295
+        $SUDO ./install.sh
+        cd ../..
+        echo
+        ;;
+    0)
+        ;;
+esac
 
 echo Done. Enjoy!
