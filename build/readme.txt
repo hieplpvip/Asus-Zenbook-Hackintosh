@@ -1,3 +1,5 @@
+Files created by make_acpi.sh and make_config.sh
+
 *** acpi folder consists of:
 
 ux303-broadwell: patched acpi files for UX303 (Broadwell)
