@@ -6,25 +6,27 @@ if [ "$(id -u)" != "0" ] && [ "$(sudo -n echo 'sudo' 2> /dev/null)" != "sudo" ];
     exit 0
 fi
 
+. ./src/config.txt
+
 PS3='Select model: '
 options=("UX310 (KabyLake)" "UX410 (KabyLake)" "UX430 (KabyLake)" "UX430 (KabyLake-R)")
 select opt in "${options[@]}"
 do
     case $opt in
         "UX310 (KabyLake)")
-            config="config/config_ux310_kabylake.plist"
+            config=$BUILDCONFIG"/config_ux310_kabylake.plist"
             product="MacBookPro14,1"
             break;;
         "UX410 (KabyLake)")
-            config="config/config_ux410_kabylake.plist"
+            config=$BUILDCONFIG"/config_ux410_kabylake.plist"
             product="MacBookPro14,1"
             break;;
         "UX430 (KabyLake)")
-            config="config/config_ux430_kabylake.plist"
+            config=$BUILDCONFIG"/config_ux430_kabylake.plist"
             product="MacBookPro14,1"
             break;;
         "UX430 (KabyLake-R)")
-            config="config/config_ux430_kabylaker.plist"
+            config=$BUILDCONFIG"/config_ux430_kabylaker.plist"
             product="MacBookPro14,1"
             break;;
         *) echo "Invalid";;
@@ -34,27 +36,27 @@ echo
 
 echo Mounting EFI...
 EFI=`./mount_efi.sh`
-EFIconfig=$EFI/EFI/CLOVER/config.plist
-BAKdir=$EFI/EFI/CLOVER/config_backup
-if [ ! -d $BAKdir ]; then mkdir $BAKdir; fi
+EFICONFIG=$EFI/EFI/CLOVER/config.plist
+BAKDIR=$EFI/$CONFIGBAK
+if [ ! -d $BAKDIR ]; then mkdir $BAKDIR; fi
 
-BAKconfig=$BAKdir/config_`date +%Y%m%d%H%M%S`.plist
-if [ -f $EFIconfig ]; then
+BAKCONFIG=$BAKDIR/config_`date +%Y%m%d%H%M%S`.plist
+if [ -f $EFICONFIG ]; then
     echo "Found config.plist in EFI. Backing up..."
-    mv $EFIconfig $BAKconfig
+    mv $EFICONFIG $BAKCONFIG
 fi
 
-cp $config $EFIconfig
-if [ -f $BAKconfig ]; then
+cp $config $EFICONFIG
+if [ -f $BAKCONFIG ]; then
     echo "Restoring SMBIOS..."
-    /usr/libexec/PlistBuddy -c "Delete :SMBIOS" $EFIconfig
-    /usr/libexec/PlistBuddy -c "Add :SMBIOS dict" $EFIconfig
-    ./tools/merge_plist.sh "SMBIOS" $BAKconfig $EFIconfig
-    /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName $product" $EFIconfig
+    /usr/libexec/PlistBuddy -c "Delete :SMBIOS" $EFICONFIG
+    /usr/libexec/PlistBuddy -c "Add :SMBIOS dict" $EFICONFIG
+    ./tools/merge_plist.sh "SMBIOS" $BAKCONFIG $EFICONFIG
+    /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName $product" $EFICONFIG
     echo
     echo "Restoring theme..."
-    theme=`/usr/libexec/PlistBuddy -c "Print :GUI:Theme" $BAKconfig`
-    /usr/libexec/PlistBuddy -c "Set :GUI:Theme $theme" $EFIconfig
+    theme=`/usr/libexec/PlistBuddy -c "Print :GUI:Theme" $BAKCONFIG`
+    /usr/libexec/PlistBuddy -c "Set :GUI:Theme $theme" $EFICONFIG
 fi
 
 echo

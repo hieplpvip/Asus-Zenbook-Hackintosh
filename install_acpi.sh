@@ -6,6 +6,8 @@ if [ "$(id -u)" != "0" ] && [ "$(sudo -n echo 'sudo' 2> /dev/null)" != "sudo" ];
     exit 0
 fi
 
+. ./src/config.txt
+
 PS3='Select model: '
 options=("UX310 (KabyLake)" "UX410 (KabyLake)" "UX430 (KabyLake)" "UX430 (KabyLake-R)")
 select opt in "${options[@]}"
@@ -45,13 +47,12 @@ done
 echo
 
 EFI=`./mount_efi.sh`
-BUILDDIR=./build
 ACPIPATCHED=$EFI/EFI/CLOVER/ACPI/patched
 
-BAKdir=$EFI/EFI/CLOVER/ACPI/patched_backup
-if [ ! -d $BAKdir ]; then mkdir $BAKdir; fi
+BAKDIR=$EFI/$ACPIBAK
+if [ ! -d $BAKDIR ]; then mkdir $BAKDIR; fi
 
-BAKPATCHED=$BAKdir/`date +%Y%m%d%H%M%S`
+BAKPATCHED=$BAKDIR/`date +%Y%m%d%H%M%S`
 if [ -d $ACPIPATCHED ]; then
     echo Backing up patched ACPI...
     mv $ACPIPATCHED $BAKPATCHED
@@ -64,30 +65,30 @@ case "$model" in
     ux310_kaby)
         rm -f $ACPIPATCHED/DSDT.aml
         rm -f $ACPIPATCHED/SSDT-*.aml
-        cp $BUILDDIR/ux310-kabylake/SSDT-UX310-KabyLake.aml $ACPIPATCHED
-        cp $BUILDDIR/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
+        cp $BUILDACPI/ux310-kabylake/SSDT-UX310-KabyLake.aml $ACPIPATCHED
+        cp $BUILDACPI/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
         ls $ACPIPATCHED
     ;;
     ux410_kaby)
         rm -f $ACPIPATCHED/DSDT.aml
         rm -f $ACPIPATCHED/SSDT-*.aml
-        cp $BUILDDIR/ux410-kabylake/SSDT-UX410-KabyLake.aml $ACPIPATCHED
-        cp $BUILDDIR/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
+        cp $BUILDACPI/ux410-kabylake/SSDT-UX410-KabyLake.aml $ACPIPATCHED
+        cp $BUILDACPI/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
         ls $ACPIPATCHED
     ;;
     ux430_kaby)
         rm -f $ACPIPATCHED/DSDT.aml
         rm -f $ACPIPATCHED/SSDT-*.aml
-        cp $BUILDDIR/ux430-kabylake/SSDT-UX430-KabyLake.aml $ACPIPATCHED
-        cp $BUILDDIR/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
+        cp $BUILDACPI/ux430-kabylake/SSDT-UX430-KabyLake.aml $ACPIPATCHED
+        cp $BUILDACPI/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
         ls $ACPIPATCHED
     ;;
     ux430_kabyr)
         rm -f $ACPIPATCHED/DSDT.aml
         rm -f $ACPIPATCHED/SSDT-*.aml
-        cp $BUILDDIR/ux430-kabylaker/SSDT-UX430-KabyLakeR.aml $ACPIPATCHED
-        cp $BUILDDIR/ux430-kabylaker/SSDT-ELAN.aml $ACPIPATCHED
-        cp $BUILDDIR/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
+        cp $BUILDACPI/ux430-kabylaker/SSDT-UX430-KabyLakeR.aml $ACPIPATCHED
+        cp $BUILDACPI/ux430-kabylaker/SSDT-ELAN.aml $ACPIPATCHED
+        cp $BUILDACPI/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
         ls $ACPIPATCHED
     ;;
 esac

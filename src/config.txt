@@ -1,0 +1,10 @@
+BUILDDIR=./build
+BUILDACPI=./build/acpi
+BUILDCONFIG=./build/config
+
+SRCHOTPATCH=./src/hotpatch
+SRCCONFIG=./src/config_parts
+
+ACPIBAK=EFI/CLOVER/ACPI/patched_backup
+CONFIGBAK=EFI/CLOVER/config_backup
+KEXTSBAK=EFI/CLOVER/kexts_backup

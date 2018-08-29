@@ -6,9 +6,11 @@ if [ "$(id -u)" != "0" ] && [ "$(sudo -n echo 'sudo' 2> /dev/null)" != "sudo" ];
     exit 0
 fi
 
+. ./src/config.txt
+
 EFI=`./mount_efi.sh`
-rm -rf $EFI/EFI/CLOVER/config_backup
-rm -rf $EFI/EFI/CLOVER/kexts_backup
-rm -rf $EFI/EFI/CLOVER/ACPI/patched_backup
+rm -rf $EFI/$ACPIBAK
+rm -rf $EFI/$CONFIGBAK
+rm -rf $EFI/$KEXTSBAK
 
 echo Done!

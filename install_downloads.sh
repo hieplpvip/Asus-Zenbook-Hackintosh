@@ -6,7 +6,8 @@ if [ "$(id -u)" != "0" ] && [ "$(sudo -n echo 'sudo' 2> /dev/null)" != "sudo" ];
     exit 0
 fi
 
-SUDO=sudo
+. ./src/config.txt
+
 TAG=tag_file
 TAGCMD=`pwd`/tools/tag
 SLE=/System/Library/Extensions
@@ -28,7 +29,7 @@ fi
 function tag_file
 {
     if [[ $MINOR_VER -ge 9 ]]; then
-        $SUDO "$TAGCMD" "$@"
+        sudo "$TAGCMD" "$@"
     fi
 }
 
@@ -47,8 +48,8 @@ function install_kext
 {
     if [ "$1" != "" ]; then
         echo -e '\t'`basename $1`
-        $SUDO rm -Rf $SLE/`basename $1` $KEXTDEST/`basename $1`
-        $SUDO cp -Rf $1 $KEXTDEST
+        sudo rm -Rf $SLE/`basename $1` $KEXTDEST/`basename $1`
+        sudo cp -Rf $1 $KEXTDEST
         $TAG -a Gray $KEXTDEST/`basename $1`
     fi
 }
@@ -57,8 +58,8 @@ function install_app
 {
     if [ "$1" != "" ]; then
         echo -e '\t'`basename $1`' to /Applications'
-        $SUDO rm -Rf /Applications/`basename $1`
-        $SUDO cp -Rf $1 /Applications
+        sudo rm -Rf /Applications/`basename $1`
+        sudo cp -Rf $1 /Applications
         $TAG -a Gray /Applications/`basename $1`
     fi
 }
@@ -67,8 +68,8 @@ function install_binary
 {
     if [ "$1" != "" ]; then
         echo -e '\t'`basename $1`' to /usr/bin'
-        $SUDO rm -f /usr/bin/`basename $1`
-        $SUDO cp -f $1 /usr/bin
+        sudo rm -f /usr/bin/`basename $1`
+        sudo cp -f $1 /usr/bin
         $TAG -a Gray /usr/bin/`basename $1`
     fi
 }
@@ -212,28 +213,27 @@ fi
 
 # force cache rebuild with output
 echo Rebuilding kextcache...
-$SUDO kextcache -i /
+sudo kextcache -i /
 echo
 
 # install/update kexts on EFI/Clover/kexts/Other
 EFI=`./mount_efi.sh`
-CLOVERKEXT=$EFI/EFI/CLOVER/kexts
-BAKdir=$EFI/EFI/CLOVER/kexts_backup
-if [ ! -d $BAKdir ]; then mkdir $BAKdir; fi
+CLOVERKEXTS=$EFI/EFI/CLOVER/kexts
+BAKDIR=$EFI/$KEXTSBAK
+if [ ! -d $BAKDIR ]; then mkdir $BAKDIR; fi
 
-BAKKEXT=$BAKdir/`date +%Y%m%d%H%M%S`
-if [ -d $CLOVERKEXT ]; then
+BAKKEXTS=$BAKDIR/`date +%Y%m%d%H%M%S`
+if [ -d $CLOVERKEXTS ]; then
     echo Backing up kexts in Clover...
-    mv $CLOVERKEXT $BAKKEXT
+    mv $CLOVERKEXTS $BAKKEXTS
 fi
 
 echo Installing kexts to EFI/Clover/kexts/Other...
-mkdir -p $CLOVERKEXT/Other
-#rm -Rf $EFI/EFI/CLOVER/kexts/Other/*.kext
+mkdir -p $CLOVERKEXTS/Other
 cd ./downloads/clover_kexts
 for kext in *.kext; do
     echo -e '\t'$kext
-    cp -Rf $kext $CLOVERKEXT/Other
+    cp -Rf $kext $CLOVERKEXTS/Other
 done
 echo
 cd ../..
@@ -246,7 +246,7 @@ case $alcplugfix in
     295)
         echo Installing ALCPlugFix...
         cd ./alcplugfix/alc295
-        $SUDO ./install.sh
+        sudo ./install.sh
         cd ../..
         echo
         ;;
