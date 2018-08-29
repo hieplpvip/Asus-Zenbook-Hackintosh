@@ -184,11 +184,13 @@ do
     case $opt in
         "Yes")
             # install X86PlatformPluginInjector.kext
-            check_directory ./kexts/X86PlatformPluginInjector.kext
+            check_directory ./src/kexts/X86PlatformPluginInjector.kext
             if [ $? -ne 0 ]; then
                 echo 'Installing X86PlatformPluginInjector.kext to '$KEXTDEST'...'
-                install_kext ./kexts/X86PlatformPluginInjector.kext
+                install_kext ./src/kexts/X86PlatformPluginInjector.kext
                 echo
+            else
+                echo 'X86PlatformPluginInjector.kext not found'
             fi
 
             break;;
@@ -245,7 +247,7 @@ echo
 case $alcplugfix in
     295)
         echo Installing ALCPlugFix...
-        cd ./alcplugfix/alc295
+        cd ./src/alcplugfix/alc295
         sudo ./install.sh
         cd ../..
         echo
