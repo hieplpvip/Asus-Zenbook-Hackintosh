@@ -309,6 +309,14 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
+					<string>change _STA methods in MATH and LDR2 device to XSTA</string>
+					<key>Find</key>
+					<data>X1NUQQCgDZNQ</data>
+					<key>Replace</key>
+					<data>WFNUQQCgDZNQ</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
 					<string>change Method(_STA,0,NS) in GPI0 to XSTA</string>
 					<key>Find</key>
 					<data>X1NUQQCgCZNTQlJH</data>

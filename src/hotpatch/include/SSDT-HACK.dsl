@@ -72,7 +72,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
         }
     }
     
-    // add fake ethernet device
+    // add fake ethernet device, use with NullEthernet.kext
     Device (RMNE)
     {
         Name (_ADR, Zero)
@@ -115,6 +115,47 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
     Device (_SB.PCI0.PMCR)
     {
         Name (_ADR, 0x001F0002)
+    }
+    
+    // add missing Memory (DRAM) Controller
+    Device (_SB.PCI0.MCHC)
+    {
+        Name (_ADR, Zero)
+	}
+    
+    // macOS desires DMAC credit syscl
+    Device (_SB.PCI0.LPCB.DMAC)
+    {
+        Name (_HID, EisaId ("PNP0200"))  // _HID: Hardware ID
+        Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+        {
+            IO (Decode16,
+                0x0000,             // Range Minimum
+                0x0000,             // Range Maximum
+                0x01,               // Alignment
+                0x20,               // Length
+                )
+            IO (Decode16,
+                0x0081,             // Range Minimum
+                0x0081,             // Range Maximum
+                0x01,               // Alignment
+                0x11,               // Length
+                )
+            IO (Decode16,
+                0x0093,             // Range Minimum
+                0x0093,             // Range Maximum
+                0x01,               // Alignment
+                0x0D,               // Length
+                )
+            IO (Decode16,
+                0x00C0,             // Range Minimum
+                0x00C0,             // Range Maximum
+                0x01,               // Alignment
+                0x20,               // Length
+                )
+            DMA (Compatibility, NotBusMaster, Transfer8_16, )
+                {4}
+        })
     }
     
     // inject Fake EC device
