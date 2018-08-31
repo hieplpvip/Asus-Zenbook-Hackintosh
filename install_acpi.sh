@@ -8,43 +8,47 @@ fi
 
 . ./src/config.txt
 
-PS3='Select model: '
-options=("UX310 (KabyLake)" "UX410 (KabyLake)" "UX430 (KabyLake)" "UX430 (KabyLake-R)")
-select opt in "${options[@]}"
-do
-    case $opt in
-        "UX310 (KabyLake)")
-            model=ux310_kaby
-            break;;
-        "UX410 (KabyLake)")
-            model=ux410_kaby
-            break;;
-        "UX430 (KabyLake)")
-            model=ux430_kaby
-            break;;
-        "UX430 (KabyLake-R)")
-            model=ux430_kabyr
-            break;;
-        *) echo "Invalid";;
-    esac
-done
-echo
+if [[ "$#" -lt 1 || $1 -lt 0 || $1 -ge  ${#MODELS[*]} ]]; then
+    PS3='Select model: '
+    select opt in "${MODELS[@]}"
+    do
+        for i in "${!MODELS[@]}"; do
+            if [[ "${MODELS[$i]}" = "${opt}" ]]; then
+                idx=$i
+                break 2
+            fi
+        done
+        echo Invalid
+        echo
+    done
+    echo
+else
+    idx=$1
+fi
 
-PS3='READ: allows apps like HWMonitor and iStat Menus to read CPU Fan Speed'$'\n''MOD: READ + custom fan control (quietest yet coolest)'$'\n''Select CPU Fan mode: '
-options=("READ" "MOD")
-select opt in "${options[@]}"
-do
-    case $opt in
-        "READ")
-            FANPREF=READ
-            break;;
-        "MOD")
-            FANPREF=MOD
-            break;;
-        *) echo "Invalid";;
-    esac
-done
-echo
+if [[ "$2" == "0" ]]; then
+    FANPREF=READ
+elif [[ "$2" == "1" ]]; then
+    FANPREF=MOD
+else
+    PS3='READ: allows apps like HWMonitor and iStat Menus to read CPU Fan Speed'$'\n''MOD: READ + custom fan control (quietest yet coolest)'$'\n''Select CPU Fan mode: '
+    options=("READ" "MOD")
+    select opt in "${options[@]}"
+    do
+        case $opt in
+            "READ")
+                FANPREF=READ
+                break;;
+            "MOD")
+                FANPREF=MOD
+                break;;
+            *)
+                echo Invalid
+                echo;;
+        esac
+    done
+    echo
+fi
 
 EFI=`./mount_efi.sh`
 ACPIPATCHED=$EFI/EFI/CLOVER/ACPI/patched
@@ -59,37 +63,12 @@ if [ -d $ACPIPATCHED ]; then
 fi
 
 mkdir -p $ACPIPATCHED
+cp $BUILDACPI/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
 
-case "$model" in
-# model specific scripts
-    ux310_kaby)
-        rm -f $ACPIPATCHED/DSDT.aml
-        rm -f $ACPIPATCHED/SSDT-*.aml
-        cp $BUILDACPI/ux310-kabylake/SSDT-UX310-KabyLake.aml $ACPIPATCHED
-        cp $BUILDACPI/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
-        ls $ACPIPATCHED
-    ;;
-    ux410_kaby)
-        rm -f $ACPIPATCHED/DSDT.aml
-        rm -f $ACPIPATCHED/SSDT-*.aml
-        cp $BUILDACPI/ux410-kabylake/SSDT-UX410-KabyLake.aml $ACPIPATCHED
-        cp $BUILDACPI/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
-        ls $ACPIPATCHED
-    ;;
-    ux430_kaby)
-        rm -f $ACPIPATCHED/DSDT.aml
-        rm -f $ACPIPATCHED/SSDT-*.aml
-        cp $BUILDACPI/ux430-kabylake/SSDT-UX430-KabyLake.aml $ACPIPATCHED
-        cp $BUILDACPI/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
-        ls $ACPIPATCHED
-    ;;
-    ux430_kabyr)
-        rm -f $ACPIPATCHED/DSDT.aml
-        rm -f $ACPIPATCHED/SSDT-*.aml
-        cp $BUILDACPI/ux430-kabylaker/SSDT-UX430-KabyLakeR.aml $ACPIPATCHED
-        cp $BUILDACPI/ux430-kabylaker/SSDT-ELAN.aml $ACPIPATCHED
-        cp $BUILDACPI/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
-        ls $ACPIPATCHED
-    ;;
-esac
+echo "Installing ACPI for ${MODELS[$idx]}..."
+echo
 
+for aml in $BUILDACPI/"${AMLDIR[$idx]}"/*.aml; do
+    cp $aml $ACPIPATCHED
+done
+ls $ACPIPATCHED

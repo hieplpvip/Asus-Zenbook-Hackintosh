@@ -8,43 +8,42 @@ fi
 
 . ./src/config.txt
 
-PS3='Select model: '
-options=("UX310 (KabyLake)" "UX410 (KabyLake)" "UX430 (KabyLake)" "UX430 (KabyLake-R)")
-select opt in "${options[@]}"
-do
-    case $opt in
-        "UX310 (KabyLake)")
-            config=$BUILDCONFIG"/config_ux310_kabylake.plist"
-            product="MacBookPro14,1"
-            break;;
-        "UX410 (KabyLake)")
-            config=$BUILDCONFIG"/config_ux410_kabylake.plist"
-            product="MacBookPro14,1"
-            break;;
-        "UX430 (KabyLake)")
-            config=$BUILDCONFIG"/config_ux430_kabylake.plist"
-            product="MacBookPro14,1"
-            break;;
-        "UX430 (KabyLake-R)")
-            config=$BUILDCONFIG"/config_ux430_kabylaker.plist"
-            product="MacBookPro14,1"
-            break;;
-        *) echo "Invalid";;
-    esac
-done
-echo
+if [[ "$#" -ne 1 || $1 -lt 0 || $1 -ge  ${#MODELS[*]} ]]; then
+    PS3='Select model: '
+    select opt in "${MODELS[@]}"
+    do
+        for i in "${!MODELS[@]}"; do
+            if [[ "${MODELS[$i]}" = "${opt}" ]]; then
+                idx=$i
+                break 2
+            fi
+        done
+        echo Invalid
+        echo
+    done
+    echo
+else
+    idx=$1
+fi
+
+config=$BUILDCONFIG"/${CONFIGPLIST[$idx]}"
+product="${PRODUCTNAME[$idx]}"
 
 echo Mounting EFI...
 EFI=`./mount_efi.sh`
 EFICONFIG=$EFI/EFI/CLOVER/config.plist
 BAKDIR=$EFI/$CONFIGBAK
 if [ ! -d $BAKDIR ]; then mkdir $BAKDIR; fi
+echo
 
 BAKCONFIG=$BAKDIR/config_`date +%Y%m%d%H%M%S`.plist
 if [ -f $EFICONFIG ]; then
     echo "Found config.plist in EFI. Backing up..."
     mv $EFICONFIG $BAKCONFIG
 fi
+
+echo "Installing config.plist for ${MODELS[$idx]}..."
+echo
 
 cp $config $EFICONFIG
 if [ -f $BAKCONFIG ]; then
@@ -53,11 +52,7 @@ if [ -f $BAKCONFIG ]; then
     /usr/libexec/PlistBuddy -c "Add :SMBIOS dict" $EFICONFIG
     ./tools/merge_plist.sh "SMBIOS" $BAKCONFIG $EFICONFIG
     /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName $product" $EFICONFIG
-    echo
     echo "Restoring theme..."
     theme=`/usr/libexec/PlistBuddy -c "Print :GUI:Theme" $BAKCONFIG`
     /usr/libexec/PlistBuddy -c "Set :GUI:Theme $theme" $EFICONFIG
 fi
-
-echo
-echo Done!

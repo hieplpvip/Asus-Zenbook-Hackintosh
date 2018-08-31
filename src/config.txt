@@ -8,3 +8,9 @@ SRCCONFIG=./src/config_parts
 ACPIBAK=EFI/CLOVER/ACPI/patched_backup
 CONFIGBAK=EFI/CLOVER/config_backup
 KEXTSBAK=EFI/CLOVER/kexts_backup
+
+MODELS=("UX310 (KabyLake)" "UX410 (KabyLake)" "UX430 (KabyLake)" "UX430 (KabyLake-R)")
+CONFIGPLIST=("config_ux310_kabylake.plist" "config_ux410_kabylake.plist" "config_ux430_kabylake.plist" "config_ux430_kabylaker.plist")
+PRODUCTNAME=("MacBookPro14,1" "MacBookPro14,1" "MacBookPro14,1" "MacBookPro14,1")
+AMLDIR=("ux310-kabylake" "ux410-kabylake" "ux430-kabylake" "ux430-kabylaker")
+ALCPLUGFIX=("" "" "alc295" "")

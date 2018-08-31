@@ -103,21 +103,23 @@ function install
     fi
 }
 
-PS3='Select model: '
-options=("UX430 (KabyLake)" "Other")
-select opt in "${options[@]}"
-do
-    case $opt in
-        "UX430 (KabyLake)")
-            alcplugfix=295
-            break;;
-        "Other")
-            alcplugfix=0
-            break;;
-        *) echo "Invalid";;
-    esac
-done
-echo
+if [[ "$#" -ne 1 || $1 -lt 0 || $1 -ge  ${#MODELS[*]} ]]; then
+    PS3='Select model: '
+    select opt in "${MODELS[@]}"
+    do
+        for i in "${!MODELS[@]}"; do
+            if [[ "${MODELS[$i]}" = "${opt}" ]]; then
+                idx=$i
+                break 2
+            fi
+        done
+        echo Invalid
+        echo
+    done
+    echo
+else
+    idx=$1
+fi
 
 PS3='Do you want to install tools: '
 options=("Yes" "No")
@@ -140,7 +142,9 @@ do
         "No")
             echo
             break;;
-        *) echo "Invalid";;
+        *)
+            echo Invalid
+            echo;;
     esac
 done
 
@@ -244,15 +248,12 @@ echo Installing AsusFnKeysDaemon...
 ./downloads/kexts/nbb_hieplpvip-AsusFnKeys/install_daemon.sh
 echo
 
-case $alcplugfix in
-    295)
+if [[ "${ALCPLUGFIX[$idx]}" != "" ]]; then
         echo Installing ALCPlugFix...
-        cd ./src/alcplugfix/alc295
+        cd ./src/alcplugfix/"${ALCPLUGFIX[$idx]}"
         sudo ./install.sh
         cd ../..
         echo
-        ;;
-    *);;
-esac
+fi
 
 echo Done. Enjoy!
