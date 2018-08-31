@@ -47,5 +47,7 @@ To add support for your laptop, please provide full specs and original ACPI file
 
 Special thanks: @RehabMan
 
+See [References](../../wiki/References) for full list.
+
 ## [Donate me](https://paypal.me/hieplpvip)
 Any donation is highly appreciated
