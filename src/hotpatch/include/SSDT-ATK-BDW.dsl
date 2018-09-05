@@ -2,33 +2,33 @@
 DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
 {
 #endif
+    External (ATKP, IntObj)
     External (_SB.ALS, DeviceObj)
     External (_SB.ATKD, DeviceObj)
     External (_SB.ATKD.IANE, MethodObj)
     External (_SB.ATKD.ALSC, MethodObj)
-    External (ATKP, IntObj)
     External (_SB.KBLV, FieldUnitObj)
     External (_SB.PCI0.LPCB.EC0, DeviceObj)
     External (_SB.PCI0.LPCB.EC0.WRAM, MethodObj)
     External (_SB.PCI0.LPCB.EC0.RALS, MethodObj)
     Scope (_SB.ATKD)
     {
-        Name (BOFF, Zero)
+        Name (BOFF, 0)
         Method (SKBL, 1, NotSerialized)
         {
-            If (Or (LEqual (Arg0, 0xED), LEqual (Arg0, 0xFD)))
+            If ((Arg0 == 0xED) || (Arg0 == 0xFD))
             {
-                If (And (LEqual (Arg0, 0xED), LEqual (^BOFF, 0xEA)))
+                If ((Arg0 == 0xED) && (^BOFF == 0xEA))
                 {
-                    Store (Zero, Local0)
-                    Store (Arg0, ^BOFF)
+                    Local0 = 0
+                    ^BOFF = Arg0
                 }
                 Else
                 {
-                    If (And (LEqual (Arg0, 0xFD), LEqual (^BOFF, 0xFA)))
+                    If ((Arg0 == 0xFD) && (^BOFF == 0xFA))
                     {
-                        Store (Zero, Local0)
-                        Store (Arg0, ^BOFF)
+                        Local0 = 0
+                        ^BOFF = Arg0
                     }
                     Else
                     {
@@ -38,18 +38,18 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
             }
             Else
             {
-                If (Or (LEqual (Arg0, 0xEA), LEqual (Arg0, 0xFA)))
+                If ((Arg0 == 0xEA) || (Arg0 == 0xFA))
                 {
-                    Store (^^KBLV, Local0)
-                    Store (Arg0, ^BOFF)
+                    Local0 = ^^KBLV
+                    ^BOFF = Arg0
                 }
                 Else
                 {
-                    Store (Arg0, Local0)
-                    Store (Arg0, ^^KBLV)
+                    Local0 = Arg0
+                    ^^KBLV = Arg0
                 }
             }
-            Store (DerefOf (Index (KBPW, Local0)), Local1)
+            Local1 = DerefOf (KBPW [Local0])
             ^^PCI0.LPCB.EC0.WRAM (0x04B1, Local1)
             Return (Local0)
         }
@@ -59,7 +59,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
         })
         Method (GKBL, 1, NotSerialized)
         {
-            If (LEqual (Arg0, 0xFF))
+            If (Arg0 == 0xFF)
             {
                 Return (^BOFF)
             }
