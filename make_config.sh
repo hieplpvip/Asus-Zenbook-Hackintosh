@@ -114,6 +114,13 @@ cp $SRCCONFIG/config_master.plist $BUILDCONFIG/config_ux310_kabylake.plist
 patchTRIM $BUILDCONFIG/config_ux310_kabylake.plist
 echo
 
+echo creating config_ux330_kabylaker.plist
+cp $SRCCONFIG/config_master.plist $BUILDCONFIG/config_ux330_kabylaker.plist
+/usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" $BUILDCONFIG/config_ux330_kabylaker.plist
+./tools/merge_plist.sh "KernelAndKextPatches" $SRCCONFIG/config_KabyLake.plist $BUILDCONFIG/config_ux330_kabylaker.plist
+patchTRIM $BUILDCONFIG/config_ux330_kabylaker.plist
+echo
+
 echo creating config_ux410_kabylake.plist
 cp $SRCCONFIG/config_master.plist $BUILDCONFIG/config_ux410_kabylake.plist
 /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" $BUILDCONFIG/config_ux410_kabylake.plist
