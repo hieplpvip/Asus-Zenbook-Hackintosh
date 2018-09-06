@@ -6,6 +6,8 @@ ux303-broadwell: patched acpi files for UX303 (Broadwell)
 
 ux310-kabylake: patched acpi files for UX310 (KabyLake)
 
+ux330-kabylaker: patched acpi files for UX330 (KabyLake-R)
+
 ux410-kabylake: patched acpi files for UX410 (KabyLake)
 
 ux430-kabylake: patched acpi files for UX430 (KabyLake)
@@ -25,6 +27,8 @@ Choose the files you need and copy them to /EFI/CLOVER/ACPI/patched
 config_ux303_broadwell.plist: UX303 (Broadwell)
 
 config_ux310_kabylake.plist: UX310 (KabyLake)
+
+config_ux330_kabylaker.plist: UX330 (KabyLake-R)
 
 config_ux410_kabylake.plist: UX410 (KabyLake)
 
