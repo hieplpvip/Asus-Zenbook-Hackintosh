@@ -9,3 +9,5 @@ about: Add support for new model
 **Full specs**
 
 **Attach original DSDT from Clover**
+
+**Attach full report from AIDA64 (if possible)**
