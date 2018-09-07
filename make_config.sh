@@ -32,7 +32,6 @@ echo
 #    fi
 #    echo
 #done
-country="US" # used to get 5ghz wifi working
 
 function countArray()
 # $1 is path to config.plist
@@ -114,6 +113,14 @@ cp $SRCCONFIG/config_master.plist $BUILDCONFIG/config_ux310_kabylake.plist
 /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" $BUILDCONFIG/config_ux310_kabylake.plist
 ./tools/merge_plist.sh "KernelAndKextPatches" $SRCCONFIG/config_KabyLake.plist $BUILDCONFIG/config_ux310_kabylake.plist
 patchTRIM $BUILDCONFIG/config_ux310_kabylake.plist
+echo
+
+echo creating config_ux330_kabylake.plist
+cp $SRCCONFIG/config_master.plist $BUILDCONFIG/config_ux330_kabylake.plist
+/usr/libexec/PlistBuddy -c "Add :Comment string This config is created by @hieplpvip for UX330 (KabyLake)" $BUILDCONFIG/config_ux330_kabylake.plist
+/usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" $BUILDCONFIG/config_ux330_kabylake.plist
+./tools/merge_plist.sh "KernelAndKextPatches" $SRCCONFIG/config_KabyLake.plist $BUILDCONFIG/config_ux330_kabylake.plist
+patchTRIM $BUILDCONFIG/config_ux330_kabylake.plist
 echo
 
 echo creating config_ux330_kabylaker.plist

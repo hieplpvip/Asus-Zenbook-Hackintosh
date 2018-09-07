@@ -18,6 +18,10 @@ $IASL -vw 2095 -vw 2146 -vw 2089 -vw 4089 -vi -vr -p $BUILDACPI/ux303-broadwell/
 if [ ! -d ./$BUILDACPI/ux310-kabylake ]; then mkdir ./$BUILDACPI/ux310-kabylake; fi && rm -Rf $BUILDACPI/ux310-kabylake/*
 $IASL -vw 2095 -vw 2146 -vw 2089 -vw 4089 -vi -vr -p $BUILDACPI/ux310-kabylake/SSDT-UX310-KabyLake.aml $SRCHOTPATCH/SSDT-UX310-KabyLake.dsl
 
+#ux330 kabylake
+if [ ! -d ./$BUILDACPI/ux330-kabylake ]; then mkdir ./$BUILDACPI/ux330-kabylake; fi && rm -Rf $BUILDACPI/ux330-kabylake/*
+$IASL -vw 2095 -vw 2146 -vw 2089 -vw 4089 -vi -vr -p $BUILDACPI/ux330-kabylake/SSDT-UX330-KabyLake.aml $SRCHOTPATCH/SSDT-UX330-KabyLake.dsl
+
 #ux330 kabylaker
 if [ ! -d ./$BUILDACPI/ux330-kabylaker ]; then mkdir ./$BUILDACPI/ux330-kabylaker; fi && rm -Rf $BUILDACPI/ux330-kabylaker/*
 $IASL -vw 2095 -vw 2146 -vw 2089 -vw 4089 -vi -vr -p $BUILDACPI/ux330-kabylaker/SSDT-UX330-KabyLakeR.aml $SRCHOTPATCH/SSDT-UX330-KabyLakeR.dsl
