@@ -73,6 +73,11 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
             Return (^^PCI0.LPCB.EC0.RALS ())
         }
         
+        Method (ALSC, 1, NotSerialized)
+        {
+            Return (^^PCI0.LPCB.EC0.ALSC (Arg0))
+        }
+        
         Method (EALS, 1, NotSerialized)
         {
             Return (^^PCI0.LPCB.EC0.ALSC (Arg0))
@@ -84,6 +89,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
         // Ambient light sensor notification, from EMlyDinEsH
         Method (_QCD, 0, NotSerialized)
         {
+            Notify (ALS, 0x80)
             If (ATKP)
             {
                 ^^^^ATKD.IANE (0xC6)

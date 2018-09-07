@@ -82,6 +82,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
         // Ambient light sensor notification, from EMlyDinEsH
         Method (_QCD, 0, NotSerialized)
         {
+            Notify (ALS, 0x80)
             If (ATKP)
             {
                 ^^^^ATKD.IANE (0xC6)
