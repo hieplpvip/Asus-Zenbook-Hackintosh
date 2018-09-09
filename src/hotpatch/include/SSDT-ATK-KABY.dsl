@@ -70,17 +70,20 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
         
         Method (ALSS, 0, NotSerialized)
         {
-            Return (^^PCI0.LPCB.EC0.RALS ())
+            If (CondRefOf(^^PCI0.LPCB.EC0.RALS))
+            {
+                Return (^^PCI0.LPCB.EC0.RALS ())
+            }
+            Return (0x0190)
         }
         
         Method (ALSC, 1, NotSerialized)
         {
-            Return (^^PCI0.LPCB.EC0.ALSC (Arg0))
-        }
-        
-        Method (EALS, 1, NotSerialized)
-        {
-            Return (^^PCI0.LPCB.EC0.ALSC (Arg0))
+            If (CondRefOf(^^PCI0.LPCB.EC0.ALSC))
+            {
+                Return (^^PCI0.LPCB.EC0.ALSC (Arg0))
+            }
+            Return (0)
         }
     }
     
