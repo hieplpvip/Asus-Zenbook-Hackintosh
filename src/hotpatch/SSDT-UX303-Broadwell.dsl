@@ -11,8 +11,9 @@ DefinitionBlock ("", "SSDT", 2, "hack", "ux303bdw", 0)
     // battery
     #include "include/SSDT-BATT.dsl"
     
-    // fn keys
+    // keyboard backlight/fn keys/als
     #include "include/SSDT-ATK-BDW.dsl"
+    #include "include/SSDT-RALS.dsl"
     
     // backlight
     #include "include/SSDT-PNLF.dsl"

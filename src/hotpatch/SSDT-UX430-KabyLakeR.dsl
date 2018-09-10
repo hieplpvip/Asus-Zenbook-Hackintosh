@@ -11,8 +11,10 @@ DefinitionBlock ("", "SSDT", 2, "hack", "ux430klr", 0)
     // battery
     #include "include/SSDT-BATT.dsl"
     
-    // fn keys
+    // keyboard backlight/fn keys/als
     #include "include/SSDT-ATK-KABY.dsl"
+    #include "include/SSDT-RALS.dsl"
+    #include "include/SSDT-ALSC.dsl"
     
     // backlight
     #include "include/SSDT-PNLF.dsl"

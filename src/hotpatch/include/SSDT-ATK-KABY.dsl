@@ -3,15 +3,12 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
 {
 #endif
     External (ATKP, IntObj)
-    External (_SB.ALS, DeviceObj)
     External (_SB.ATKD, DeviceObj)
     External (_SB.ATKD.IANE, MethodObj)
     External (_SB.KBLV, FieldUnitObj)
     External (_SB.PCI0.LPCB.EC0, DeviceObj)
     External (_SB.PCI0.LPCB.EC0.WRAM, MethodObj)
     External (_SB.PCI0.LPCB.EC0.ST9E, MethodObj)
-    External (_SB.PCI0.LPCB.EC0.RALS, MethodObj)
-    External (_SB.PCI0.LPCB.EC0.ALSC, MethodObj)
     Scope (_SB.ATKD)
     {
         Name (BOFF, 0)
@@ -67,46 +64,10 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
             
             Return (^^KBLV)
         }
-        
-        Method (ALSS, 0, NotSerialized)
-        {
-            If (CondRefOf(^^PCI0.LPCB.EC0.RALS))
-            {
-                Return (^^PCI0.LPCB.EC0.RALS ())
-            }
-            Return (0x0190)
-        }
-        
-        Method (ALSC, 1, NotSerialized)
-        {
-            If (CondRefOf(^^PCI0.LPCB.EC0.ALSC))
-            {
-                Return (^^PCI0.LPCB.EC0.ALSC (Arg0))
-            }
-            Return (0)
-        }
     }
     
     Scope (_SB.PCI0.LPCB.EC0)
     {
-        // Ambient light sensor notification, from EMlyDinEsH
-        Method (_QCD, 0, NotSerialized)
-        {
-            Notify (ALS, 0x80)
-            If (ATKP)
-            {
-                ^^^^ATKD.IANE (0xC6)
-            }
-        }
-
-        Method (_Q76, 0, NotSerialized)  // Fn+A
-        {
-            If (ATKP)
-            {
-                ^^^^ATKD.IANE (0x7A)
-            }
-        }
-        
         Method (_Q0A, 0, NotSerialized) // F1 key
         {
             If (ATKP)
@@ -146,11 +107,6 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
                 \_SB.ATKD.IANE (0x61)
             }
         }
-    }
-    
-    Scope (_SB.ALS)
-    {
-        Name(_CID, "smc-als")
     }
 #ifndef NO_DEFINITIONBLOCK
 }
