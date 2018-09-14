@@ -20,6 +20,7 @@ To add support for your laptop, please provide full specs and original ACPI file
 - Trackpad has some minor bugs (random cursor jumping, etc.), but gestures are great
 - Wifi/Bluetooth: replace with DW1560. Stock Intel card will never work
 - Audio not working 100% on UX430
+- ALS not working (will add support for it when [VirtualSMC](https://github.com/acidanthera/VirtualSMC) is released)
 - Everything else works well
 
 ## Instruction
