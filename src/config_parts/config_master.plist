@@ -253,6 +253,14 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
+					<string>ALS: change Method(RALS,0,S) XALS</string>
+					<key>Find</key>
+					<data>UkFMUwA=</data>
+					<key>Replace</key>
+					<data>WEFMUwA=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
 					<string>change Method(_Q0A,0,NS) to XQ0A</string>
 					<key>Find</key>
 					<data>X1EwQQA=</data>
