@@ -44,15 +44,15 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
             Local0 = 0x0900
             Local0 += 0xF0
             ^^PCI0.LPCB.EC0.WRAM (Local0, ^^KBLV)
-            Local0 = DerefOf (PWKB [^^KBLV])
+            Local0 = DerefOf (KBPW [^^KBLV])
             ^^PCI0.LPCB.EC0.ST9E (0x1F, 0xFF, Local0)
             // End customizable part**
             Return (Local0)
         }
         
-        Name (PWKB, Buffer (0x04)
+        Name (KBPW, Buffer ()
         {
-            0x00, 0x55, 0xAA, 0xFF                         
+            0x00, 0x10, 0x20, 0x30, 0x40, 0x50, 0x60, 0x70, 0x80, 0x90, 0xA0, 0xB0, 0xC0, 0xD0, 0xE0, 0xF0, 0xFF
         })
         
         Method (GKBL, 1, NotSerialized)
