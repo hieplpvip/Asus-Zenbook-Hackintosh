@@ -21,6 +21,7 @@ To add support for your laptop, please provide full specs and original ACPI file
 - Wifi/Bluetooth: replace with DW1560. Stock Intel card will never work
 - Audio not working 100% on UX430
 - ALS not working (will add support for it when [VirtualSMC](https://github.com/acidanthera/VirtualSMC) is released)
+- Keyboard backlight with 16 levels even on new laptops (Windows only supports 3). Sounds crazy, right? 
 - Everything else works well
 
 ## Instruction
