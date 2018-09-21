@@ -11,43 +11,25 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
     External (_SB.PCI0.LPCB.EC0.ST9E, MethodObj)
     Scope (_SB.ATKD)
     {
-        Name (BOFF, 0)
         Method (SKBL, 1, NotSerialized)
         {
-            If ((Arg0 == 0xED) || (Arg0 == 0xFD))
-            {
-                If ((Arg0 == 0xED) && (^BOFF == 0xEA))
-                {
-                    Local0 = 0
-                    ^BOFF = Arg0
-                }
-                ElseIf ((Arg0 == 0xFD) && (^BOFF == 0xFA))
-                {
-                    Local0 = 0
-                    ^BOFF = Arg0
-                }
-                Else
-                {
-                    Return (^BOFF)
-                }
-            }
-            ElseIf ((Arg0 == 0xEA) || (Arg0 == 0xFA))
-            {
-                ^BOFF = Arg0
-            }
-            Else
-            {
-                ^^KBLV = Arg0 & 0x7F
-            }
+            ^^KBLV = Arg0 & 0x7F
             
-            // **Customizable part from method SLKB
-            Local0 = 0x0900
-            Local0 += 0xF0
-            ^^PCI0.LPCB.EC0.WRAM (Local0, ^^KBLV)
+            // ** Code from method SLKB
+            ^^PCI0.LPCB.EC0.WRAM (0x09F0, ^^KBLV)
             Local0 = DerefOf (KBPW [^^KBLV])
             ^^PCI0.LPCB.EC0.ST9E (0x1F, 0xFF, Local0)
-            // End customizable part**
-            Return (Local0)
+            // **
+            
+            Return (Arg0)
+        }
+        
+        Method (SKBV, 1, NotSerialized)
+        {
+            ^^KBLV = Arg0 / 16;
+            ^^PCI0.LPCB.EC0.WRAM (0x09F0, ^^KBLV)
+            ^^PCI0.LPCB.EC0.ST9E (0x1F, 0xFF, Arg0)
+            Return (Arg0)
         }
         
         Name (KBPW, Buffer ()
@@ -56,12 +38,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
         })
         
         Method (GKBL, 1, NotSerialized)
-        {
-            If (Arg0 == 0xFF)
-            {
-                Return (^BOFF)
-            }
-            
+        {   
             Return (^^KBLV)
         }
     }
