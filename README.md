@@ -34,8 +34,7 @@ To add support for your laptop, please provide full specs and original ACPI file
 
 ## WIP Kexts
 
-* [VoodooI2C](https://github.com/hieplpvip/VoodooI2C/tree/native)
-* [AsusFnKeys](https://github.com/hieplpvip/AsusFnKeys)
+* [AsusSMC](https://github.com/hieplpvip/AsusSMC)
 
 ## Credits
 
