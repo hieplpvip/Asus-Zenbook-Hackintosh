@@ -10,56 +10,28 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
     External (_SB.PCI0.LPCB.EC0.WRAM, MethodObj)
     Scope (_SB.ATKD)
     {
-        Name (BOFF, 0)
         Method (SKBL, 1, NotSerialized)
         {
-            If ((Arg0 == 0xED) || (Arg0 == 0xFD))
-            {
-                If ((Arg0 == 0xED) && (^BOFF == 0xEA))
-                {
-                    Local0 = 0
-                    ^BOFF = Arg0
-                }
-                Else
-                {
-                    If ((Arg0 == 0xFD) && (^BOFF == 0xFA))
-                    {
-                        Local0 = 0
-                        ^BOFF = Arg0
-                    }
-                    Else
-                    {
-                        Return (^BOFF)
-                    }
-                }
-            }
-            Else
-            {
-                If ((Arg0 == 0xEA) || (Arg0 == 0xFA))
-                {
-                    Local0 = ^^KBLV
-                    ^BOFF = Arg0
-                }
-                Else
-                {
-                    Local0 = Arg0
-                    ^^KBLV = Arg0
-                }
-            }
-            Local1 = DerefOf (KBPW [Local0])
-            ^^PCI0.LPCB.EC0.WRAM (0x04B1, Local1)
-            Return (Local0)
+            ^^KBLV = Arg0
+            Local0 = DerefOf (KBPW [KBLV])
+            ^^PCI0.LPCB.EC0.WRAM (0x04B1, Local0)
+            Return (Arg0)
         }
+        
+        Method (SKBV, 1, NotSerialized)
+        {
+            ^^KBLV = Arg0 / 16;
+            ^^PCI0.LPCB.EC0.WRAM (0x04B1, Arg0)
+            Return (Arg0)
+        }
+        
         Name (KBPW, Buffer ()
         {
             0x00, 0x10, 0x20, 0x30, 0x40, 0x50, 0x60, 0x70, 0x80, 0x90, 0xA0, 0xB0, 0xC0, 0xD0, 0xE0, 0xF0, 0xFF
         })
+        
         Method (GKBL, 1, NotSerialized)
         {
-            If (Arg0 == 0xFF)
-            {
-                Return (^BOFF)
-            }
             Return (^^KBLV)
         }
     }
