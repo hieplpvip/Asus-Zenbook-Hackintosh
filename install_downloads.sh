@@ -121,6 +121,8 @@ else
     idx=$1
 fi
 
+. ./src/models/"${MODELCONFIG[$idx]}"
+
 PS3='Do you want to install tools: '
 options=("Yes" "No")
 select opt in "${options[@]}"
@@ -248,9 +250,9 @@ echo Installing AsusFnKeysDaemon...
 ./downloads/kexts/nbb_hieplpvip-AsusFnKeys/install_daemon.sh
 echo
 
-if [[ "${ALCPLUGFIX[$idx]}" != "" ]]; then
+if [[ "$ALCPLUGFIX" != "" ]]; then
         echo Installing ALCPlugFix...
-        cd ./src/alcplugfix/"${ALCPLUGFIX[$idx]}"
+        cd ./src/alcplugfix/$ALCPLUGFIX
         sudo ./install.sh
         cd ../..
         echo

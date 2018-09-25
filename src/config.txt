@@ -10,7 +10,4 @@ CONFIGBAK=EFI/CLOVER/config_backup
 KEXTSBAK=EFI/CLOVER/kexts_backup
 
 MODELS=("UX310 (KabyLake)" "UX330 (KabyLake)" "UX330 (KabyLake-R)" "UX410 (KabyLake)" "UX430 (KabyLake)" "UX430 (KabyLake-R)")
-CONFIGPLIST=("config_ux310_kabylake.plist" "config_ux330_kabylake.plist" "config_ux330_kabylaker.plist" "config_ux410_kabylake.plist" "config_ux430_kabylake.plist" "config_ux430_kabylaker.plist")
-PRODUCTNAME=("MacBookPro14,1" "MacBookPro14,1" "MacBookPro14,1" "MacBookPro14,1" "MacBookPro14,1" "MacBookPro14,1")
-AMLDIR=("ux310-kabylake" "ux330-kabylake" "ux330-kabylaker" "ux410-kabylake" "ux430-kabylake" "ux430-kabylaker")
-ALCPLUGFIX=("" "alc295" "" "" "alc295" "")
+MODELCONFIG=("ux310-kabylake.txt" "ux330-kabylake.txt" "ux330-kabylaker.txt" "ux410-kabylake.txt" "ux430-kabylake.txt" "ux430-kabylaker.txt")

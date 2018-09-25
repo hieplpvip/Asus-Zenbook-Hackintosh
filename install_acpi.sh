@@ -26,6 +26,8 @@ else
     idx=$1
 fi
 
+. ./src/models/"${MODELCONFIG[$idx]}"
+
 if [[ "$2" == "0" ]]; then
     FANPREF=READ
 elif [[ "$2" == "1" ]]; then
@@ -65,10 +67,10 @@ fi
 mkdir -p $ACPIPATCHED
 cp $BUILDACPI/SSDT-FAN-$FANPREF.aml $ACPIPATCHED
 
-echo "Installing ACPI for ${MODELS[$idx]}..."
+echo "Installing ACPI for $NAME..."
 echo
 
-for aml in $BUILDACPI/"${AMLDIR[$idx]}"/*.aml; do
+for aml in $BUILDACPI/$AMLDIR/*.aml; do
     cp $aml $ACPIPATCHED
 done
 ls $ACPIPATCHED

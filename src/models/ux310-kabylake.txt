@@ -1,0 +1,5 @@
+NAME="UX310 (KabyLake)"
+CONFIGPLIST="config_ux310_kabylake.plist"
+PRODUCTNAME="MacBookPro14,1"
+AMLDIR="ux310-kabylake"
+ALCPLUGFIX=""

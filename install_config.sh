@@ -26,8 +26,10 @@ else
     idx=$1
 fi
 
-config=$BUILDCONFIG"/${CONFIGPLIST[$idx]}"
-product="${PRODUCTNAME[$idx]}"
+. ./src/models/"${MODELCONFIG[$idx]}"
+
+config=$BUILDCONFIG/$CONFIGPLIST
+product=$PRODUCTNAME
 
 echo Mounting EFI...
 EFI=`./mount_efi.sh`
@@ -42,7 +44,7 @@ if [ -f $EFICONFIG ]; then
     mv $EFICONFIG $BAKCONFIG
 fi
 
-echo "Installing config.plist for ${MODELS[$idx]}..."
+echo "Installing config.plist for $NAME..."
 echo
 
 cp $config $EFICONFIG
