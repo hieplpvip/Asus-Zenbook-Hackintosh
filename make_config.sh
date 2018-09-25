@@ -98,59 +98,24 @@ if [ ! -d $BUILDDIR ]; then mkdir $BUILDDIR; fi
 rm -rf $BUILDCONFIG
 mkdir $BUILDCONFIG
 
+for i in "${!MODELCONFIG[@]}"; do
+    . ./src/models/"${MODELCONFIG[$i]}"
+    echo creating $CONFIGPLIST
+    cp $SRCCONFIG/config_master.plist $BUILDCONFIG/$CONFIGPLIST
+    /usr/libexec/PlistBuddy -c "Add :Comment string This config is created by @hieplpvip for $NAME" $BUILDCONFIG/$CONFIGPLIST
+    /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName $PRODUCTNAME" $BUILDCONFIG/$CONFIGPLIST
+    for j in "${!CONFIGPARTS[@]}"; do
+        ./tools/merge_plist.sh "${CONFIGMERGE[$j]}" $SRCCONFIG/"${CONFIGPARTS[$j]}" $BUILDCONFIG/$CONFIGPLIST
+    done
+    patchTRIM $BUILDCONFIG/$CONFIGPLIST
+    if [[ "$ETPDPATCH" == "true" ]]; then enableI2CPatch $BUILDCONFIG/$CONFIGPLIST; fi
+    echo
+done
+
 echo creating config_ux303_broadwell.plist
 cp $SRCCONFIG/config_master.plist $BUILDCONFIG/config_ux303_broadwell.plist
 /usr/libexec/PlistBuddy -c "Add :Comment string This config is created by @hieplpvip for UX303 (Broadwell)" $BUILDCONFIG/config_ux303_broadwell.plist
 /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro12,1" $BUILDCONFIG/config_ux303_broadwell.plist
 ./tools/merge_plist.sh "KernelAndKextPatches" $SRCCONFIG/config_Broadwell.plist $BUILDCONFIG/config_ux303_broadwell.plist
 patchTRIM $BUILDCONFIG/config_ux303_broadwell.plist
-echo
-
-echo creating config_ux310_kabylake.plist
-cp $SRCCONFIG/config_master.plist $BUILDCONFIG/config_ux310_kabylake.plist
-/usr/libexec/PlistBuddy -c "Add :Comment string This config is created by @hieplpvip for UX310 (KabyLake)" $BUILDCONFIG/config_ux310_kabylake.plist
-/usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" $BUILDCONFIG/config_ux310_kabylake.plist
-./tools/merge_plist.sh "KernelAndKextPatches" $SRCCONFIG/config_KabyLake.plist $BUILDCONFIG/config_ux310_kabylake.plist
-patchTRIM $BUILDCONFIG/config_ux310_kabylake.plist
-echo
-
-echo creating config_ux330_kabylake.plist
-cp $SRCCONFIG/config_master.plist $BUILDCONFIG/config_ux330_kabylake.plist
-/usr/libexec/PlistBuddy -c "Add :Comment string This config is created by @hieplpvip for UX330 (KabyLake)" $BUILDCONFIG/config_ux330_kabylake.plist
-/usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" $BUILDCONFIG/config_ux330_kabylake.plist
-./tools/merge_plist.sh "KernelAndKextPatches" $SRCCONFIG/config_KabyLake.plist $BUILDCONFIG/config_ux330_kabylake.plist
-patchTRIM $BUILDCONFIG/config_ux330_kabylake.plist
-echo
-
-echo creating config_ux330_kabylaker.plist
-cp $SRCCONFIG/config_master.plist $BUILDCONFIG/config_ux330_kabylaker.plist
-/usr/libexec/PlistBuddy -c "Add :Comment string This config is created by @hieplpvip for UX330 (KabyLake-R)" $BUILDCONFIG/config_ux330_kabylaker.plist
-/usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" $BUILDCONFIG/config_ux330_kabylaker.plist
-./tools/merge_plist.sh "KernelAndKextPatches" $SRCCONFIG/config_KabyLake.plist $BUILDCONFIG/config_ux330_kabylaker.plist
-patchTRIM $BUILDCONFIG/config_ux330_kabylaker.plist
-echo
-
-echo creating config_ux410_kabylake.plist
-cp $SRCCONFIG/config_master.plist $BUILDCONFIG/config_ux410_kabylake.plist
-/usr/libexec/PlistBuddy -c "Add :Comment string This config is created by @hieplpvip for UX410 (KabyLake)" $BUILDCONFIG/config_ux410_kabylake.plist
-/usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" $BUILDCONFIG/config_ux410_kabylake.plist
-./tools/merge_plist.sh "KernelAndKextPatches" $SRCCONFIG/config_KabyLake.plist $BUILDCONFIG/config_ux410_kabylake.plist
-patchTRIM $BUILDCONFIG/config_ux410_kabylake.plist
-echo
-
-echo creating config_ux430_kabylake.plist
-cp $SRCCONFIG/config_master.plist $BUILDCONFIG/config_ux430_kabylake.plist
-/usr/libexec/PlistBuddy -c "Add :Comment string This config is created by @hieplpvip for UX430 (KabyLake)" $BUILDCONFIG/config_ux430_kabylake.plist
-/usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" $BUILDCONFIG/config_ux430_kabylake.plist
-./tools/merge_plist.sh "KernelAndKextPatches" $SRCCONFIG/config_KabyLake.plist $BUILDCONFIG/config_ux430_kabylake.plist
-patchTRIM $BUILDCONFIG/config_ux430_kabylake.plist
-echo
-
-echo creating config_ux430_kabylaker.plist
-cp $SRCCONFIG/config_master.plist $BUILDCONFIG/config_ux430_kabylaker.plist
-/usr/libexec/PlistBuddy -c "Add :Comment string This config is created by @hieplpvip for UX430 (KabyLake-R)" $BUILDCONFIG/config_ux430_kabylaker.plist
-/usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro14,1" $BUILDCONFIG/config_ux430_kabylaker.plist # use MacBookPro14,1 for now, as support for MacBookPro15,2 isn't officialy out
-./tools/merge_plist.sh "KernelAndKextPatches" $SRCCONFIG/config_KabyLake.plist $BUILDCONFIG/config_ux430_kabylaker.plist
-enableI2CPatch $BUILDCONFIG/config_ux430_kabylaker.plist
-patchTRIM $BUILDCONFIG/config_ux430_kabylaker.plist
 echo
