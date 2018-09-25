@@ -1,5 +1,8 @@
 NAME="UX430 (KabyLake)"
 CONFIGPLIST="config_ux430_kabylake.plist"
+CONFIGPARTS=("config_KabyLake.plist")
+CONFIGMERGE=("KernelAndKextPatches")
+ETPDPATCH=false
 PRODUCTNAME="MacBookPro14,1"
 AMLFILES=("SSDT-UX430-KabyLake")
 AMLDIR="ux430-kabylake"
