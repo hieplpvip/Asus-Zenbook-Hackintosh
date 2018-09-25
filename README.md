@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/ASUS-ZENBOOK-HACKINTOSH/Lobby](https://badges.gitter.im/ASUS-ZENBOOK-HACKINTOSH/Lobby.svg)](https://gitter.im/ASUS-ZENBOOK-HACKINTOSH/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Clover hotpatches and tools for the Asus Zenbook laptop on macOS 10.14
+Clover hotpatches and tools for the Asus Zenbook laptop on macOS 10.13.6+
 
 ## Supported models
 
