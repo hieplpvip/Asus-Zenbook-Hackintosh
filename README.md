@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/ASUS-ZENBOOK-HACKINTOSH/Lobby](https://badges.gitter.im/ASUS-ZENBOOK-HACKINTOSH/Lobby.svg)](https://gitter.im/ASUS-ZENBOOK-HACKINTOSH/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Clover hotpatches and tools for the Asus Zenbook laptop on macOS 10.13.6
+Clover hotpatches and tools for the Asus Zenbook laptop on macOS 10.14
 
 ## Supported models
 
@@ -19,9 +19,7 @@ To add support for your laptop, please provide full specs and original ACPI file
 
 - Trackpad has some minor bugs (random cursor jumping, etc.), but gestures are great
 - Wifi/Bluetooth: replace with DW1560. Stock Intel card will never work
-- Audio not working 100% on UX430
-- ALS not working (will add support for it when [VirtualSMC](https://github.com/acidanthera/VirtualSMC) is released)
-- Keyboard backlight with 16 levels even on new laptops (Windows only supports 3). Sounds crazy, right? 
+- Audio not working 100% on UX430 KabyLake-R
 - Everything else works well
 
 ## Instruction
@@ -38,9 +36,9 @@ To add support for your laptop, please provide full specs and original ACPI file
 
 ## Credits
 
-@alexandred for VoodooI2C
+@alexandred and his team for VoodooI2C
 
-@vit9696 for Lilu, AppleALC, WhateverGreen, AptioMemoryFix and ApfsDriverLoader
+@acidanthera (@vit9696, @lvs1974, @vandroiy2013, etc.) for Lilu, AppleALC, VirtualSMC, WhateverGreen, AptioMemoryFix and ApfsDriverLoader
 
 @gulios (see https://www.tonymacx86.com/threads/asus-ux430ua-kaby-lake-intel-hd-graphics-620.225847) 
 
@@ -48,9 +46,9 @@ To add support for your laptop, please provide full specs and original ACPI file
 
 @black.dragon74 for custom FAN control (see https://osxlatitude.com/forums/topic/10244-how-to-implement-custom-fan-control-on-asus-laptops/)
 
-Special thanks: @RehabMan
+and many more that I can't list here. See [References](../../wiki/References) for full list.
 
-See [References](../../wiki/References) for full list.
+Special thanks: @RehabMan
 
 ## [Donate me](https://paypal.me/hieplpvip)
 Any donation is highly appreciated

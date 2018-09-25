@@ -28,9 +28,6 @@ fi
 
 . ./src/models/"${MODELCONFIG[$idx]}"
 
-config=$BUILDCONFIG/$CONFIGPLIST
-product=$PRODUCTNAME
-
 echo Mounting EFI...
 EFI=`./mount_efi.sh`
 EFICONFIG=$EFI/EFI/CLOVER/config.plist
@@ -47,13 +44,13 @@ fi
 echo "Installing config.plist for $NAME..."
 echo
 
-cp $config $EFICONFIG
+cp $BUILDCONFIG/$CONFIGPLIST $EFICONFIG
 if [ -f $BAKCONFIG ]; then
     echo "Restoring SMBIOS..."
     /usr/libexec/PlistBuddy -c "Delete :SMBIOS" $EFICONFIG
     /usr/libexec/PlistBuddy -c "Add :SMBIOS dict" $EFICONFIG
     ./tools/merge_plist.sh "SMBIOS" $BAKCONFIG $EFICONFIG
-    /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName $product" $EFICONFIG
+    /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName $PRODUCTNAME" $EFICONFIG
     echo "Restoring theme..."
     theme=`/usr/libexec/PlistBuddy -c "Print :GUI:Theme" $BAKCONFIG`
     /usr/libexec/PlistBuddy -c "Set :GUI:Theme $theme" $EFICONFIG
