@@ -86,10 +86,10 @@ rm -rf ./le_kexts
 rm -rf ./clover_kexts
 rm -rf ./kexts
 rm -rf ./tools
+rm -rf ./drivers
 
 # download kexts
 mkdir ./kexts && cd ./kexts
-download os-x-fakesmc-kozlek RehabMan-FakeSMC
 download os-x-voodoo-ps2-controller RehabMan-Voodoo
 download os-x-acpi-battery-driver RehabMan-Battery
 download os-x-fake-pci-id RehabMan-FakePCIID
@@ -105,11 +105,11 @@ download_latest_notbitbucket "https://github.com" "https://github.com/acidanther
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/BT4LEContiunityFixup/releases" "RELEASE" "nbb_acidanthera-BT4LEContiunityFixup.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/PMheart/LiluFriend/releases" "RELEASE" "nbb_PMheart-LiluFriend.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AppleBacklightFixup/releases" "RELEASE" "nbb_hieplpvip-AppleBacklightFixup.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AsusFnKeys/releases" "RELEASE" "nbb_hieplpvip-AsusFnKeys.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AsusSMC/releases" "RELEASE" "nbb_hieplpvip-AsusSMC.zip"
 if [ $i2c -eq 1 ]; then
     download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/VoodooI2C/releases" "VoodooI2C-ASUS-" "nbb_hieplpvip-VoodooI2C.zip"
 else
-    download_latest_notbitbucket "https://github.com" "https://github.com/alexandred/VoodooI2C/releases" "VoodooI2C-v" "nbb_alexandred-VoodooI2C.zip"
+    download_latest_notbitbucket "https://github.com" "https://github.com/alexandred/VoodooI2C/releases" "VoodooI2C.v" "nbb_alexandred-VoodooI2C.zip"
 fi
 if [ $nullethernet -eq 1 ]; then
     download os-x-null-ethernet RehabMan-NullEthernet
@@ -126,8 +126,8 @@ download_raw https://raw.githubusercontent.com/black-dragon74/OSX-Debug/master/I
 cd ..
 
 NECESSARYLEKEXTS="BrcmPatchRAM2|BrcmFirmwareRepo|CodecCommander"
-LEKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AppleBacklightFixup|AsusFnKeys|AirportBrcmFixup|BT4LEContiunityFixup|FakePCIID.kext|FakePCIID_Broadcom_WiFi|FakeSMC|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
-CLOVERKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AppleBacklightFixup|AsusFnKeys|AirportBrcmFixup|BT4LEContiunityFixup|FakePCIID.kext|FakePCIID_Broadcom_WiFi|FakeSMC|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
+LEKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AppleBacklightFixup|AsusSMC|AirportBrcmFixup|BT4LEContiunityFixup|FakePCIID.kext|FakePCIID_Broadcom_WiFi|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VirtualSMC|SMCProcessor.kext|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
+CLOVERKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AppleBacklightFixup|AsusSMC|AirportBrcmFixup|BT4LEContiunityFixup|FakePCIID.kext|FakePCIID_Broadcom_WiFi|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|USBInjectAll|VirtualSMC|SMCProcessor.kext|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
 
 function check_directory
 {
@@ -174,6 +174,21 @@ function unzip_kext
             fi
         done
     fi
+    check_directory $out/Kexts/*.kext
+    if [ $? -ne 0 ]; then
+        for kext in $out/Kexts/*.kext; do
+            kextname="`basename $kext`"
+            if [[ "`echo $kextname | grep -E $NECESSARYLEKEXTS`" != "" ]]; then
+                cp -R $kext ../necessary_le_kexts
+            fi
+            if [[ "`echo $kextname | grep -E $LEKEXTS`" != "" ]]; then
+                cp -R $kext ../le_kexts
+            fi
+            if [[ "`echo $kextname | grep -E $CLOVERKEXTS`" != "" ]]; then
+                cp -R $kext ../clover_kexts
+            fi
+        done
+    fi
 }
 
 mkdir ./necessary_le_kexts
@@ -195,9 +210,6 @@ if [ $? -ne 0 ]; then
     /usr/libexec/PlistBuddy -c "Set :IOKitPersonalities:'ACPI Poller':IONameMatch FAN00000" clover_kexts/ACPIPoller.kext/Contents/Info.plist
     /usr/libexec/PlistBuddy -c "Set :IOKitPersonalities:'ACPI Poller':Methods:0 FCPU" clover_kexts/ACPIPoller.kext/Contents/Info.plist
 
-    /usr/libexec/PlistBuddy -c "Set :IOKitPersonalities:FakeSMC:Configuration:smc-compatible smc-huronriver" le_kexts/FakeSMC.kext/Contents/Info.plist
-    /usr/libexec/PlistBuddy -c "Set :IOKitPersonalities:FakeSMC:Configuration:smc-compatible smc-huronriver" clover_kexts/FakeSMC.kext/Contents/Info.plist
-
     for thefile in $( find le_kexts \( -type f -name Info.plist -not -path '*/Lilu.kext/*' -not -path '*/LiluFriend.kext/*' -print0 \) | xargs -0 grep -l '<key>as.vit9696.Lilu</key>' ); do
         name="`/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' $thefile`"
         version="`/usr/libexec/PlistBuddy -c 'Print :OSBundleCompatibleVersion' $thefile`"
@@ -215,5 +227,9 @@ if [ $? -ne 0 ]; then
         fi
         /usr/libexec/PlistBuddy -c "Add :OSBundleLibraries:$name string $version" clover_kexts/LiluFriend.kext/Contents/Info.plist
     done
-    cd ..
 fi
+
+mkdir ./drivers
+cp ./kexts/nbb_acidanthera-VirtualSMC/Drivers/VirtualSmc.efi ./drivers
+
+cd ..
