@@ -1,7 +1,7 @@
 NAME="UX330 (KabyLake-R)"
 CONFIGPLIST="config_ux330_kabylaker.plist"
-CONFIGPARTS=("config_KabyLakeR.plist")
-CONFIGMERGE=("KernelAndKextPatches")
+CONFIGPARTS=()
+CONFIGMERGE=()
 ETPDPATCH=true
 PRODUCTNAME="MacBookPro14,1"
 AMLFILES=("SSDT-UX330-KabyLakeR")
