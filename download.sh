@@ -98,6 +98,7 @@ download os-x-brcmpatchram RehabMan-BrcmPatchRAM
 download os-x-acpi-poller RehabMan-Poller
 download os-x-usb-inject-all RehabMan-USBInjectAll
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/Lilu/releases" "RELEASE" "nbb_acidanthera-Lilu.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/VirtualSMC/releases" "RELEASE" "nbb_acidanthera-VirtualSMC.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AppleALC/releases" "RELEASE" "nbb_acidanthera-AppleALC.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/WhateverGreen/releases" "RELEASE" "nbb_acidanthera-WhateverGreen.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AirportBrcmFixup/releases" "RELEASE" "nbb_acidanthera-AirportBrcmFixup.zip"
@@ -184,9 +185,6 @@ if [ $? -ne 0 ]; then
     echo Unzipping kexts...
     cd ./kexts
     for kext in *.zip; do
-        if [[ "`echo $kext | grep FakeSMC`" != "" ]]; then
-            cp -R $kext ../tools
-        fi
         unzip_kext $kext
     done
 
