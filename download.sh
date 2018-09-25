@@ -48,14 +48,14 @@ function download_raw()
 }
 
 PS3='Which version of VoodooI2C do you want to use: '
-options=("alexandred" "hieplpvip (better multitouch)")
+options=("alexandred" "hieplpvip (better multitouch, choose this one if you're on Mojave)")
 select opt in "${options[@]}"
 do
     case $opt in
         "alexandred")
             i2c=0
             break;;
-        "hieplpvip (better multitouch)")
+        "hieplpvip (better multitouch, choose this one if you're on Mojave)")
             i2c=1
             break;;
         *) echo "Invalid";;
@@ -90,7 +90,8 @@ rm -rf ./drivers
 
 # download kexts
 mkdir ./kexts && cd ./kexts
-download os-x-voodoo-ps2-controller RehabMan-Voodoo
+#download os-x-voodoo-ps2-controller RehabMan-Voodoo
+download_raw https://bitbucket.org/RehabMan/os-x-voodoo-ps2-controller/downloads/RehabMan-Voodoo-2018-0506.zip RehabMan-Voodoo-2018-0506.zip #latest version cause kernel panic
 download os-x-acpi-battery-driver RehabMan-Battery
 download os-x-fake-pci-id RehabMan-FakePCIID
 download os-x-eapd-codec-commander RehabMan-CodecCommander
