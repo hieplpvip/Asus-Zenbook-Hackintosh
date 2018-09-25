@@ -30,10 +30,6 @@ To add support for your laptop, please provide full specs and original ACPI file
 
 [[Guide] Asus Zenbook using Clover UEFI hotpatch](https://www.tonymacx86.com/threads/guide-asus-zenbook-using-clover-uefi-hotpatch.257448/)
 
-## WIP Kexts
-
-* [AsusSMC](https://github.com/hieplpvip/AsusSMC)
-
 ## Credits
 
 @alexandred and his team for VoodooI2C
