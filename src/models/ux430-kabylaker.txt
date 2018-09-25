@@ -1,5 +1,6 @@
 NAME="UX430 (KabyLake-R)"
 CONFIGPLIST="config_ux430_kabylaker.plist"
 PRODUCTNAME="MacBookPro14,1"
+AMLFILES=("SSDT-UX430-KabyLakeR")
 AMLDIR="ux430-kabylaker"
 ALCPLUGFIX=""

@@ -9,19 +9,6 @@
 			<string>\System\Library\Extensions\IONetworkingFamily.kext</string>
 			<string>\System\Library\Extensions\AppleIntelBDWGraphicsFramebuffer.kext</string>
 		</array>
-		<key>KextsToPatch</key>
-		<array>
-			<dict>
-				<key>Comment</key>
-				<string>0x16260006,0x16260004/etc, 32MB BIOS, 19MB framebuffer, 9MB cursor bytes (credit RehabMan)</string>
-				<key>Name</key>
-				<string>com.apple.driver.AppleIntelBDWGraphicsFramebuffer</string>
-				<key>Find</key>
-				<data>AAAgAgAAUAE=</data>
-				<key>Replace</key>
-				<data>AAAwAQAAkAA=</data>
-			</dict>
-		</array>
 	</dict>
 </dict>
 </plist>
