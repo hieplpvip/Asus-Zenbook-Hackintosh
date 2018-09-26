@@ -47,21 +47,21 @@ function download_raw()
     echo
 }
 
-PS3='Which version of VoodooI2C do you want to use: '
-options=("alexandred" "hieplpvip (better multitouch, choose this one if you're on Mojave)")
-select opt in "${options[@]}"
-do
-    case $opt in
-        "alexandred")
-            i2c=0
-            break;;
-        "hieplpvip (better multitouch, choose this one if you're on Mojave)")
-            i2c=1
-            break;;
-        *) echo "Invalid";;
-    esac
-done
-echo
+#PS3='Which version of VoodooI2C do you want to use: '
+#options=("alexandred" "hieplpvip (better multitouch, choose this one if you're on Mojave)")
+#select opt in "${options[@]}"
+#do
+#    case $opt in
+#        "alexandred")
+#            i2c=0
+#            break;;
+#        "hieplpvip (better multitouch, choose this one if you're on Mojave)")
+#            i2c=1
+#            break;;
+#        *) echo "Invalid";;
+#    esac
+#done
+#echo
 
 PS3='Do you want to use NullEthernet?'$'\n''Yes if you use USB Wifi'$'\n''No if you have replaced your wifi card with a supported one: '
 options=("Yes" "No")
@@ -107,11 +107,11 @@ download_latest_notbitbucket "https://github.com" "https://github.com/acidanther
 download_latest_notbitbucket "https://github.com" "https://github.com/PMheart/LiluFriend/releases" "RELEASE" "nbb_PMheart-LiluFriend.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AppleBacklightFixup/releases" "RELEASE" "nbb_hieplpvip-AppleBacklightFixup.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AsusSMC/releases" "RELEASE" "nbb_hieplpvip-AsusSMC.zip"
-if [ $i2c -eq 1 ]; then
-    download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/VoodooI2C/releases" "VoodooI2C-ASUS-" "nbb_hieplpvip-VoodooI2C.zip"
-else
-    download_latest_notbitbucket "https://github.com" "https://github.com/alexandred/VoodooI2C/releases" "VoodooI2C.v" "nbb_alexandred-VoodooI2C.zip"
-fi
+#if [ $i2c -eq 1 ]; then
+#    download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/VoodooI2C/releases" "VoodooI2C-ASUS-" "nbb_hieplpvip-VoodooI2C.zip"
+#else
+download_latest_notbitbucket "https://github.com" "https://github.com/alexandred/VoodooI2C/releases" "VoodooI2C-v" "nbb_alexandred-VoodooI2C.zip"
+#fi
 if [ $nullethernet -eq 1 ]; then
     download os-x-null-ethernet RehabMan-NullEthernet
 fi
