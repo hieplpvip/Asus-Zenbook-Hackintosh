@@ -108,9 +108,9 @@ download_latest_notbitbucket "https://github.com" "https://github.com/PMheart/Li
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AppleBacklightFixup/releases" "RELEASE" "nbb_hieplpvip-AppleBacklightFixup.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AsusSMC/releases" "RELEASE" "nbb_hieplpvip-AsusSMC.zip"
 #if [ $i2c -eq 1 ]; then
-#    download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/VoodooI2C/releases" "VoodooI2C-ASUS-" "nbb_hieplpvip-VoodooI2C.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/VoodooI2C/releases" "VoodooI2C-v" "nbb_hieplpvip-VoodooI2C.zip"
 #else
-download_latest_notbitbucket "https://github.com" "https://github.com/alexandred/VoodooI2C/releases" "VoodooI2C-v" "nbb_alexandred-VoodooI2C.zip"
+#    download_latest_notbitbucket "https://github.com" "https://github.com/alexandred/VoodooI2C/releases" "VoodooI2C-v" "nbb_alexandred-VoodooI2C.zip"
 #fi
 if [ $nullethernet -eq 1 ]; then
     download os-x-null-ethernet RehabMan-NullEthernet
