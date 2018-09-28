@@ -151,7 +151,14 @@ do
 done
 
 # remove old kexts in /L/E, /S/L/E
-for kext in $KEXTDEST/*.kext; do
+for kext in $LE/*.kext; do
+    kextname="`basename $kext`"
+    if [[ "`echo $kextname | grep -E $OLDKEXTS`" != "" ]]; then
+        sudo rm -Rf $kext
+    fi
+done
+
+for kext in $SLE/*.kext; do
     kextname="`basename $kext`"
     if [[ "`echo $kextname | grep -E $OLDKEXTS`" != "" ]]; then
         sudo rm -Rf $kext
