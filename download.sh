@@ -90,8 +90,7 @@ rm -rf ./drivers
 
 # download kexts
 mkdir ./kexts && cd ./kexts
-#download os-x-voodoo-ps2-controller RehabMan-Voodoo
-download_raw https://bitbucket.org/RehabMan/os-x-voodoo-ps2-controller/downloads/RehabMan-Voodoo-2018-0506.zip RehabMan-Voodoo-2018-0506.zip #latest version cause kernel panic
+download os-x-voodoo-ps2-controller RehabMan-Voodoo
 download os-x-acpi-battery-driver RehabMan-Battery
 download os-x-fake-pci-id RehabMan-FakePCIID
 download os-x-eapd-codec-commander RehabMan-CodecCommander
