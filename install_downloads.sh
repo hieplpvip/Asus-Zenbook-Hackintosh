@@ -150,38 +150,39 @@ do
     esac
 done
 
-PS3='Do you want to install kexts to '$KEXTDEST': '
-options=("Yes" "No")
-select opt in "${options[@]}"
-do
-    case $opt in
-        "Yes")
-            # remove old kexts
-            for kext in $KEXTDEST/*.kext; do
-                kextname="`basename $kext`"
-                if [[ "`echo $kextname | grep -E $OLDKEXTS`" != "" ]]; then
-                    sudo rm -Rf $kext
-                fi
-            done
-            # install kexts
-            check_directory ./downloads/le_kexts/*.kext
-            if [ $? -ne 0 ]; then
-                echo 'Installing kexts to '$KEXTDEST'...'
-                cd ./downloads/le_kexts
-                for kext in *.kext; do
-                    install_kext $kext
-                done
-                echo
-                cd ../..
-            fi
-
-            break;;
-        "No")
-            echo
-            break;;
-        *) echo "Invalid";;
-    esac
+# remove old kexts in /L/E, /S/L/E
+for kext in $KEXTDEST/*.kext; do
+    kextname="`basename $kext`"
+    if [[ "`echo $kextname | grep -E $OLDKEXTS`" != "" ]]; then
+        sudo rm -Rf $kext
+    fi
 done
+
+#PS3='Do you want to install kexts to '$KEXTDEST': '
+#options=("Yes" "No")
+#select opt in "${options[@]}"
+#do
+#    case $opt in
+#        "Yes")
+#            # install kexts
+#            check_directory ./downloads/le_kexts/*.kext
+#            if [ $? -ne 0 ]; then
+#                echo 'Installing kexts to '$KEXTDEST'...'
+#                cd ./downloads/le_kexts
+#                for kext in *.kext; do
+#                    install_kext $kext
+#                done
+#                echo
+#                cd ../..
+#            fi
+#
+#            break;;
+#        "No")
+#            echo
+#            break;;
+#        *) echo "Invalid";;
+#    esac
+#done
 
 PS3='Do you want to use custom power management via X86PlatformPluginInjector.kext: '
 options=("Yes" "No")
