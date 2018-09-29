@@ -1,4 +1,4 @@
-NAME="S410 (KabyLakeR)"
+NAME="S510 (KabyLake-R)"
 CONFIGPLIST="config_s510_kabylaker.plist"
 CONFIGPARTS=()
 CONFIGMERGE=()
