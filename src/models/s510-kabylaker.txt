@@ -1,0 +1,9 @@
+NAME="S410 (KabyLakeR)"
+CONFIGPLIST="config_s510_kabylaker.plist"
+CONFIGPARTS=()
+CONFIGMERGE=()
+ETPDPATCH=true
+PRODUCTNAME="MacBookPro14,1"
+AMLFILES=("SSDT-S510-KabyLakeR" "SSDT-ELAN")
+AMLDIR="s510-kabylaker"
+ALCPLUGFIX=""
