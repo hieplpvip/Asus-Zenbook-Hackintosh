@@ -12,13 +12,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "rals", 0)
     
     // In DSDT, native RALS is renamed to XALS with Clover binpatch.
     // As a result, calls to RALS land here.
-    // The purpose of this implementation is to report proper ALS value
-    // when the sensor is disabled.
-    // Original RALS returns 0x190 (corresponding to 125%, or increase
-    // brightness by 25% based on value set by user)
-    // Modified RALS returns 0x12C (corresponding to 100%)
-    // For more information find OALR in DSDT and read about _ALR in
-    // http://www.acpi.info/DOWNLOADS/ACPIspec30b.pdf
+    // This is a hack to allow setting keyboard backlight when ALS is disabled
     Method (_SB.PCI0.LPCB.EC0.RALS, 0, NotSerialized)
     {
         If (ALAE)
@@ -27,7 +21,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "rals", 0)
         }
         Else
         {
-            Return (0x12C)
+            Return (150)
         }
     }
         

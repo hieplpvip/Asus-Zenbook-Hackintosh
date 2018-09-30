@@ -9,14 +9,10 @@ DefinitionBlock("", "SSDT", 2, "hack", "als0", 0)
     {
         Name(_HID, "ACPI0008")
         Name(_CID, "smc-als")
-        Name(_ALI, 300)
+        Name(_ALI, 150)
         Name(_ALR, Package()
         {
-            //Package() { 70, 0 },
-            //Package() { 73, 10 },
-            //Package() { 85, 80 },
-            Package() { 100, 300 },
-            //Package() { 150, 1000 },
+            Package() { 65, 150 },
         })
     }
     
@@ -24,7 +20,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "als0", 0)
     {
         Method (ALSS, 0, NotSerialized)
         {
-            Return (^^ALS0._ALR)
+            Return (^^ALS0._ALI)
         }
         
         Method (ALSC, 1, NotSerialized)
