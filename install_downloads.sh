@@ -151,19 +151,20 @@ do
 done
 
 # remove old kexts in /L/E, /S/L/E
+echo Removing old kexts in /L/E, /S/L/E
 for kext in $LE/*.kext; do
     kextname="`basename $kext`"
     if [[ "`echo $kextname | grep -E $OLDKEXTS`" != "" ]]; then
         sudo rm -Rf $kext
     fi
 done
-
 for kext in $SLE/*.kext; do
     kextname="`basename $kext`"
     if [[ "`echo $kextname | grep -E $OLDKEXTS`" != "" ]]; then
         sudo rm -Rf $kext
     fi
 done
+echo
 
 #PS3='Do you want to install kexts to '$KEXTDEST': '
 #options=("Yes" "No")
@@ -202,18 +203,17 @@ do
             if [ $? -ne 0 ]; then
                 echo 'Installing X86PlatformPluginInjector.kext to '$KEXTDEST'...'
                 install_kext ./src/kexts/X86PlatformPluginInjector.kext
-                echo
             else
                 echo 'X86PlatformPluginInjector.kext not found'
             fi
 
             break;;
         "No")
-            echo
             break;;
         *) echo "Invalid";;
     esac
 done
+echo
 
 # install Bluetooth kexts to /L/E. these kexts dont work in Clover
 check_directory ./downloads/necessary_le_kexts/*.kext
