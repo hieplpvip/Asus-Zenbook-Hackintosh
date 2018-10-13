@@ -97,7 +97,7 @@ download os-x-eapd-codec-commander RehabMan-CodecCommander
 download os-x-brcmpatchram RehabMan-BrcmPatchRAM
 download os-x-acpi-poller RehabMan-Poller
 download os-x-usb-inject-all RehabMan-USBInjectAll
-download_rehabman applebacklightfixup RehabMan-BacklightFixup
+download applebacklightfixup RehabMan-BacklightFixup
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/Lilu/releases" "RELEASE" "nbb_acidanthera-Lilu.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/VirtualSMC/releases" "RELEASE" "nbb_acidanthera-VirtualSMC.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AppleALC/releases" "RELEASE" "nbb_acidanthera-AppleALC.zip"
