@@ -378,7 +378,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>dart=0 nv_disable=1 kext-dev-mode=1 keepsyms=1</string>
+		<string>dart=0 nv_disable=1 kext-dev-mode=1 -disablegfxfirmware keepsyms=1</string>
 		<key>DefaultVolume</key>
 		<string>LastBootedVolume</string>
 		<key>NeverHibernate</key>
@@ -575,7 +575,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Disable panic kext logging on 10.13 release kernel (credit Vandroiy)</string>
+				<string>Disable panic kext logging on 10.13 release kernel (credit vit9696)</string>
 				<key>MatchOS</key>
 				<string>10.13.x</string>
 				<key>Find</key>
@@ -585,7 +585,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Disable panic kext logging on 10.14 release kernel (credit Vandroiy)</string>
+				<string>Disable panic kext logging on 10.14 release kernel (credit vit9696)</string>
 				<key>MatchOS</key>
 				<string>10.14.x</string>
 				<key>Find</key>
