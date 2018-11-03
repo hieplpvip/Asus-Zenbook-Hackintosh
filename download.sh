@@ -81,15 +81,15 @@ echo
 
 if [ ! -d ./downloads ]; then mkdir ./downloads; fi
 cd ./downloads
+rm -rf ./zips
 rm -rf ./necessary_le_kexts
 rm -rf ./le_kexts
 rm -rf ./clover_kexts
-rm -rf ./kexts
 rm -rf ./tools
 rm -rf ./drivers
 
 # download kexts
-mkdir ./kexts && cd ./kexts
+mkdir ./zips && cd ./zips
 download os-x-voodoo-ps2-controller RehabMan-Voodoo
 download os-x-acpi-battery-driver RehabMan-Battery
 download os-x-fake-pci-id RehabMan-FakePCIID
@@ -174,9 +174,9 @@ function unzip_kext
             fi
         done
     fi
-    check_directory $out/Kexts/*.kext
+    check_directory $out/zips/*.kext
     if [ $? -ne 0 ]; then
-        for kext in $out/Kexts/*.kext; do
+        for kext in $out/zips/*.kext; do
             kextname="`basename $kext`"
             if [[ "`echo $kextname | grep -E $NECESSARYLEKEXTS`" != "" ]]; then
                 cp -R $kext ../necessary_le_kexts
@@ -195,10 +195,10 @@ mkdir ./necessary_le_kexts
 mkdir ./le_kexts
 mkdir ./clover_kexts
 
-check_directory ./kexts/*.zip
+check_directory ./zips/*.zip
 if [ $? -ne 0 ]; then
     echo Unzipping kexts...
-    cd ./kexts
+    cd ./zips
     for kext in *.zip; do
         unzip_kext $kext
     done
@@ -230,6 +230,6 @@ if [ $? -ne 0 ]; then
 fi
 
 mkdir ./drivers
-cp ./kexts/nbb_acidanthera-VirtualSMC/Drivers/VirtualSmc.efi ./drivers
+cp ./zips/nbb_acidanthera-VirtualSMC/Drivers/VirtualSmc.efi ./drivers
 
 cd ..

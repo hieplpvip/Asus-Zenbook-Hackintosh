@@ -255,20 +255,23 @@ echo
 cd ../..
 
 echo Installing AsusSMCDaemon...
-./downloads/kexts/nbb_hieplpvip-AsusSMC/install_daemon.sh
+./downloads/zips/nbb_hieplpvip-AsusSMC/install_daemon.sh
 echo
 
 echo Installing VirtualSmc.efi
 cp -f ./downloads/drivers/VirtualSmc.efi $EFI/EFI/CLOVER/drivers64UEFI
+rm -f $EFI/EFI/CLOVER/drivers64UEFI/SMCHelper.efi
 rm -f $EFI/EFI/CLOVER/drivers64UEFI/SMCHelper-64.efi
 echo
 
 if [[ "$ALCPLUGFIX" != "" ]]; then
-        echo Installing ALCPlugFix...
-        cd ./src/alcplugfix/$ALCPLUGFIX
-        sudo ./install.sh
-        cd ../..
-        echo
+    echo Installing ALCPlugFix...
+    cd ./src/alcplugfix/$ALCPLUGFIX
+    sudo ./install.sh
+    cd ../..
+    echo
+else
+    sudo ./src/alcplugfix/uninstall.sh
 fi
 
 echo Done. Enjoy!
