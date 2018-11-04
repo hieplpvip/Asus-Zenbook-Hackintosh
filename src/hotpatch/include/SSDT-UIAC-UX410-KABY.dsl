@@ -53,7 +53,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "uiac", 0)
                         "UsbConnector", 3,
                         "port", Buffer() { 13, 0, 0, 0 },
                     },
-                    "SS02", Package() // Left 3.0 Type-C
+                    "SS04", Package() // Left 3.0 Type-C
                     {
                         "UsbConnector", 3,
                         "port", Buffer() { 16, 0, 0, 0 },
