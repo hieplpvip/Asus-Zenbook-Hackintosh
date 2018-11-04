@@ -174,9 +174,9 @@ function unzip_kext
             fi
         done
     fi
-    check_directory $out/zips/*.kext
+    check_directory $out/Kexts/*.kext
     if [ $? -ne 0 ]; then
-        for kext in $out/zips/*.kext; do
+        for kext in $out/Kexts/*.kext; do
             kextname="`basename $kext`"
             if [[ "`echo $kextname | grep -E $NECESSARYLEKEXTS`" != "" ]]; then
                 cp -R $kext ../necessary_le_kexts
