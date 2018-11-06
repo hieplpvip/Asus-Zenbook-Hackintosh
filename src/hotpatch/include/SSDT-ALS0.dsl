@@ -12,7 +12,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "als0", 0)
         Name(_ALI, 150)
         Name(_ALR, Package()
         {
-            Package() { 65, 150 },
+            Package() { 100, 150 },
         })
     }
     
