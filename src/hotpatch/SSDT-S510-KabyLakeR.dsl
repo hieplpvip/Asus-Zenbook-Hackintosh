@@ -24,7 +24,6 @@ DefinitionBlock ("", "SSDT", 2, "hack", "s510klr", 0)
     // usb
     #include "include/SSDT-XHC.dsl"
     #include "include/SSDT-USBX.dsl"
-    //#include "include/SSDT-UIAC-UX410-KABY.dsl"
     
     // others
     #include "include/SSDT-HACK.dsl"

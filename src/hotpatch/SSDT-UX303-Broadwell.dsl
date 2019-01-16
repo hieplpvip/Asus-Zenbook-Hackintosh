@@ -24,7 +24,6 @@ DefinitionBlock ("", "SSDT", 2, "hack", "ux303bdw", 0)
     // usb
     #include "include/SSDT-XHC.dsl"
     #include "include/SSDT-USBX.dsl"
-    //#include "include/SSDT-UIAC-UX303-BDW.dsl"
     
     // others
     #include "include/SSDT-HACK.dsl"
