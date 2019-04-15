@@ -22,27 +22,27 @@ do
 done
 echo
 
-PS3='READ: allows apps like HWMonitor and iStat Menus to read CPU Fan Speed'$'\n''MOD: READ + custom fan control (quietest yet coolest)'$'\n''Select CPU Fan mode: '
-options=("READ" "MOD")
-select opt in "${options[@]}"
-do
-    case $opt in
-        "READ")
-            fan=0
-            break;;
-        "MOD")
-            fan=1
-            break;;
-        *)
-            echo Invalid
-            echo;;
-    esac
-done
-echo
+#PS3='READ: allows apps like HWMonitor and iStat Menus to read CPU Fan Speed'$'\n''MOD: READ + custom fan control (quietest yet coolest)'$'\n''Select CPU Fan mode: '
+#options=("READ" "MOD")
+#select opt in "${options[@]}"
+#do
+#    case $opt in
+#        "READ")
+#            fan=0
+#            break;;
+#        "MOD")
+#            fan=1
+#            break;;
+#        *)
+#            echo Invalid
+#            echo;;
+#    esac
+#done
+#echo
 
 sudo ./install_config.sh $model
 echo
-sudo ./install_acpi.sh $model $fan
+sudo ./install_acpi.sh $model
 echo
 sudo ./install_downloads.sh $model
 echo

@@ -28,29 +28,30 @@ fi
 
 . ./src/models/"${MODELCONFIG[$idx]}"
 
-if [[ "$2" == "0" ]]; then
-    FANPREF=READ
-elif [[ "$2" == "1" ]]; then
-    FANPREF=MOD
-else
-    PS3='READ: allows apps like HWMonitor and iStat Menus to read CPU Fan Speed'$'\n''MOD: READ + custom fan control (quietest yet coolest)'$'\n''Select CPU Fan mode: '
-    options=("READ" "MOD")
-    select opt in "${options[@]}"
-    do
-        case $opt in
-            "READ")
-                FANPREF=READ
-                break;;
-            "MOD")
-                FANPREF=MOD
-                break;;
-            *)
-                echo Invalid
-                echo;;
-        esac
-    done
-    echo
-fi
+#if [[ "$2" == "0" ]]; then
+#    FANPREF=READ
+#elif [[ "$2" == "1" ]]; then
+#    FANPREF=MOD
+#else
+#    PS3='READ: allows apps like HWMonitor and iStat Menus to read CPU Fan Speed'$'\n''MOD: READ + custom fan control (quietest yet coolest)'$'\n''Select CPU Fan mode: '
+#    options=("READ" "MOD")
+#    select opt in "${options[@]}"
+#    do
+#        case $opt in
+#            "READ")
+#                FANPREF=READ
+#                break;;
+#            "MOD")
+#                FANPREF=MOD
+#                break;;
+#            *)
+#                echo Invalid
+#                echo;;
+#        esac
+#    done
+#    echo
+#fi
+FANPREF=MOD
 
 EFI=`./mount_efi.sh`
 ACPIPATCHED=$EFI/EFI/CLOVER/ACPI/patched
