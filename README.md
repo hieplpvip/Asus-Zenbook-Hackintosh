@@ -46,5 +46,5 @@ and many more that I can't list here. See [References](../../wiki/References) fo
 
 Special thanks: @RehabMan
 
-## [Donate me](https://paypal.me/hieplpvip)
+## [Donate me](https://paypal.me/lebhiep)
 Any donation is highly appreciated
