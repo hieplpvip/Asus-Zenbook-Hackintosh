@@ -1,6 +1,6 @@
 # ASUS ZENBOOK HACKINTOSH
 
-[![Join the chat at https://gitter.im/ASUS-ZENBOOK-HACKINTOSH/Lobby](https://badges.gitter.im/ASUS-ZENBOOK-HACKINTOSH/Lobby.svg)](https://gitter.im/ASUS-ZENBOOK-HACKINTOSH/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Gitter chat](https://img.shields.io/gitter/room/nwjs/nw.js.svg?colorB=ed1965)](https://gitter.im/ASUS-ZENBOOK-HACKINTOSH/Lobby)
 
 Clover hotpatches and tools for the Asus Zenbook laptop on macOS 10.13.6+
 
