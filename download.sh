@@ -75,7 +75,6 @@ rm -rf ./drivers
 # download kexts
 mkdir ./zips && cd ./zips
 download os-x-voodoo-ps2-controller RehabMan-Voodoo
-download os-x-acpi-battery-driver RehabMan-Battery
 download os-x-eapd-codec-commander RehabMan-CodecCommander
 download os-x-brcmpatchram RehabMan-BrcmPatchRAM
 download os-x-acpi-poller RehabMan-Poller
@@ -103,8 +102,8 @@ download_raw https://raw.githubusercontent.com/black-dragon74/OSX-Debug/master/I
 cd ..
 
 NECESSARYLEKEXTS="BrcmPatchRAM2|BrcmFirmwareRepo|CodecCommander"
-LEKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AsusSMC|AirportBrcmFixup|BT4LEContiunityFixup|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|VirtualSMC|SMCProcessor.kext|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
-CLOVERKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|AsusSMC|AirportBrcmFixup|BT4LEContiunityFixup|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|VirtualSMC|SMCProcessor.kext|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
+LEKEXTS="ACPIPoller|AppleALC|AsusSMC|AirportBrcmFixup|BT4LEContiunityFixup|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
+CLOVERKEXTS="ACPIPoller|AppleALC|AsusSMC|AirportBrcmFixup|BT4LEContiunityFixup|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller"
 
 function check_directory
 {
