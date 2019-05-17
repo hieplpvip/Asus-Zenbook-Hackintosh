@@ -37,7 +37,7 @@
 			<array>
 				<dict>
 					<key>Comment</key>
-					<string>change APSS to APXX</string>
+					<string>rename APSS to APXX</string>
 					<key>Find</key>
 					<data>QVBTUw==</data>
 					<key>Replace</key>
@@ -45,7 +45,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change OSID to XSID (to avoid match against _OSI XOSI patch)</string>
+					<string>rename OSID to XSID (to avoid match against _OSI XOSI patch)</string>
 					<key>Find</key>
 					<data>T1NJRA==</data>
 					<key>Replace</key>
@@ -53,7 +53,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change _OSI to XOSI</string>
+					<string>rename _OSI to XOSI</string>
 					<key>Find</key>
 					<data>X09TSQ==</data>
 					<key>Replace</key>
@@ -61,7 +61,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change _DSM to XDSM</string>
+					<string>rename _DSM to XDSM</string>
 					<key>Find</key>
 					<data>X0RTTQ==</data>
 					<key>Replace</key>
@@ -69,7 +69,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change EHC1 to EH01</string>
+					<string>rename EHC1 to EH01</string>
 					<key>Find</key>
 					<data>RUhDMQ==</data>
 					<key>Replace</key>
@@ -77,7 +77,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change EHC2 to EH02</string>
+					<string>rename EHC2 to EH02</string>
 					<key>Find</key>
 					<data>RUhDMg==</data>
 					<key>Replace</key>
@@ -85,7 +85,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change EUSB to EH01</string>
+					<string>rename EUSB to EH01</string>
 					<key>Find</key>
 					<data>RVVTQg==</data>
 					<key>Replace</key>
@@ -93,7 +93,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change USBE to EH02</string>
+					<string>rename USBE to EH02</string>
 					<key>Find</key>
 					<data>VVNCRQ==</data>
 					<key>Replace</key>
@@ -101,7 +101,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change GFX0 to IGPU</string>
+					<string>rename GFX0 to IGPU</string>
 					<key>Find</key>
 					<data>R0ZYMA==</data>
 					<key>Replace</key>
@@ -109,7 +109,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change HDAS to HDEF</string>
+					<string>rename HDAS to HDEF</string>
 					<key>Find</key>
 					<data>SERBUw==</data>
 					<key>Replace</key>
@@ -117,7 +117,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change AZAL to HDEF</string>
+					<string>rename AZAL to HDEF</string>
 					<key>Find</key>
 					<data>QVpBTA==</data>
 					<key>Replace</key>
@@ -125,7 +125,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change B0D3 to HDAU</string>
+					<string>rename B0D3 to HDAU</string>
 					<key>Find</key>
 					<data>QjBEMw==</data>
 					<key>Replace</key>
@@ -133,7 +133,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change HECI to IMEI</string>
+					<string>rename HECI to IMEI</string>
 					<key>Find</key>
 					<data>SEVDSQ==</data>
 					<key>Replace</key>
@@ -141,7 +141,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change MEI to IMEI</string>
+					<string>rename MEI to IMEI</string>
 					<key>Find</key>
 					<data>TUVJXw==</data>
 					<key>Replace</key>
@@ -149,7 +149,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change SAT0 to SATA</string>
+					<string>rename SAT0 to SATA</string>
 					<key>Find</key>
 					<data>U0FUMA==</data>
 					<key>Replace</key>
@@ -157,7 +157,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change LPC to LPCB</string>
+					<string>rename LPC to LPCB</string>
 					<key>Find</key>
 					<data>TFBDXw==</data>
 					<key>Replace</key>
@@ -165,7 +165,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change _REG to XREG in EC0</string>
+					<string>rename _REG to XREG in EC0</string>
 					<key>Find</key>
 					<data>X1JFRwKgCw==</data>
 					<key>Replace</key>
@@ -173,7 +173,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_PTS,1,N) to ZPTS, pair with SSDT-PTSWAK.aml</string>
+					<string>rename Method(_PTS,1,N) to ZPTS, pair with SSDT-PTSWAK.aml</string>
 					<key>Find</key>
 					<data>X1BUUwE=</data>
 					<key>Replace</key>
@@ -181,7 +181,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_PTS,1,S) to ZPTS, pair with SSDT-PTSWAK.aml</string>
+					<string>rename Method(_PTS,1,S) to ZPTS, pair with SSDT-PTSWAK.aml</string>
 					<key>Find</key>
 					<data>X1BUUwk=</data>
 					<key>Replace</key>
@@ -189,7 +189,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_WAK,1,N) to ZWAK, pair with SSDT-PTSWAK.aml</string>
+					<string>rename Method(_WAK,1,N) to ZWAK, pair with SSDT-PTSWAK.aml</string>
 					<key>Find</key>
 					<data>X1dBSwE=</data>
 					<key>Replace</key>
@@ -197,7 +197,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_WAK,1,S) to ZWAK, pair with SSDT-PTSWAK.aml</string>
+					<string>rename Method(_WAK,1,S) to ZWAK, pair with SSDT-PTSWAK.aml</string>
 					<key>Find</key>
 					<data>X1dBSwk=</data>
 					<key>Replace</key>
@@ -205,7 +205,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(GPRW,2,N) to XPRW</string>
+					<string>rename Method(GPRW,2,N) to XPRW</string>
 					<key>Find</key>
 					<data>R1BSVwI=</data>
 					<key>Replace</key>
@@ -213,111 +213,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>Battery: Rename Method(_BIX,0) to Method(XBIX,0)</string>
-					<key>Find</key>
-					<data>X0JJWAA=</data>
-					<key>Replace</key>
-					<data>WEJJWAA=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>Battery: Rename Method(BIFA,0) to Method(XBIF,0)</string>
-					<key>Find</key>
-					<data>QklGQQA=</data>
-					<key>Replace</key>
-					<data>WEJJRgA=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>Battery: Rename Method(SMBR,3,Serialized) to Method(XSMR,3,Serialized)</string>
-					<key>Find</key>
-					<data>U01CUgs=</data>
-					<key>Replace</key>
-					<data>WFNNUgs=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>Battery: Rename Method(SMBW,5,Serialized) to Method(XSMW,5,Serialized)</string>
-					<key>Find</key>
-					<data>U01CVw0=</data>
-					<key>Replace</key>
-					<data>WFNNVw0=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>Battery: Rename Method(FBST,4) to Method(XBST,4)</string>
-					<key>Find</key>
-					<data>RkJTVAQ=</data>
-					<key>Replace</key>
-					<data>WEJTVAQ=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>ALS: change Method(RALS,0,S) XALS</string>
-					<key>Find</key>
-					<data>UkFMUwA=</data>
-					<key>Replace</key>
-					<data>WEFMUwA=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_Q0A,0,NS) to XQ0A</string>
-					<key>Find</key>
-					<data>X1EwQQA=</data>
-					<key>Replace</key>
-					<data>WFEwQQA=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_Q0B,0,NS) to XQ0B</string>
-					<key>Find</key>
-					<data>X1EwQgA=</data>
-					<key>Replace</key>
-					<data>WFEwQgA=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_Q0E,0,NS) to XQ0E</string>
-					<key>Find</key>
-					<data>X1EwRQA=</data>
-					<key>Replace</key>
-					<data>WFEwRQA=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_Q0F,0,NS) to XQ0F</string>
-					<key>Find</key>
-					<data>X1EwRgA=</data>
-					<key>Replace</key>
-					<data>WFEwRgA=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_QCD,0,NS) to XQCD</string>
-					<key>Find</key>
-					<data>X1FDRAA=</data>
-					<key>Replace</key>
-					<data>WFFDRAA=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_Q11,0,NS) to XQ11</string>
-					<key>Find</key>
-					<data>X1ExMQg=</data>
-					<key>Replace</key>
-					<data>WFExMQg=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(_Q76,0,NS) to XQ76</string>
-					<key>Find</key>
-					<data>X1E3NgA=</data>
-					<key>Replace</key>
-					<data>WFE3NgA=</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change _STA methods in MATH and LDR2 device to XSTA</string>
+					<string>rename _STA methods in MATH and LDR2 device to XSTA</string>
 					<key>Find</key>
 					<data>X1NUQQCgDZNQ</data>
 					<key>Replace</key>
@@ -325,7 +221,127 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_STA,0,NS) in GPI0 to XSTA</string>
+					<string>(Battery) Rename Method(_BIX,0) to Method(XBIX,0)</string>
+					<key>Find</key>
+					<data>X0JJWAA=</data>
+					<key>Replace</key>
+					<data>WEJJWAA=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>(Battery) Rename Method(BIFA,0) to Method(XBIF,0)</string>
+					<key>Find</key>
+					<data>QklGQQA=</data>
+					<key>Replace</key>
+					<data>WEJJRgA=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>(Battery) Rename Method(SMBR,3,Serialized) to Method(XSMR,3,Serialized)</string>
+					<key>Find</key>
+					<data>U01CUgs=</data>
+					<key>Replace</key>
+					<data>WFNNUgs=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>(Battery) Rename Method(SMBW,5,Serialized) to Method(XSMW,5,Serialized)</string>
+					<key>Find</key>
+					<data>U01CVw0=</data>
+					<key>Replace</key>
+					<data>WFNNVw0=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>(Battery) Rename Method(FBST,4) to Method(XBST,4)</string>
+					<key>Find</key>
+					<data>RkJTVAQ=</data>
+					<key>Replace</key>
+					<data>WEJTVAQ=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>(ATK) rename Method(RALS,0,S) XALS</string>
+					<key>Find</key>
+					<data>UkFMUwA=</data>
+					<key>Replace</key>
+					<data>WEFMUwA=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>(ATK) rename Method(_Q0A,0,NS) to XQ0A</string>
+					<key>Find</key>
+					<data>X1EwQQA=</data>
+					<key>Replace</key>
+					<data>WFEwQQA=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>(ATK) rename Method(_Q0B,0,NS) to XQ0B</string>
+					<key>Find</key>
+					<data>X1EwQgA=</data>
+					<key>Replace</key>
+					<data>WFEwQgA=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>(ATK) rename Method(_Q0E,0,NS) to XQ0E</string>
+					<key>Find</key>
+					<data>X1EwRQA=</data>
+					<key>Replace</key>
+					<data>WFEwRQA=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>(ATK) rename Method(_Q0F,0,NS) to XQ0F</string>
+					<key>Find</key>
+					<data>X1EwRgA=</data>
+					<key>Replace</key>
+					<data>WFEwRgA=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>(ATK) rename Method(_QCD,0,NS) to XQCD</string>
+					<key>Find</key>
+					<data>X1FDRAA=</data>
+					<key>Replace</key>
+					<data>WFFDRAA=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>(ATK) rename Method(_Q11,0,NS) to XQ11</string>
+					<key>Find</key>
+					<data>X1ExMQg=</data>
+					<key>Replace</key>
+					<data>WFExMQg=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>(ATK) rename Method(_Q76,0,NS) to XQ76</string>
+					<key>Find</key>
+					<data>X1E3NgA=</data>
+					<key>Replace</key>
+					<data>WFE3NgA=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>(I2C) rename SSCN to XSCN</string>
+					<key>Find</key>
+					<data>U1NDTg==</data>
+					<key>Replace</key>
+					<data>WFNDTg==</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>(I2C) rename FMCN to XMCN</string>
+					<key>Find</key>
+					<data>Rk1DTg==</data>
+					<key>Replace</key>
+					<data>WE1DTg==</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>(I2C) rename Method(_STA,0,NS) in GPI0 to XSTA</string>
 					<key>Find</key>
 					<data>X1NUQQCgCZNTQlJH</data>
 					<key>Replace</key>
@@ -335,7 +351,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(_CRS,0,S) in ETPD to XCRS</string>
+					<string>(I2C) rename Method(_CRS,0,S) in ETPD to XCRS</string>
 					<key>Find</key>
 					<data>X0NSUwgIU0JGSQ==</data>
 					<key>Replace</key>
@@ -378,7 +394,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>dart=0 nv_disable=1 kext-dev-mode=1 -disablegfxfirmware keepsyms=1</string>
+		<string>dart=0 nv_disable=1 -disablegfxfirmware -cdfon -wegnoegpu</string>
 		<key>DefaultVolume</key>
 		<string>LastBootedVolume</string>
 		<key>NeverHibernate</key>
