@@ -10,7 +10,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "batt", 0)
     External(MBLF, IntObj)
     
     // add method B1B2
-    Method (B1B2, 2, NotSerialized) 
+    Method (B1B2, 2)
     {
         Return (Arg0 | (Arg1<<8))
     }
@@ -163,7 +163,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "batt", 0)
         }
         
         //override method BIFA
-        Method (BIFA, 0, NotSerialized)
+        Method (BIFA, 0)
         {
             If (ECAV ())
             {
@@ -380,7 +380,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "batt", 0)
             External(LFCC, IntObj)
                         
             // override method _BIX
-            Method (_BIX, 0, NotSerialized)
+            Method (_BIX, 0)
             {
                 If (!^^BATP (0))
                 {
@@ -430,7 +430,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "batt", 0)
             }
             
             // override method FBST
-            Method (FBST, 4, NotSerialized)
+            Method (FBST, 4)
             {
                 Local1 = Arg1 & 0xFFFF
                 Local0 = 0

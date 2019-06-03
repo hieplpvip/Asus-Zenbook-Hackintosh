@@ -13,7 +13,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "rals", 0)
     // In DSDT, native RALS is renamed to XALS with Clover binpatch.
     // As a result, calls to RALS land here.
     // This is a hack to allow setting keyboard backlight when ALS is disabled
-    Method (_SB.PCI0.LPCB.EC0.RALS, 0, NotSerialized)
+    Method (_SB.PCI0.LPCB.EC0.RALS, 0)
     {
         If (ALAE)
         {
@@ -27,7 +27,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "rals", 0)
         
     Scope (_SB.ATKD)
     {
-        Method (ALSS, 0, NotSerialized)
+        Method (ALSS, 0)
         {
             If (CondRefOf(^^PCI0.LPCB.EC0.RALS))
             {
@@ -40,7 +40,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "rals", 0)
     Scope (_SB.PCI0.LPCB.EC0)
     {
         // Ambient light sensor notification, from EMlyDinEsH
-        Method (_QCD, 0, NotSerialized)
+        Method (_QCD, 0)
         {
             Notify (ALS, 0x80)
             If (ATKP)
@@ -49,7 +49,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "rals", 0)
             }
         }
 
-        Method (_Q76, 0, NotSerialized)  // Fn+A
+        Method (_Q76, 0) // Fn+A
         {
             If (ATKP)
             {

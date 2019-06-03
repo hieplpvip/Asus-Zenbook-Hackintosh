@@ -3,7 +3,7 @@ DefinitionBlock ("SSDT-ELAN", "SSDT", 2, "hack", "elan", 0)
 {    
     // replace Method(_STA,0,S) in Device(GPI0)
     External(_SB.PCI0.GPI0, DeviceObj)
-    Method (_SB.PCI0.GPI0._STA, 0, NotSerialized)
+    Method (_SB.PCI0.GPI0._STA, 0)
     {
         Return (0x0F)
     }

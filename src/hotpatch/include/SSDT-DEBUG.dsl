@@ -8,7 +8,7 @@ Device (RMDT)
     Name (HEAD, 0)
     Name (TAIL, 0)
     // PUSH: Use to push a trace item into RING for ACPIDebug.kext
-    Method (PUSH, 1, NotSerialized)
+    Method (PUSH, 1)
     {
         Acquire(RTMX, 0xFFFF)
         // push new item at HEAD
@@ -23,7 +23,7 @@ Device (RMDT)
         Notify(RMDT, 0x80)
     }
     // FTCH: Used by ACPIDebug.kext to fetch an item from RING
-    Method (FTCH, 0, NotSerialized)
+    Method (FTCH, 0)
     {
         Acquire(RTMX, 0xFFFF)
         // pull item from TAIL and return it
@@ -38,7 +38,7 @@ Device (RMDT)
         Return(Local0)
     }
     // COUN: Used by ACPIDebug.kext to determine number of items in RING
-    Method (COUN, 0, NotSerialized)
+    Method (COUN, 0)
     {
         Acquire(RTMX, 0xFFFF)
         // return count of items in RING
@@ -48,7 +48,7 @@ Device (RMDT)
         Return(Local0)
     }
     // Helper functions for multiple params at one time
-    Method (P1, 1, NotSerialized) { PUSH(Arg0) }
+    Method (P1, 1) { PUSH(Arg0) }
     Method (P2, 2, Serialized)
     {
         Name (TEMP, Package(2) { })

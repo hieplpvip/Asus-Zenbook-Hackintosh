@@ -18,12 +18,12 @@ DefinitionBlock("", "SSDT", 2, "hack", "als0", 0)
     
     Scope (_SB.ATKD)
     {
-        Method (ALSS, 0, NotSerialized)
+        Method (ALSS, 0)
         {
             Return (^^ALS0._ALI)
         }
         
-        Method (ALSC, 1, NotSerialized)
+        Method (ALSC, 1)
         {
             // Do nothing
         }

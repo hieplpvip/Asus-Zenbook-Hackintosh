@@ -6,7 +6,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "alsc", 0)
     External (_SB.PCI0.LPCB.EC0.ALSC, MethodObj)
     Scope (_SB.ATKD)
     {
-        Method (ALSC, 1, NotSerialized)
+        Method (ALSC, 1)
         {
             If (CondRefOf(^^PCI0.LPCB.EC0.ALSC))
             {

@@ -5,12 +5,12 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
     // All _OSI calls in DSDT are routed to XOSI...
     // As written, this XOSI simulates "Windows 2015" (which is Windows 10)
     // Note: According to ACPI spec, _OSI("Windows") must also return true
-    //  Also, it should return true for all previous versions of Windows.
+    //       Also, it should return true for all previous versions of Windows.
     Method(XOSI, 1)
     {
         // simulation targets
         // source: (google 'Microsoft Windows _OSI')
-        //  https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi
+        //         https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi
         Local0 = Package()
         {
             "Windows",              // generic Windows query
@@ -39,7 +39,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
     // The purpose of this implementation is to avoid "instant wake"
     // by returning 0 in the second position (sleep state supported)
     // of the return package.
-    Method(GPRW, 2, NotSerialized)
+    Method(GPRW, 2)
     {
         If (0x6d == Arg0) { Return(Package() { 0x6d, 0, }) }
         If (0x0d == Arg0) { Return(Package() { 0x0d, 0, }) }
@@ -73,6 +73,12 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
         }
     }
     
+    // add fake EC device
+    Device(_SB.EC)
+    {
+        Name(_HID, "EC000000")
+    }
+    
     // add fake ethernet device, use with NullEthernet.kext
     Device (RMNE)
     {
@@ -81,7 +87,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
         Name (_HID, "NULE0000")
         // This is the MAC address returned by the kext. Modify if necessary.
         Name (MAC, Buffer() { 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 })
-        Method (_DSM, 4, NotSerialized)
+        Method (_DSM, 4)
         {
             If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }
             Return (Package()
@@ -157,12 +163,6 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
             DMA (Compatibility, NotBusMaster, Transfer8_16, )
                 {4}
         })
-    }
-    
-    // inject Fake EC device
-    Device(_SB.EC)
-    {
-        Name(_HID, "EC000000")
     }
 #ifndef NO_DEFINITIONBLOCK
 }

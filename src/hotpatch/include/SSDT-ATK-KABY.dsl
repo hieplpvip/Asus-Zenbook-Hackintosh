@@ -11,7 +11,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
     External (_SB.PCI0.LPCB.EC0.ST9E, MethodObj)
     Scope (_SB.ATKD)
     {
-        Method (SKBL, 1, NotSerialized)
+        Method (SKBL, 1)
         {
             ^^KBLV = Arg0 & 0x7F
             
@@ -24,7 +24,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
             Return (Arg0)
         }
         
-        Method (SKBV, 1, NotSerialized)
+        Method (SKBV, 1)
         {
             ^^KBLV = Arg0 / 16;
             ^^PCI0.LPCB.EC0.WRAM (0x09F0, ^^KBLV)
@@ -37,7 +37,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
             0x00, 0x10, 0x20, 0x30, 0x40, 0x50, 0x60, 0x70, 0x80, 0x90, 0xA0, 0xB0, 0xC0, 0xD0, 0xE0, 0xF0, 0xFF
         })
         
-        Method (GKBL, 1, NotSerialized)
+        Method (GKBL, 1)
         {   
             Return (^^KBLV)
         }
@@ -45,7 +45,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
     
     Scope (_SB.PCI0.LPCB.EC0)
     {
-        Method (_Q0A, 0, NotSerialized) // F1 key
+        Method (_Q0A, 0) // F1 key
         {
             If (ATKP)
             {
@@ -53,7 +53,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
             }
         }
         
-        Method (_Q0B, 0, NotSerialized) // F2 key
+        Method (_Q0B, 0) // F2 key
         {
             If (ATKP)
             {
@@ -61,7 +61,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
             }
         }
         
-        Method (_Q0E, 0, NotSerialized) // F5 key
+        Method (_Q0E, 0) // F5 key
         {
             If (ATKP)
             {
@@ -69,7 +69,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
             }
         }
 
-        Method (_Q0F, 0, NotSerialized) // F6 key
+        Method (_Q0F, 0) // F6 key
         {
             If (ATKP)
             {
@@ -77,7 +77,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
             }
         }
         
-        Method (_Q11, 0, NotSerialized) // F8 key
+        Method (_Q11, 0) // F8 key
         {
             If (ATKP)
             {
