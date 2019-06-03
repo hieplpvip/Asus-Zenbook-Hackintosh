@@ -122,7 +122,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
     Device (_SB.PCI0.MCHC)
     {
         Name (_ADR, Zero)
-	}
+    }
     
     // macOS desires DMAC credit syscl
     Device (_SB.PCI0.LPCB.DMAC)
