@@ -5,6 +5,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "xhc", 0)
 {
 #endif
     // inject properties for XHCI
+    External(_SB.PCI0.XHC, DeviceObj)
     Method(_SB.PCI0.XHC._DSM, 4)
     {
         If (!Arg2) { Return (Buffer() { 0x03 } ) }

@@ -2,7 +2,7 @@
 DefinitionBlock("", "SSDT", 2, "hack", "rals", 0)
 {
 #endif
-    External (ATKP, IntObj)
+    External (_SB.ATKP, IntObj)
     External (_SB.ALS, DeviceObj)
     External (_SB.ATKD, DeviceObj)
     External (_SB.ALAE, FieldUnitObj)

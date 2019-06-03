@@ -102,6 +102,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
     }
     
     // add SMBUS device
+    External(_SB.PCI0.SBUS, DeviceObj)
     Device(_SB.PCI0.SBUS.BUS0)
     {
         Name(_CID, "smbus")
