@@ -47,41 +47,41 @@ DefinitionBlock("", "SSDT", 2, "hack", "atk", 0)
     {
         Method (_Q0A, 0) // F1 key
         {
-            If (ATKP)
+            If (^^^^ATKP)
             {
-                \_SB.ATKD.IANE (0x5E)
+                ^^^^ATKD.IANE (0x5E)
             }
         }
         
         Method (_Q0B, 0) // F2 key
         {
-            If (ATKP)
+            If (^^^^ATKP)
             {
-                \_SB.ATKD.IANE (0x7D)
+                ^^^^ATKD.IANE (0x7D)
             }
         }
         
         Method (_Q0E, 0) // F5 key
         {
-            If (ATKP)
+            If (^^^^ATKP)
             {
-                \_SB.ATKD.IANE (0x20)
+                ^^^^ATKD.IANE (0x20)
             }
         }
 
         Method (_Q0F, 0) // F6 key
         {
-            If (ATKP)
+            If (^^^^ATKP)
             {
-                \_SB.ATKD.IANE (0x10)
+                ^^^^ATKD.IANE (0x10)
             }
         }
         
         Method (_Q11, 0) // F8 key
         {
-            If (ATKP)
+            If (^^^^ATKP)
             {
-                \_SB.ATKD.IANE (0x61)
+                ^^^^ATKD.IANE (0x61)
             }
         }
     }

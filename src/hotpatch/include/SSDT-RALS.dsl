@@ -43,7 +43,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "rals", 0)
         Method (_QCD, 0)
         {
             Notify (ALS, 0x80)
-            If (ATKP)
+            If (^^^^ATKP)
             {
                 ^^^^ATKD.IANE (0xC6)
             }
@@ -51,7 +51,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "rals", 0)
 
         Method (_Q76, 0) // Fn+A
         {
-            If (ATKP)
+            If (^^^^ATKP)
             {
                 ^^^^ATKD.IANE (0x7A)
             }
