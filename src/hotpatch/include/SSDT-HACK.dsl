@@ -131,39 +131,38 @@ DefinitionBlock ("", "SSDT", 2, "hack", "hack", 0)
         Name (_ADR, Zero)
     }
     
-    // macOS desires DMAC credit syscl
+    // add missing DMA controller
     Device (_SB.PCI0.LPCB.DMAC)
     {
-        Name (_HID, EisaId ("PNP0200"))  // _HID: Hardware ID
-        Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+        Name (_HID, EisaId ("PNP0200"))
+        Name (_CRS, ResourceTemplate ()
         {
-            IO (Decode16,
-                0x0000,             // Range Minimum
-                0x0000,             // Range Maximum
-                0x01,               // Alignment
-                0x20,               // Length
-                )
-            IO (Decode16,
-                0x0081,             // Range Minimum
-                0x0081,             // Range Maximum
-                0x01,               // Alignment
-                0x11,               // Length
-                )
-            IO (Decode16,
-                0x0093,             // Range Minimum
-                0x0093,             // Range Maximum
-                0x01,               // Alignment
-                0x0D,               // Length
-                )
-            IO (Decode16,
-                0x00C0,             // Range Minimum
-                0x00C0,             // Range Maximum
-                0x01,               // Alignment
-                0x20,               // Length
-                )
-            DMA (Compatibility, NotBusMaster, Transfer8_16, )
-                {4}
+            IO (Decode16, 0x00, 0x00, 0x01, 0x20)
+            IO (Decode16, 0x81, 0x81, 0x01, 0x11)
+            IO (Decode16, 0x93, 0x93, 0x01, 0x0D)
+            IO (Decode16, 0xC0, 0xC0, 0x01, 0x20)
+            DMA (Compatibility, NotBusMaster, Transfer8_16) {4}
         })
+    }
+    
+    // This exist on real Mac, seems to defines a fixed memory region for IGPU
+    External (_SB.PCI0.IGPU, DeviceObj)
+    Scope (_SB.PCI0.IGPU)
+    {
+        Device (^^MEM2)
+        {
+            Name (_HID, EisaId ("PNP0C01"))
+            Name (_UID, 0x02)
+            Name (CRS, ResourceTemplate ()
+            {
+                Memory32Fixed (ReadWrite, 0x20000000, 0x00200000)
+                Memory32Fixed (ReadWrite, 0x40000000, 0x00200000)
+            })
+            Method (_CRS, 0)
+            {
+                Return (CRS)
+            }
+        }
     }
 #ifndef NO_DEFINITIONBLOCK
 }
