@@ -29,7 +29,7 @@ function download_latest_notbitbucket()
 # $3 is partial file name to look for
 # $4 is file name to rename to
 {
-    echo "downloading latest $4 from $2:"
+    echo "downloading `basename $4 .zip`:"
     curl $curl_options_silent --output /tmp/org.rehabman.download.txt "$2"
     local scrape=`grep -o -m 1 "/.*$3.*\.zip" /tmp/org.rehabman.download.txt`
     local url=$1$scrape
@@ -78,15 +78,15 @@ download os-x-voodoo-ps2-controller RehabMan-Voodoo
 download os-x-eapd-codec-commander RehabMan-CodecCommander
 download os-x-brcmpatchram RehabMan-BrcmPatchRAM
 download os-x-acpi-poller RehabMan-Poller
-download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/Lilu/releases" "RELEASE" "nbb_acidanthera-Lilu.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/VirtualSMC/releases" "RELEASE" "nbb_acidanthera-VirtualSMC.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AppleALC/releases" "RELEASE" "nbb_acidanthera-AppleALC.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/WhateverGreen/releases" "RELEASE" "nbb_acidanthera-WhateverGreen.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AirportBrcmFixup/releases" "RELEASE" "nbb_acidanthera-AirportBrcmFixup.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/BT4LEContiunityFixup/releases" "RELEASE" "nbb_acidanthera-BT4LEContiunityFixup.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/PMheart/LiluFriend/releases" "RELEASE" "nbb_PMheart-LiluFriend.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AsusSMC/releases" "RELEASE" "nbb_hieplpvip-AsusSMC.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/alexandred/VoodooI2C/releases" "VoodooI2C-" "nbb_alexandred-VoodooI2C.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/Lilu/releases" "RELEASE" "acidanthera-Lilu.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/VirtualSMC/releases" "RELEASE" "acidanthera-VirtualSMC.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AppleALC/releases" "RELEASE" "acidanthera-AppleALC.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/WhateverGreen/releases" "RELEASE" "acidanthera-WhateverGreen.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AirportBrcmFixup/releases" "RELEASE" "acidanthera-AirportBrcmFixup.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/BT4LEContiunityFixup/releases" "RELEASE" "acidanthera-BT4LEContiunityFixup.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/PMheart/LiluFriend/releases" "RELEASE" "PMheart-LiluFriend.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AsusSMC/releases" "RELEASE" "hieplpvip-AsusSMC.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/alexandred/VoodooI2C/releases" "VoodooI2C-" "alexandred-VoodooI2C.zip"
 if [ $nullethernet -eq 1 ]; then
     download os-x-null-ethernet RehabMan-NullEthernet
 fi
@@ -206,6 +206,6 @@ if [ $? -ne 0 ]; then
 fi
 
 mkdir ./drivers
-cp ./zips/nbb_acidanthera-VirtualSMC/Drivers/VirtualSmc.efi ./drivers
+cp ./zips/acidanthera-VirtualSMC/Drivers/VirtualSmc.efi ./drivers
 
 cd ..

@@ -269,7 +269,7 @@ echo
 cd ../..
 
 echo Installing AsusSMCDaemon...
-./downloads/zips/nbb_hieplpvip-AsusSMC/install_daemon.sh
+./downloads/zips/hieplpvip-AsusSMC/install_daemon.sh
 echo
 
 echo Installing VirtualSmc.efi
