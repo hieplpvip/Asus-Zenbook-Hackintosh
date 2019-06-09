@@ -1,7 +1,7 @@
 // Patch by hieplpvip
 DefinitionBlock ("SSDT-ELAN", "SSDT", 2, "hack", "elan", 0)
 {    
-    // replace Method(_STA,0,S) in Device(GPI0)
+    // replace Method(_STA,0,NS) in Device(GPI0)
     External(_SB.PCI0.GPI0, DeviceObj)
     Method (_SB.PCI0.GPI0._STA, 0)
     {
