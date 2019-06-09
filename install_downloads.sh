@@ -8,6 +8,9 @@ fi
 
 . ./src/config.txt
 
+echo -e "\033[7mTOOLS/KEXTS\033[0m"
+echo
+
 TAG=tag_file
 TAGCMD=`pwd`/tools/tag
 SLE=/System/Library/Extensions
@@ -129,40 +132,14 @@ select opt in "${options[@]}"
 do
     case $opt in
         "Yes")
-            # install tools
-            check_directory ./downloads/tools/*.zip
-            if [ $? -ne 0 ]; then
-                echo Installing tools...
-                cd ./downloads/tools
-                for tool in *.zip; do
-                    install $tool
-                done
-                cd ../..
-            fi
-            echo
+            installtools=1
             break;;
         "No")
-            echo
+            installtools=0
             break;;
         *)
             echo Invalid
-            echo;;
     esac
-done
-
-# remove old kexts in /L/E, /S/L/E
-echo Removing old kexts in /L/E, /S/L/E
-for kext in $LE/*.kext; do
-    kextname="`basename $kext`"
-    if [[ "`echo $kextname | grep -E $OLDKEXTS`" != "" ]]; then
-        sudo rm -Rf $kext
-    fi
-done
-for kext in $SLE/*.kext; do
-    kextname="`basename $kext`"
-    if [[ "`echo $kextname | grep -E $OLDKEXTS`" != "" ]]; then
-        sudo rm -Rf $kext
-    fi
 done
 echo
 
@@ -198,27 +175,64 @@ select opt in "${options[@]}"
 do
     case $opt in
         "Yes")
-            # install X86PlatformPluginInjector.kext
-            check_directory ./src/kexts/X86PlatformPluginInjector.kext
-            if [ $? -ne 0 ]; then
-                echo 'Installing X86PlatformPluginInjector.kext to '$KEXTDEST'...'
-                install_kext ./src/kexts/X86PlatformPluginInjector.kext
-            else
-                echo 'X86PlatformPluginInjector.kext not found'
-            fi
-
+            installx86=1
             break;;
         "No")
+            installx86=0
             break;;
         *) echo "Invalid";;
     esac
 done
 echo
 
-# install Bluetooth kexts to /L/E. these kexts dont work in Clover
+# install tool
+if [ $installtools -eq 1 ]; then
+    # install tools
+    check_directory ./downloads/tools/*.zip
+    if [ $? -ne 0 ]; then
+        echo Installing tools...
+        cd ./downloads/tools
+        for tool in *.zip; do
+            install $tool
+        done
+        cd ../..
+    fi
+    echo
+fi
+
+# remove old kexts in /L/E, /S/L/E
+echo Removing old kexts in /L/E, /S/L/E
+for kext in $LE/*.kext; do
+    kextname="`basename $kext`"
+    if [[ "`echo $kextname | grep -E $OLDKEXTS`" != "" ]]; then
+        sudo rm -Rf $kext
+    fi
+done
+for kext in $SLE/*.kext; do
+    kextname="`basename $kext`"
+    if [[ "`echo $kextname | grep -E $OLDKEXTS`" != "" ]]; then
+        sudo rm -Rf $kext
+    fi
+done
+echo
+
+# install X86PlatformPluginInjector.kext
+if [ $installx86 -eq 1 ]; then
+    check_directory ./src/kexts/X86PlatformPluginInjector.kext
+    if [ $? -ne 0 ]; then
+        echo 'Installing X86PlatformPluginInjector.kext to '$KEXTDEST'...'
+        install_kext ./src/kexts/X86PlatformPluginInjector.kext
+    else
+        echo 'X86PlatformPluginInjector.kext not found.'
+        echo 'Please re-download this repo.'
+    fi
+    echo
+fi
+
+# install Bluetooth kexts to /L/E. these kexts dont work if injected by Clover
 check_directory ./downloads/necessary_le_kexts/*.kext
 if [ $? -ne 0 ]; then
-    echo 'Installing necessary kexts to '$KEXTDEST'... These kexts won'"'"'t work in Clover'
+    echo 'Installing necessary kexts to '$KEXTDEST'... These kexts won'"'"'t work if injected by Clover'
     cd ./downloads/necessary_le_kexts
     for kext in *.kext; do
         install_kext $kext
@@ -274,4 +288,9 @@ else
     sudo ./src/alcplugfix/uninstall.sh
 fi
 
-echo Done. Enjoy!
+echo -e "\033[7m------------------------------------------------------------"
+echo "|           ASUS ZENBOOK HACKINTOSH by hieplpvip           |"
+echo "|  A great amount of effort has been put in this project.  |"
+echo "|     Please consider donating me at paypal.me/lebhiep     |"
+echo "------------------------------------------------------------"
+echo -e "\033[0m"

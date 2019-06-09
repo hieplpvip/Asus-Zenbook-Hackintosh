@@ -8,6 +8,16 @@ fi
 
 . ./src/config.txt
 
+echo -e "\033[7m"
+echo "------------------------------------------------------------"
+echo "|           ASUS ZENBOOK HACKINTOSH by hieplpvip           |"
+echo "|                    INSTALLATION SCRIPT                   |"
+echo "|  A great amount of effort has been put in this project.  |"
+echo "|     Please consider donating me at paypal.me/lebhiep     |"
+echo "------------------------------------------------------------"
+echo -e "\033[0m"
+echo
+
 PS3='Select model: '
 select opt in "${MODELS[@]}"
 do
@@ -45,5 +55,3 @@ echo
 sudo ./install_acpi.sh $model
 echo
 sudo ./install_downloads.sh $model
-echo
-echo Done!

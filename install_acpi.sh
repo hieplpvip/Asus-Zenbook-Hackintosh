@@ -8,6 +8,9 @@ fi
 
 . ./src/config.txt
 
+echo -e "\033[7mACPI PATCHES\033[0m"
+echo
+
 if [[ "$#" -lt 1 || $1 -lt 0 || $1 -ge  ${#MODELS[*]} ]]; then
     PS3='Select model: '
     select opt in "${MODELS[@]}"
@@ -75,3 +78,11 @@ for aml in $BUILDACPI/$AMLDIR/*.aml; do
     cp $aml $ACPIPATCHED
 done
 ls $ACPIPATCHED
+
+echo -e "\033[7m"
+echo "------------------------------------------------------------"
+echo "|           ASUS ZENBOOK HACKINTOSH by hieplpvip           |"
+echo "|  A great amount of effort has been put in this project.  |"
+echo "|     Please consider donating me at paypal.me/lebhiep     |"
+echo "------------------------------------------------------------"
+echo -e "\033[0m"

@@ -8,6 +8,9 @@ fi
 
 . ./src/config.txt
 
+echo -e "\033[7mCLOVER CONFIG.PLIST\033[0m"
+echo
+
 if [[ "$#" -ne 1 || $1 -lt 0 || $1 -ge  ${#MODELS[*]} ]]; then
     PS3='Select model: '
     select opt in "${MODELS[@]}"
@@ -55,3 +58,11 @@ if [ -f $BAKCONFIG ]; then
     theme=`/usr/libexec/PlistBuddy -c "Print :GUI:Theme" $BAKCONFIG`
     /usr/libexec/PlistBuddy -c "Set :GUI:Theme $theme" $EFICONFIG
 fi
+
+echo -e "\033[7m"
+echo "------------------------------------------------------------"
+echo "|           ASUS ZENBOOK HACKINTOSH by hieplpvip           |"
+echo "|  A great amount of effort has been put in this project.  |"
+echo "|     Please consider donating me at paypal.me/lebhiep     |"
+echo "------------------------------------------------------------"
+echo -e "\033[0m"
