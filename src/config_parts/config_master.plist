@@ -237,7 +237,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>(Battery) Rename Method(SMBR,3,Serialized) to Method(XSMR,3,Serialized)</string>
+					<string>(Battery) Rename Method(SMBR,3,S) to Method(XSMR,3,S)</string>
 					<key>Find</key>
 					<data>U01CUgs=</data>
 					<key>Replace</key>
@@ -245,7 +245,7 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>(Battery) Rename Method(SMBW,5,Serialized) to Method(XSMW,5,Serialized)</string>
+					<string>(Battery) Rename Method(SMBW,5,S) to Method(XSMW,5,S)</string>
 					<key>Find</key>
 					<data>U01CVw0=</data>
 					<key>Replace</key>
@@ -261,7 +261,15 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>(ATK) rename Method(RALS,0,S) XALS</string>
+					<string>(ATK) rename Method(IANE,1,S) to XANE</string>
+					<key>Find</key>
+					<data>SUFORQk=</data>
+					<key>Replace</key>
+					<data>WEFORQk=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>(ATK) rename Method(RALS,0,NS) to XALS</string>
 					<key>Find</key>
 					<data>UkFMUwA=</data>
 					<key>Replace</key>
