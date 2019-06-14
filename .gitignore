@@ -1,1 +1,9 @@
 .DS_Store
+build/acpi
+build/config
+downloads/clover_kexts/
+downloads/drivers/
+downloads/le_kexts/
+downloads/necessary_le_kexts/
+downloads/tools/
+downloads/zips/

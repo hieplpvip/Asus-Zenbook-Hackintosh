@@ -16,7 +16,7 @@ TAGCMD=`pwd`/tools/tag
 SLE=/System/Library/Extensions
 LE=/Library/Extensions
 
-OLDKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|aDummyHDA|cloverHDA|AppleBacklightInjector|IntelBacklight|Asus|BrcmPatchRAM2|BrcmFirmware|CodecCommander|FakePCIID|FakeSMC|VirtualSMC|SMCBatteryManager|SMCLightSensor|SMCProcessor|SMCSuperIO|WhateverGreen|Shiki|Lilu|NullEthernet|USBInjectAll|VoodooI2C|VoodooPS2Controller|VoodooTSCSync|Injector|Fixup"
+OLDKEXTS="ACPIBatteryManager|ACPIPoller|AppleALC|aDummyHDA|cloverHDA|AppleBacklightInjector|IntelBacklight|Asus|BrcmPatchRAM2|BrcmFirmware|CodecCommander|FakePCIID|FakeSMC|VirtualSMC|SMCBatteryManager|SMCLightSensor|SMCProcessor|SMCSuperIO|WhateverGreen|Shiki|Lilu|NullEthernet|USBInjectAll|Voodoo|Injector|Fixup"
 
 # extract minor version (eg. 10.9 vs. 10.10 vs. 10.11)
 MINOR_VER=$([[ "$(sw_vers -productVersion)" =~ [0-9]+\.([0-9]+) ]] && echo ${BASH_REMATCH[1]})

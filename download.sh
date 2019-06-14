@@ -84,7 +84,7 @@ download_latest_notbitbucket "https://github.com" "https://github.com/acidanther
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AppleALC/releases" "RELEASE" "acidanthera-AppleALC.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/WhateverGreen/releases" "RELEASE" "acidanthera-WhateverGreen.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AirportBrcmFixup/releases" "RELEASE" "acidanthera-AirportBrcmFixup.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/BT4LEContiunityFixup/releases" "RELEASE" "acidanthera-BT4LEContiunityFixup.zip"
+download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/BT4LEContinuityFixup/releases" "RELEASE" "acidanthera-BT4LEContinuityFixup.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/PMheart/LiluFriend/releases" "RELEASE" "PMheart-LiluFriend.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AsusSMC/releases" "RELEASE" "hieplpvip-AsusSMC.zip"
 download_latest_notbitbucket "https://github.com" "https://github.com/alexandred/VoodooI2C/releases" "VoodooI2C-" "alexandred-VoodooI2C.zip"
@@ -103,8 +103,8 @@ download_raw https://raw.githubusercontent.com/black-dragon74/OSX-Debug/master/I
 cd ..
 
 NECESSARYLEKEXTS="BrcmPatchRAM2|BrcmFirmwareRepo|CodecCommander"
-LEKEXTS="ACPIPoller|AppleALC|AsusSMC|AirportBrcmFixup|BT4LEContiunityFixup|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|VoodooTSCSync"
-CLOVERKEXTS="ACPIPoller|AppleALC|AsusSMC|AirportBrcmFixup|BT4LEContiunityFixup|WhateverGreen|Lilu|LiluFriend|NullEthernet.kext|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|VoodooTSCSync"
+LEKEXTS="ACPIPoller|AppleALC|AsusSMC|WhateverGreen|Lilu|NullEthernet.kext|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|VoodooTSCSync|Fixup"
+CLOVERKEXTS="ACPIPoller|AppleALC|AsusSMC|WhateverGreen|Lilu|NullEthernet.kext|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|VoodooTSCSync|Fixup"
 
 function check_directory
 {
