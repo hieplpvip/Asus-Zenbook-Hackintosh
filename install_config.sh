@@ -49,14 +49,18 @@ echo
 
 cp $BUILDCONFIG/$CONFIGPLIST $EFICONFIG
 if [ -f $BAKCONFIG ]; then
-    echo "Restoring SMBIOS..."
+    # restoring "SMBIOS"
     /usr/libexec/PlistBuddy -c "Delete :SMBIOS" $EFICONFIG
     /usr/libexec/PlistBuddy -c "Add :SMBIOS dict" $EFICONFIG
     ./tools/merge_plist.sh "SMBIOS" $BAKCONFIG $EFICONFIG
     /usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName $PRODUCTNAME" $EFICONFIG
-    echo "Restoring theme..."
+    # restoring "Themes" as requested by @gulios
     theme=`/usr/libexec/PlistBuddy -c "Print :GUI:Theme" $BAKCONFIG`
     /usr/libexec/PlistBuddy -c "Set :GUI:Theme $theme" $EFICONFIG
+    # restoring "Hide" as requested by @gulios
+    /usr/libexec/PlistBuddy -c "Delete :GUI:Hide" $EFICONFIG
+    /usr/libexec/PlistBuddy -c "Add :GUI:Hide array" $EFICONFIG
+    ./tools/merge_plist.sh "GUI:Hide" $BAKCONFIG $EFICONFIG
 fi
 
 echo -e "\033[7m"
