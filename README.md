@@ -1,6 +1,6 @@
 ## [Donate me](https://paypal.me/lebhiep)
 As a student, I need to pay a lot of fees: tuition fees, exam fees, house rent, food, etc.
-Any donation would help me a lot.
+Any donation would help me a lot!
 
 This repository is provided for free in the hope of helping people who can't afford Macbook install macOS on their Zenbooks, and it will always be free.
 
