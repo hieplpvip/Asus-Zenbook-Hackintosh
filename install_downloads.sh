@@ -231,10 +231,10 @@ if [ $installx86 -eq 1 ]; then
 fi
 
 # install Bluetooth kexts to /L/E. these kexts dont work if injected by Clover
-check_directory ./downloads/necessary_le_kexts/*.kext
+check_directory ./downloads/required_le_kexts/*.kext
 if [ $? -ne 0 ]; then
-    echo 'Installing necessary kexts to '$KEXTDEST'... These kexts won'"'"'t work if injected by Clover'
-    cd ./downloads/necessary_le_kexts
+    echo 'Installing required kexts to '$KEXTDEST'... These kexts won'"'"'t work if injected by Clover'
+    cd ./downloads/required_le_kexts
     for kext in *.kext; do
         install_kext $kext
     done

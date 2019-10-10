@@ -46,7 +46,7 @@ function download_raw()
     echo
 }
 
-PS3='Do you want to use NullEthernet?'$'\n''Yes if you use USB Wifi'$'\n''No if you have replaced your wifi card with a supported one: '
+PS3='Do you want to download NullEthernet?'$'\n''Yes if you''re using USB wifi adapter'$'\n''No if you have replaced your wifi card with a compatible one: '
 options=("Yes" "No")
 select opt in "${options[@]}"
 do
@@ -65,7 +65,7 @@ echo
 if [ ! -d ./downloads ]; then mkdir ./downloads; fi
 cd ./downloads
 sudo rm -rf ./zips
-sudo rm -rf ./necessary_le_kexts
+sudo rm -rf ./required_le_kexts
 sudo rm -rf ./le_kexts
 sudo rm -rf ./clover_kexts
 sudo rm -rf ./tools
@@ -101,7 +101,7 @@ download_RHM acpica iasl
 download_raw https://raw.githubusercontent.com/black-dragon74/OSX-Debug/master/IORegistryExplorer.zip IORegistryExplorer.zip
 cd ..
 
-NECESSARYLEKEXTS="CodecCommander"
+REQUIREDLEKEXTS="CodecCommander"
 LEKEXTS="ACPIPoller|AppleALC|AsusSMC|BrcmPatchRAM2|BrcmFirmwareData|WhateverGreen|Lilu|NullEthernet.kext|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|VoodooTSCSync|Fixup"
 CLOVERKEXTS="ACPIPoller|AppleALC|AsusSMC|BrcmPatchRAM2|BrcmFirmwareData|WhateverGreen|Lilu|NullEthernet.kext|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|VoodooTSCSync|Fixup"
 
@@ -124,8 +124,8 @@ function unzip_kext
     if [ $? -ne 0 ]; then
         for kext in $out/Release/*.kext; do
             kextname="`basename $kext`"
-            if [[ "`echo $kextname | grep -E $NECESSARYLEKEXTS`" != "" ]]; then
-                cp -R $kext ../necessary_le_kexts
+            if [[ "`echo $kextname | grep -E $REQUIREDLEKEXTS`" != "" ]]; then
+                cp -R $kext ../required_le_kexts
             fi
             if [[ "`echo $kextname | grep -E $LEKEXTS`" != "" ]]; then
                 cp -R $kext ../le_kexts
@@ -139,8 +139,8 @@ function unzip_kext
     if [ $? -ne 0 ]; then
         for kext in $out/*.kext; do
             kextname="`basename $kext`"
-            if [[ "`echo $kextname | grep -E $NECESSARYLEKEXTS`" != "" ]]; then
-                cp -R $kext ../necessary_le_kexts
+            if [[ "`echo $kextname | grep -E $REQUIREDLEKEXTS`" != "" ]]; then
+                cp -R $kext ../required_le_kexts
             fi
             if [[ "`echo $kextname | grep -E $LEKEXTS`" != "" ]]; then
                 cp -R $kext ../le_kexts
@@ -154,8 +154,8 @@ function unzip_kext
     if [ $? -ne 0 ]; then
         for kext in $out/Kexts/*.kext; do
             kextname="`basename $kext`"
-            if [[ "`echo $kextname | grep -E $NECESSARYLEKEXTS`" != "" ]]; then
-                cp -R $kext ../necessary_le_kexts
+            if [[ "`echo $kextname | grep -E $REQUIREDLEKEXTS`" != "" ]]; then
+                cp -R $kext ../required_le_kexts
             fi
             if [[ "`echo $kextname | grep -E $LEKEXTS`" != "" ]]; then
                 cp -R $kext ../le_kexts
