@@ -167,7 +167,7 @@ function unzip_kext
     fi
 }
 
-mkdir ./necessary_le_kexts
+mkdir ./required_le_kexts
 mkdir ./le_kexts
 mkdir ./clover_kexts
 
