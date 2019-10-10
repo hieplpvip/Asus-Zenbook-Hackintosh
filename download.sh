@@ -46,7 +46,7 @@ function download_raw()
     echo
 }
 
-PS3='Do you want to download NullEthernet?'$'\n''Yes if you''re using USB wifi adapter'$'\n''No if you have replaced your wifi card with a compatible one: '
+PS3='Do you want to download NullEthernet?'$'\n''Yes if you'"'"'re using USB wifi adapter'$'\n''No if you have replaced your wifi card with a compatible one: '
 options=("Yes" "No")
 select opt in "${options[@]}"
 do
