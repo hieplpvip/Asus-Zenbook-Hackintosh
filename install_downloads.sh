@@ -57,6 +57,7 @@ function install_kext
     fi
 }
 
+# FIX-ME: some tools don't work
 function install_app
 {
     if [ "$1" != "" ]; then
