@@ -71,40 +71,34 @@ function install_app
 function install_binary
 {
     if [ "$1" != "" ]; then
-        echo -e '\t'`basename $1`' to /usr/bin'
-        sudo rm -f /usr/bin/`basename $1`
-        sudo cp -f $1 /usr/bin
-        $TAG -a Gray /usr/bin/`basename $1`
+        echo -e '\t'`basename $1`' to /usr/local/bin'
+        sudo rm -f /usr/local/bin/`basename $1`
+        sudo cp -f $1 /usr/local/bin
+        $TAG -a Gray /usr/local/bin/`basename $1`
     fi
 }
 
 function install
 {
-    installed=0
     out=${1/.zip/}
-    rm -Rf $out/* && unzip -q -d $out $1
+    sudo rm -Rf $out/* && sudo unzip -q -d $out $1
     check_directory $out/Release/*.app
     if [ $? -ne 0 ]; then
         for app in $out/Release/*.app; do
             install_app $app
         done
-        installed=1
     fi
     check_directory $out/*.app
     if [ $? -ne 0 ]; then
         for app in $out/*.app; do
             install_app $app
         done
-        installed=1
     fi
-    if [ $installed -eq 0 ]; then
-        check_directory $out/*
-        if [ $? -ne 0 ]; then
-            for tool in $out/*; do
-                install_binary $tool
-            done
+    for tool in $out/*; do
+        if [[ -f "$tool" && -x "$tool" ]]; then
+            install_binary $tool
         fi
-    fi
+    done
 }
 
 if [[ "$#" -ne 1 || $1 -lt 0 || $1 -ge  ${#MODELS[*]} ]]; then
