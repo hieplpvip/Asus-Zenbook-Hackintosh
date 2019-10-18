@@ -102,8 +102,8 @@ download_raw https://raw.githubusercontent.com/black-dragon74/OSX-Debug/master/I
 cd ..
 
 REQUIREDLEKEXTS="CodecCommander"
-LEKEXTS="ACPIPoller|AppleALC|AsusSMC|BrcmPatchRAM3|BrcmFirmwareRepo|BrcmBluetoothInjector.kext|WhateverGreen|Lilu|NullEthernet.kext|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|VoodooTSCSync|Fixup"
-CLOVERKEXTS="ACPIPoller|AppleALC|AsusSMC|BrcmPatchRAM3|BrcmFirmwareData|BrcmBluetoothInjector.kext|WhateverGreen|Lilu|NullEthernet.kext|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|VoodooTSCSync|Fixup"
+LEKEXTS="ACPIPoller|AppleALC|AsusSMC|BrcmPatchRAM3|BrcmFirmwareRepo|BrcmBluetoothInjector|WhateverGreen|Lilu|NullEthernet.kext|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|VoodooTSCSync|Fixup"
+CLOVERKEXTS="ACPIPoller|AppleALC|AsusSMC|BrcmPatchRAM3|BrcmFirmwareData|BrcmBluetoothInjector|WhateverGreen|Lilu|NullEthernet.kext|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|VoodooTSCSync|Fixup"
 
 function check_directory
 {
