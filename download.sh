@@ -76,6 +76,7 @@ mkdir ./zips && cd ./zips
 download_github "acidanthera/Lilu/releases" "RELEASE" "acidanthera-Lilu.zip"
 download_github "acidanthera/AppleALC/releases" "RELEASE" "acidanthera-AppleALC.zip"
 download_github "acidanthera/AirportBrcmFixup/releases" "RELEASE" "acidanthera-AirportBrcmFixup.zip"
+download_github "acidanthera/BrcmPatchRAM/releases" "RELEASE" "acidanthera-BrcmPatchRAM.zip"
 download_github "acidanthera/BT4LEContinuityFixup/releases" "RELEASE" "acidanthera-BT4LEContinuityFixup.zip"
 download_github "acidanthera/VirtualSMC/releases" "RELEASE" "acidanthera-VirtualSMC.zip"
 download_github "acidanthera/VoodooPS2/releases" "RELEASE" "acidanthera-VoodooPS2.zip"
@@ -83,7 +84,6 @@ download_github "acidanthera/WhateverGreen/releases" "RELEASE" "acidanthera-What
 download_github "hieplpvip/AsusSMC/releases" "RELEASE" "hieplpvip-AsusSMC.zip"
 download_github "alexandred/VoodooI2C/releases" "VoodooI2C-" "alexandred-VoodooI2C.zip"
 download_github "PMheart/LiluFriend/releases" "RELEASE" "PMheart-LiluFriend.zip"
-download_github "headkaze/OS-X-BrcmPatchRAM/releases" "BrcmPatchRAM" "headkaze-BrcmPatchRAM.zip"
 download_RHM os-x-eapd-codec-commander RehabMan-CodecCommander
 download_RHM os-x-acpi-poller RehabMan-Poller
 download_RHM voodootscsync RehabMan-VoodooTSCSync
