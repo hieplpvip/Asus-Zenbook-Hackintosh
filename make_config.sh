@@ -112,9 +112,9 @@ for i in "${!MODELCONFIG[@]}"; do
     echo
 done
 
-echo creating config_ux303_broadwell.plist
-cp $SRCCONFIG/config_master.plist $BUILDCONFIG/config_ux303_broadwell.plist
-/usr/libexec/PlistBuddy -c "Add :Comment string This config is created by @hieplpvip for UX303 (Broadwell)" $BUILDCONFIG/config_ux303_broadwell.plist
-/usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro12,1" $BUILDCONFIG/config_ux303_broadwell.plist
-patchTRIM $BUILDCONFIG/config_ux303_broadwell.plist
-echo
+#echo creating config_ux303_broadwell.plist
+#cp $SRCCONFIG/config_master.plist $BUILDCONFIG/config_ux303_broadwell.plist
+#/usr/libexec/PlistBuddy -c "Add :Comment string This config is created by @hieplpvip for UX303 (Broadwell)" $BUILDCONFIG/config_ux303_broadwell.plist
+#/usr/libexec/PlistBuddy -c "Set :SMBIOS:ProductName MacBookPro12,1" $BUILDCONFIG/config_ux303_broadwell.plist
+#patchTRIM $BUILDCONFIG/config_ux303_broadwell.plist
+#echo
