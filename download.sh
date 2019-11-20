@@ -1,41 +1,40 @@
 #!/bin/bash
 
+if [ "$(id -u)" != "0" ] && [ "$(sudo -n echo 'sudo' 2> /dev/null)" != "sudo" ]; then
+    echo "This script must be run as root in order to overwrite old downloaded files (if exist)!"
+    sudo $0 $@
+    exit 0
+fi
+
 curl_options="--retry 5 --location --progress-bar"
 curl_options_silent="--retry 5 --location --silent"
 
 # download typical release from RehabMan bitbucket downloads
-function download()
+function download_RHM()
 # $1 is subdir on rehabman bitbucket
 # $2 is prefix of zip file name
 {
     echo "downloading $2:"
-    curl $curl_options_silent --output /tmp/org.rehabman.download.txt https://bitbucket.org/RehabMan/$1/downloads/
-    local scrape=`grep -o -m 1 "/RehabMan/$1/downloads/$2.*\.zip" /tmp/org.rehabman.download.txt|perl -ne 'print $1 if /(.*)\"/'`
-    local url=https://bitbucket.org$scrape
+    curl $curl_options_silent --output /tmp/com.hieplpvip.download.txt https://bitbucket.org/RehabMan/$1/downloads/
+    local url=https://bitbucket.org`grep -o -m 1 "/RehabMan/$1/downloads/$2.*\.zip" /tmp/com.hieplpvip.download.txt|perl -ne 'print $1 if /(.*)\"/'`
     echo $url
-    if [ "$3" == "" ]; then
-        curl $curl_options --remote-name "$url"
-    else
-        curl $curl_options --output "$3" "$url"
-    fi
-    rm /tmp/org.rehabman.download.txt
+    curl $curl_options --output "$2.zip" "$url"
+    rm /tmp/com.hieplpvip.download.txt
     echo
 }
 
-# download latest release from github (perhaps others)
-function download_latest_notbitbucket()
-# $1 is main URL
-# $2 is URL of release page
-# $3 is partial file name to look for
-# $4 is file name to rename to
+# download latest release from github
+function download_github()
+# $1 is sub URL of release page
+# $2 is partial file name to look for
+# $3 is file name to rename to
 {
-    echo "downloading `basename $4 .zip`:"
-    curl $curl_options_silent --output /tmp/org.rehabman.download.txt "$2"
-    local scrape=`grep -o -m 1 "/.*$3.*\.zip" /tmp/org.rehabman.download.txt`
-    local url=$1$scrape
+    echo "downloading `basename $3 .zip`:"
+    curl $curl_options_silent --output /tmp/com.hieplpvip.download.txt "https://github.com/$1"
+    local url=https://github.com`grep -o -m 1 "/.*$2.*\.zip" /tmp/com.hieplpvip.download.txt`
     echo $url
-    curl $curl_options --output "$4" "$url"
-    rm /tmp/org.rehabman.download.txt
+    curl $curl_options --output "$3" "$url"
+    rm /tmp/com.hieplpvip.download.txt
     echo
 }
 
@@ -47,7 +46,7 @@ function download_raw()
     echo
 }
 
-PS3='Do you want to use NullEthernet?'$'\n''Yes if you use USB Wifi'$'\n''No if you have replaced your wifi card with a supported one: '
+PS3='Do you want to download NullEthernet?'$'\n''Yes if you'"'"'re using USB wifi adapter'$'\n''No if you have replaced your wifi card with a compatible one: '
 options=("Yes" "No")
 select opt in "${options[@]}"
 do
@@ -65,46 +64,46 @@ echo
 
 if [ ! -d ./downloads ]; then mkdir ./downloads; fi
 cd ./downloads
-rm -rf ./zips
-rm -rf ./necessary_le_kexts
-rm -rf ./le_kexts
-rm -rf ./clover_kexts
-rm -rf ./tools
-rm -rf ./drivers
+sudo rm -rf ./zips
+sudo rm -rf ./required_le_kexts
+sudo rm -rf ./le_kexts
+sudo rm -rf ./clover_kexts
+sudo rm -rf ./tools
+sudo rm -rf ./drivers
 
 # download kexts
 mkdir ./zips && cd ./zips
-download os-x-voodoo-ps2-controller RehabMan-Voodoo
-download os-x-eapd-codec-commander RehabMan-CodecCommander
-download os-x-brcmpatchram RehabMan-BrcmPatchRAM
-download os-x-acpi-poller RehabMan-Poller
-download voodootscsync RehabMan-VoodooTSCSync
-download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/Lilu/releases" "RELEASE" "acidanthera-Lilu.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/VirtualSMC/releases" "RELEASE" "acidanthera-VirtualSMC.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AppleALC/releases" "RELEASE" "acidanthera-AppleALC.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/WhateverGreen/releases" "RELEASE" "acidanthera-WhateverGreen.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/AirportBrcmFixup/releases" "RELEASE" "acidanthera-AirportBrcmFixup.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/acidanthera/BT4LEContinuityFixup/releases" "RELEASE" "acidanthera-BT4LEContinuityFixup.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/PMheart/LiluFriend/releases" "RELEASE" "PMheart-LiluFriend.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/hieplpvip/AsusSMC/releases" "RELEASE" "hieplpvip-AsusSMC.zip"
-download_latest_notbitbucket "https://github.com" "https://github.com/alexandred/VoodooI2C/releases" "VoodooI2C-" "alexandred-VoodooI2C.zip"
+download_github "acidanthera/Lilu/releases" "RELEASE" "acidanthera-Lilu.zip"
+download_github "acidanthera/AppleALC/releases" "RELEASE" "acidanthera-AppleALC.zip"
+download_github "acidanthera/AirportBrcmFixup/releases" "RELEASE" "acidanthera-AirportBrcmFixup.zip"
+download_github "acidanthera/BrcmPatchRAM/releases" "RELEASE" "acidanthera-BrcmPatchRAM.zip"
+download_github "acidanthera/BT4LEContinuityFixup/releases" "RELEASE" "acidanthera-BT4LEContinuityFixup.zip"
+download_github "acidanthera/VirtualSMC/releases" "RELEASE" "acidanthera-VirtualSMC.zip"
+download_github "acidanthera/VoodooPS2/releases" "RELEASE" "acidanthera-VoodooPS2.zip"
+download_github "acidanthera/WhateverGreen/releases" "RELEASE" "acidanthera-WhateverGreen.zip"
+download_github "hieplpvip/AsusSMC/releases" "RELEASE" "hieplpvip-AsusSMC.zip"
+download_github "alexandred/VoodooI2C/releases" "VoodooI2C-" "alexandred-VoodooI2C.zip"
+download_github "PMheart/LiluFriend/releases" "RELEASE" "PMheart-LiluFriend.zip"
+download_RHM os-x-eapd-codec-commander RehabMan-CodecCommander
+download_RHM os-x-acpi-poller RehabMan-Poller
+download_RHM voodootscsync RehabMan-VoodooTSCSync
 if [ $nullethernet -eq 1 ]; then
-    download os-x-null-ethernet RehabMan-NullEthernet
+    download_RHM os-x-null-ethernet RehabMan-NullEthernet
 fi
 
 cd ..
 
 # download tools
 mkdir ./tools && cd ./tools
-download os-x-maciasl-patchmatic RehabMan-patchmatic
-download os-x-maciasl-patchmatic RehabMan-MaciASL
-download acpica iasl iasl.zip
+download_RHM os-x-maciasl-patchmatic RehabMan-patchmatic
+download_RHM os-x-maciasl-patchmatic RehabMan-MaciASL
+download_RHM acpica iasl
 download_raw https://raw.githubusercontent.com/black-dragon74/OSX-Debug/master/IORegistryExplorer.zip IORegistryExplorer.zip
 cd ..
 
-NECESSARYLEKEXTS="BrcmPatchRAM2|BrcmFirmwareRepo|CodecCommander"
-LEKEXTS="ACPIPoller|AppleALC|AsusSMC|WhateverGreen|Lilu|NullEthernet.kext|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|VoodooTSCSync|Fixup"
-CLOVERKEXTS="ACPIPoller|AppleALC|AsusSMC|WhateverGreen|Lilu|NullEthernet.kext|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|VoodooTSCSync|Fixup"
+REQUIREDLEKEXTS="CodecCommander"
+LEKEXTS="ACPIPoller|AppleALC|AsusSMC|BrcmPatchRAM3|BrcmFirmwareRepo|BrcmBluetoothInjector|WhateverGreen|Lilu|NullEthernet.kext|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|VoodooTSCSync|Fixup"
+CLOVERKEXTS="ACPIPoller|AppleALC|AsusSMC|BrcmPatchRAM3|BrcmFirmwareData|BrcmBluetoothInjector|WhateverGreen|Lilu|NullEthernet.kext|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|VoodooTSCSync|Fixup"
 
 function check_directory
 {
@@ -125,8 +124,8 @@ function unzip_kext
     if [ $? -ne 0 ]; then
         for kext in $out/Release/*.kext; do
             kextname="`basename $kext`"
-            if [[ "`echo $kextname | grep -E $NECESSARYLEKEXTS`" != "" ]]; then
-                cp -R $kext ../necessary_le_kexts
+            if [[ "`echo $kextname | grep -E $REQUIREDLEKEXTS`" != "" ]]; then
+                cp -R $kext ../required_le_kexts
             fi
             if [[ "`echo $kextname | grep -E $LEKEXTS`" != "" ]]; then
                 cp -R $kext ../le_kexts
@@ -140,8 +139,8 @@ function unzip_kext
     if [ $? -ne 0 ]; then
         for kext in $out/*.kext; do
             kextname="`basename $kext`"
-            if [[ "`echo $kextname | grep -E $NECESSARYLEKEXTS`" != "" ]]; then
-                cp -R $kext ../necessary_le_kexts
+            if [[ "`echo $kextname | grep -E $REQUIREDLEKEXTS`" != "" ]]; then
+                cp -R $kext ../required_le_kexts
             fi
             if [[ "`echo $kextname | grep -E $LEKEXTS`" != "" ]]; then
                 cp -R $kext ../le_kexts
@@ -155,8 +154,8 @@ function unzip_kext
     if [ $? -ne 0 ]; then
         for kext in $out/Kexts/*.kext; do
             kextname="`basename $kext`"
-            if [[ "`echo $kextname | grep -E $NECESSARYLEKEXTS`" != "" ]]; then
-                cp -R $kext ../necessary_le_kexts
+            if [[ "`echo $kextname | grep -E $REQUIREDLEKEXTS`" != "" ]]; then
+                cp -R $kext ../required_le_kexts
             fi
             if [[ "`echo $kextname | grep -E $LEKEXTS`" != "" ]]; then
                 cp -R $kext ../le_kexts
@@ -168,7 +167,7 @@ function unzip_kext
     fi
 }
 
-mkdir ./necessary_le_kexts
+mkdir ./required_le_kexts
 mkdir ./le_kexts
 mkdir ./clover_kexts
 
