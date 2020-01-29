@@ -205,7 +205,7 @@ if [ $? -ne 0 ]; then
     done
 fi
 
-mkdir ./drivers
-cp ./zips/acidanthera-VirtualSMC/Drivers/VirtualSmc.efi ./drivers
+#mkdir ./drivers
+#cp ./zips/acidanthera-VirtualSMC/Drivers/VirtualSmc.efi ./drivers
 
 cd ..

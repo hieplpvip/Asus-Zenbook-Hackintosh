@@ -267,11 +267,11 @@ echo Installing AsusSMCDaemon...
 ./downloads/zips/hieplpvip-AsusSMC/install_daemon.sh
 echo
 
-echo Installing VirtualSmc.efi
-cp -f ./downloads/drivers/VirtualSmc.efi $EFI/EFI/CLOVER/drivers64UEFI
-rm -f $EFI/EFI/CLOVER/drivers64UEFI/SMCHelper.efi
-rm -f $EFI/EFI/CLOVER/drivers64UEFI/SMCHelper-64.efi
-echo
+#echo Installing VirtualSmc.efi
+#cp -f ./downloads/drivers/VirtualSmc.efi $EFI/EFI/CLOVER/drivers64UEFI
+#rm -f $EFI/EFI/CLOVER/drivers64UEFI/SMCHelper.efi
+#rm -f $EFI/EFI/CLOVER/drivers64UEFI/SMCHelper-64.efi
+#echo
 
 if [[ "$ALCPLUGFIX" != "" ]]; then
     echo Installing ALCPlugFix...
