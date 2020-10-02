@@ -1,9 +1,9 @@
 NAME="UX430 (KabyLake-R)"
 CONFIGPLIST="config_ux430_kabylaker.plist"
-CONFIGPARTS=()
+CONFIGPARTS=(config_ux430uar.plist)
 CONFIGMERGE=()
 ETPDPATCH=true
 PRODUCTNAME="MacBookPro14,1"
 AMLFILES=("SSDT-UX430-KabyLakeR" "SSDT-ELAN" "SSDT-I2CBUS")
 AMLDIR="ux430-kabylaker"
-ALCPLUGFIX=""
+ALCPLUGFIX="alc295"
