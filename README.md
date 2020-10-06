@@ -1,8 +1,4 @@
-## [Donate me](https://paypal.me/lebhiep)
-As a student, I need to pay a lot of fees: tuition fees, exam fees, house rent, food, etc.
-Any donation would help me a lot!
-
-This repository is provided for free in the hope of helping people who can't afford Macbook install macOS on their Zenbooks, and it will always be free.
+**Note:** This branch uses Clover and is only kept for archival purpose. You should not use this.
 
 # ASUS ZENBOOK HACKINTOSH
 
@@ -42,7 +38,7 @@ To add support for your laptop, please provide full specs and original ACPI file
 
 @acidanthera (@vit9696, @lvs1974, @vandroiy2013, etc.) for Lilu, AppleALC, VirtualSMC, WhateverGreen, AirportBrcmFixup, BT4LEContinuityFixup and their EFI drivers.
 
-@gulios (see https://www.tonymacx86.com/threads/asus-ux430ua-kaby-lake-intel-hd-graphics-620.225847) 
+@gulios (see https://www.tonymacx86.com/threads/asus-ux430ua-kaby-lake-intel-hd-graphics-620.225847)
 
 @Shinji3rd (see https://www.tonymacx86.com/threads/guide-asus-zenbook-ux310uak-macos-sierra-installation-guide.224591)
 
