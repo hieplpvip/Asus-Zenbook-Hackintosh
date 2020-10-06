@@ -583,7 +583,7 @@
 			<key>FadtEnableReset</key>
 			<false/>
 			<key>NormalizeHeaders</key>
-			<false/>
+			<true/>
 			<key>RebaseRegions</key>
 			<false/>
 			<key>ResetHwSig</key>
