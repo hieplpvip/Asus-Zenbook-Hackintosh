@@ -1,9 +1,4 @@
 .DS_Store
-build/acpi
-build/config
-downloads/clover_kexts/
-downloads/drivers/
-downloads/le_kexts/
-downloads/required_le_kexts/
-downloads/tools/
-downloads/zips/
+build
+download
+src/smbios.txt

@@ -1,0 +1,2 @@
+MODELS=("UX310 (Kaby Lake)" "UX330 (Kaby Lake)" "UX330 (Kaby Lake-R)" "UX410 (Kaby Lake)" "UX430 (Kaby Lake)" "UX430 (Kaby Lake-R)")
+MODELCONFIG=("ux310-kabylake.txt" "ux330-kabylake.txt" "ux330-kabylaker.txt" "ux410-kabylake.txt" "ux430-kabylake.txt" "ux430-kabylaker.txt")

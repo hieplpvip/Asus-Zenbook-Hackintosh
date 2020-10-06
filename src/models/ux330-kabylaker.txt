@@ -1,9 +1,3 @@
-NAME="UX330 (KabyLake-R)"
-CONFIGPLIST="config_ux330_kabylaker.plist"
-CONFIGPARTS=()
-CONFIGMERGE=()
-ETPDPATCH=true
-PRODUCTNAME="MacBookPro14,1"
-AMLFILES=("SSDT-UX330-KabyLakeR" "SSDT-ELAN" "SSDT-I2CBUS")
-AMLDIR="ux330-kabylaker"
-ALCPLUGFIX=""
+NAME="UX330 (Kaby Lake-R)"
+CONFIGPLIST="ux330-kabylaker.plist"
+AMLFILES=("SSDT-UX330-KabyLakeR" "SSDT-ELAN")

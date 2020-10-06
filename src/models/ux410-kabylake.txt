@@ -1,9 +1,3 @@
-NAME="UX410 (KabyLake)"
-CONFIGPLIST="config_ux410_kabylake.plist"
-CONFIGPARTS=()
-CONFIGMERGE=()
-ETPDPATCH=false
-PRODUCTNAME="MacBookPro14,1"
-AMLFILES=("SSDT-UX410-KabyLake" "SSDT-I2CBUS")
-AMLDIR="ux410-kabylake"
-ALCPLUGFIX=""
+NAME="UX410 (Kaby Lake)"
+CONFIGPLIST="ux410-kabylake.plist"
+AMLFILES=("SSDT-UX410-KabyLake")
