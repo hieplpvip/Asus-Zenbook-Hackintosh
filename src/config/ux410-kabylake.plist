@@ -13,10 +13,10 @@
 			<dict>
 				<key>Comment</key>
 				<string>SSDT for UX410 Kaby Lake</string>
-				<key>Path</key>
-				<string>SSDT-UX410-KabyLake.aml</string>
 				<key>Enabled</key>
 				<true/>
+				<key>Path</key>
+				<string>SSDT-UX410-KabyLake.aml</string>
 			</dict>
 		</array>
 		<key>Delete</key>

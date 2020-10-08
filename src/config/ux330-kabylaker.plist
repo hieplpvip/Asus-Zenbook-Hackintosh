@@ -13,18 +13,18 @@
 			<dict>
 				<key>Comment</key>
 				<string>SSDT for UX330 Kaby Lake-R</string>
-				<key>Path</key>
-				<string>SSDT-UX330-KabyLakeR.aml</string>
 				<key>Enabled</key>
 				<true/>
+				<key>Path</key>
+				<string>SSDT-UX330-KabyLakeR.aml</string>
 			</dict>
 			<dict>
 				<key>Comment</key>
 				<string>ELAN touchpad interrupt patch</string>
-				<key>Path</key>
-				<string>SSDT-ELAN.aml</string>
 				<key>Enabled</key>
 				<true/>
+				<key>Path</key>
+				<string>SSDT-ELAN.aml</string>
 			</dict>
 		</array>
 		<key>Delete</key>
