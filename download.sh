@@ -49,7 +49,7 @@ download_github "acidanthera/VoodooPS2" "RELEASE" "acidanthera-VoodooPS2.zip"
 download_github "acidanthera/WhateverGreen" "RELEASE" "acidanthera-WhateverGreen.zip"
 download_github "hieplpvip/AsusSMC" "RELEASE" "hieplpvip-AsusSMC.zip"
 download_github "hieplpvip/AppleBacklightSmoother" "RELEASE" "hieplpvip-AppleBacklightSmoother.zip"
-download_github "alexandred/VoodooI2C" "VoodooI2C-" "alexandred-VoodooI2C.zip"
+download_github "VoodooI2C-Clone/VoodooI2C" "RELEASE" "alexandred-VoodooI2C.zip"
 cd ..
 
 # download drivers
