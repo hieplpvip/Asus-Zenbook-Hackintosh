@@ -10,7 +10,7 @@ about: Report problems
 
 **Describe the problems**
 
-**Attach output from [gen_debug](https://www.tonymacx86.com/threads/tool-generate-proper-problem-reporting-files.235953/)**
+**Attach output from [OC-gen-debug](https://github.com/hieplpvip/OC-gen-debug)**
 
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
