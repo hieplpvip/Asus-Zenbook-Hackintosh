@@ -25,7 +25,7 @@ I can not test support for all models as I only have UX410 (Kaby Lake). Please o
 
 #### Instruction
 
-Work in progress
+See [docs](https://github.com/hieplpvip/Asus-Zenbook-Hackintosh/tree/master/docs) folder.
 
 #### Credits
 
