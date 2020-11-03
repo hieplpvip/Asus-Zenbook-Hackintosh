@@ -5,7 +5,7 @@
 	<key>#Comment</key>
 	<string>This config is created by @hieplpvip for UX430 (Kaby Lake-R)</string>
 	<key>#OCVersion</key>
-	<string>0.6.2</string>
+	<string>0.6.3</string>
 	<key>ACPI</key>
 	<dict>
 		<key>Add</key>
@@ -1142,6 +1142,8 @@
 			<true/>
 			<key>ExternalDiskIcons</key>
 			<false/>
+			<key>ForceSecureBootScheme</key>
+			<false/>
 			<key>IncreasePciBarSize</key>
 			<false/>
 			<key>LapicKernelPanic</key>
@@ -1333,6 +1335,8 @@
 	<dict>
 		<key>Automatic</key>
 		<true/>
+		<key>CustomMemory</key>
+		<false/>
 		<key>Generic</key>
 		<dict>
 			<key>AdviseWindows</key>

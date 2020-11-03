@@ -1,5 +1,7 @@
 #!/bin/bash
 
+oc_version="0.6.3"
+
 curl_options="--retry 5 --location --progress-bar"
 curl_options_silent="--retry 5 --location --silent"
 
@@ -31,7 +33,7 @@ cd ./download
 
 # download OpenCore
 mkdir ./oc && cd ./oc
-download_github "acidanthera/OpenCorePkg" "RELEASE" "OpenCorePkg.zip"
+download_github "acidanthera/OpenCorePkg" "$oc_version-RELEASE" "OpenCorePkg.zip"
 unzip -q -d OpenCorePkg OpenCorePkg.zip
 cd ..
 
