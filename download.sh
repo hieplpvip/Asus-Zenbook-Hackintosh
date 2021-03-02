@@ -1,6 +1,6 @@
 #!/bin/bash
 
-oc_version="0.6.4"
+oc_version="0.6.7"
 
 curl_options="--retry 5 --location --progress-bar"
 curl_options_silent="--retry 5 --location --silent"
@@ -50,8 +50,8 @@ download_github "acidanthera/VirtualSMC" "RELEASE" "acidanthera-VirtualSMC.zip"
 download_github "acidanthera/VoodooPS2" "RELEASE" "acidanthera-VoodooPS2.zip"
 download_github "acidanthera/WhateverGreen" "RELEASE" "acidanthera-WhateverGreen.zip"
 download_github "hieplpvip/AsusSMC" "RELEASE" "hieplpvip-AsusSMC.zip"
-download_github "hieplpvip/AppleBacklightSmoother" "RELEASE" "hieplpvip-AppleBacklightSmoother.zip"
-download_github "VoodooI2C-Clone/VoodooI2C" "RELEASE" "alexandred-VoodooI2C.zip"
+#download_github "hieplpvip/AppleBacklightSmoother" "RELEASE" "hieplpvip-AppleBacklightSmoother.zip"
+download_github "VoodooI2C/VoodooI2C" "VoodooI2C-" "VoodooI2C-VoodooI2C.zip"
 cd ..
 
 # download drivers

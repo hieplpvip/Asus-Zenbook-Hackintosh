@@ -11,6 +11,7 @@ While not necessary, I recommend reading Dortania's [OpenCore Install Guide](htt
 ## Step 0: Clone this repo
 
 If you haven't cloned this repo, do it now:
+
 ```shell
 git clone https://github.com/hieplpvip/Asus-Zenbook-Hackintosh zenbook
 cd zenbook
@@ -21,6 +22,7 @@ cd zenbook
 Follow [this guide](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html#generate-a-new-serial) to generate a fake serial number for yourself. Never use someone else's serial number!
 
 In `src` folder, create a copy of `smbios-sample.txt` called `smbios.txt`:
+
 ```shell
 cp src/smbios-sample.txt src/smbios.txt
 ```
@@ -30,11 +32,13 @@ Put your newly generate serial number in `smbios.txt`. It will be used to genera
 ## Step 2: Building EFI folder
 
 - Download necessary kexts and drivers:
+
 ```shell
 ./download.sh
 ```
 
 - Build EFI folder:
+
 ```shell
 ./build.sh
 ```
