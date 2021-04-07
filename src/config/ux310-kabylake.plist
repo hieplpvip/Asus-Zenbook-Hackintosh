@@ -5,7 +5,7 @@
 	<key>#Comment</key>
 	<string>This config is created by @hieplpvip for UX310 (Kaby Lake)</string>
 	<key>#OCVersion</key>
-	<string>0.6.7</string>
+	<string>0.6.8</string>
 	<key>ACPI</key>
 	<dict>
 		<key>Add</key>
