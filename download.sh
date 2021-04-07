@@ -1,6 +1,6 @@
 #!/bin/bash
 
-oc_version="0.6.7"
+oc_version="0.6.8"
 
 curl_options="--retry 5 --location --progress-bar"
 curl_options_silent="--retry 5 --location --silent"
