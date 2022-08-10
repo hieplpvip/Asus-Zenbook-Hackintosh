@@ -28,13 +28,24 @@ function download_raw()
     echo
 }
 
+
 rm -rf download && mkdir ./download
 cd ./download
+
+# download resources FOR OpenCanopy (Themes)
+mkdir ./resources && cd ./resources
+download_raw https://github.com/acidanthera/OcBinaryData/archive/refs/heads/master.zip OcBinaryData.zip
+
+
+echo "unzipping resources"
+unzip -q OcBinaryData.zip '*/Resources/*' 
+
+cd ..
 
 # download OpenCore
 mkdir ./oc && cd ./oc
 download_github "acidanthera/OpenCorePkg" "$oc_version-RELEASE" "OpenCore.zip"
-unzip -q -d OpenCorePkg OpenCore.zip
+unzip -q -d OpenCorePkg OpenCore.zip 
 cd ..
 
 # download kexts
@@ -59,6 +70,7 @@ mkdir ./drivers && cd ./drivers
 download_raw https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus.efi HfsPlus.efi
 cd ..
 
+
 KEXTS="AppleALC|AppleBacklightSmoother|AsusSMC|BrcmPatchRAM3|BrcmFirmwareData|BlueToolFixup|WhateverGreen|CPUFriend|CPUFriendDataProvider|Lilu|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|CpuTscSync|AirportBrcmFixup|HibernationFixup"
 
 function check_directory
@@ -71,6 +83,8 @@ function check_directory
         fi
     done
 }
+
+
 
 function unzip_kext
 {
