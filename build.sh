@@ -53,7 +53,7 @@ sed -i "" -e "s/MLB_PLACEHOLDER/$MLB/" \
           -e "s/SmUUID_PLACEHOLDER/$SystemUUID/" $OCFOLDER/config.plist
 
 # Remove unused UEFI Drivers
-find $OCFOLDER/Drivers ! -name AudioDxe.efi \
+find $OCFOLDER/Drivers ! -name OpenCanopy.efi \
                        ! -name HfsPlus.efi \
                        ! -name OpenRuntime.efi -type f -delete
 
