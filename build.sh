@@ -35,9 +35,13 @@ done
 # Copy UEFI Drivers
 cp -R download/drivers/* $OCFOLDER/Drivers/
 
+
 # Copy kexts
 cp -R download/kexts/* $OCFOLDER/Kexts/
 cp -R src/kexts/* $OCFOLDER/Kexts/
+
+# Copy Resources
+cp -R download/resources/OcBinaryData-master/Resources/* $OCFOLDER/Resources/
 
 # Copy OpenCore config
 cp src/config/$CONFIGPLIST $OCFOLDER/config.plist
