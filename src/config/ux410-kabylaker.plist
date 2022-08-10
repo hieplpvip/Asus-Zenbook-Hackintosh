@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>#Comment</key>
-	<string>This config is created by @hieplpvip and @xick for UX330 (Kaby Lake)</string>
+	<string>This config is created by @hieplpvip and @xick for UX410 (Kaby Lake-R)</string>
 	<key>#OCVersion</key>
 	<string>0.8.3</string>
 	<key>ACPI</key>
@@ -12,11 +12,11 @@
 		<array>
 			<dict>
 				<key>Comment</key>
-				<string>SSDT for UX330 Kaby Lake</string>
+				<string>SSDT for UX410 Kaby Lake</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
-				<string>SSDT-UX330-KabyLake.aml</string>
+				<string>SSDT-UX410-KabyLake.aml</string>
 			</dict>
 		</array>
 		<key>Delete</key>
