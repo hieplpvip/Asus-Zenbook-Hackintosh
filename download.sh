@@ -59,7 +59,7 @@ mkdir ./drivers && cd ./drivers
 download_raw https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus.efi HfsPlus.efi
 cd ..
 
-KEXTS="AppleALC|AppleBacklightSmoother|AsusSMC|BrcmPatchRAM3|BrcmFirmwareData|BlueToolFixup|WhateverGreen|CPUFriend|Lilu|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|CpuTscSync|Fixup"
+KEXTS="AppleALC|AppleBacklightSmoother|AsusSMC|BrcmPatchRAM3|BrcmFirmwareData|BlueToolFixup|WhateverGreen|CPUFriend|CPUFriendDataProvider|Lilu|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|CpuTscSync|AirportBrcmFixup|HibernationFixup"
 
 function check_directory
 {
@@ -80,7 +80,7 @@ function unzip_kext
     if [ $? -ne 0 ]; then
         for kext in $out/Release/*.kext; do
             kextname="`basename $kext`"
-            if [[ "`echo $kextname | grep -E $KEXTS`" != "" ]]; then
+            if [[ "`echo $kextname | grep -w -E $KEXTS`" != "" ]]; then
                 cp -R $kext ../kexts
             fi
         done
@@ -89,7 +89,7 @@ function unzip_kext
     if [ $? -ne 0 ]; then
         for kext in $out/*.kext; do
             kextname="`basename $kext`"
-            if [[ "`echo $kextname | grep -E $KEXTS`" != "" ]]; then
+            if [[ "`echo $kextname | grep -w -E $KEXTS`" != "" ]]; then
                 cp -R $kext ../kexts
             fi
         done
@@ -98,7 +98,7 @@ function unzip_kext
     if [ $? -ne 0 ]; then
         for kext in $out/Kexts/*.kext; do
             kextname="`basename $kext`"
-            if [[ "`echo $kextname | grep -E $KEXTS`" != "" ]]; then
+            if [[ "`echo $kextname | grep -w -E $KEXTS`" != "" ]]; then
                 cp -R $kext ../kexts
             fi
         done
