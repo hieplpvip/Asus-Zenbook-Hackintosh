@@ -1,6 +1,6 @@
 #!/bin/bash
 
-oc_version="0.6.8"
+oc_version="0.8.3"
 
 curl_options="--retry 5 --location --progress-bar"
 curl_options_silent="--retry 5 --location --silent"
@@ -33,8 +33,8 @@ cd ./download
 
 # download OpenCore
 mkdir ./oc && cd ./oc
-download_github "acidanthera/OpenCorePkg" "$oc_version-RELEASE" "OpenCorePkg.zip"
-unzip -q -d OpenCorePkg OpenCorePkg.zip
+download_github "acidanthera/OpenCorePkg" "$oc_version-RELEASE" "OpenCore.zip"
+unzip -q -d OpenCorePkg OpenCore.zip
 cd ..
 
 # download kexts
@@ -59,7 +59,7 @@ mkdir ./drivers && cd ./drivers
 download_raw https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus.efi HfsPlus.efi
 cd ..
 
-KEXTS="AppleALC|AppleBacklightSmoother|AsusSMC|BrcmPatchRAM3|BrcmFirmwareData|BrcmBluetoothInjector|WhateverGreen|CPUFriend|Lilu|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|CpuTscSync|Fixup"
+KEXTS="AppleALC|AppleBacklightSmoother|AsusSMC|BrcmPatchRAM3|BrcmFirmwareData|BlueToolFixup|WhateverGreen|CPUFriend|Lilu|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|CpuTscSync|Fixup"
 
 function check_directory
 {
