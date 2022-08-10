@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>#Comment</key>
-	<string>This config is created by @hieplpvip and @xick for UX410 (Kaby Lake-R)</string>
+	<string>This config is created by @hieplpvip and @xick for UX410 (Kaby Lake)</string>
 	<key>#OCVersion</key>
 	<string>0.8.3</string>
 	<key>ACPI</key>
