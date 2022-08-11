@@ -38,14 +38,13 @@ download_raw https://github.com/acidanthera/OcBinaryData/archive/refs/heads/mast
 
 
 echo "unzipping resources"
-unzip -q OcBinaryData.zip '*/Resources/*' 
-
+unzip -q OcBinaryData.zip 'OcBinaryData-master/Resources/**/*' -d "" 
 cd ..
 
 # download OpenCore
 mkdir ./oc && cd ./oc
 download_github "acidanthera/OpenCorePkg" "$oc_version-RELEASE" "OpenCore.zip"
-unzip -q -d OpenCorePkg OpenCore.zip 
+unzip -o -q -d OpenCorePkg OpenCore.zip 
 cd ..
 
 # download kexts
