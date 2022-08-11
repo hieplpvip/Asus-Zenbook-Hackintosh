@@ -1,6 +1,6 @@
 #!/bin/bash
 
-oc_version="0.6.8"
+oc_version="0.8.3"
 
 curl_options="--retry 5 --location --progress-bar"
 curl_options_silent="--retry 5 --location --silent"
@@ -28,13 +28,23 @@ function download_raw()
     echo
 }
 
+
 rm -rf download && mkdir ./download
 cd ./download
 
+# download resources FOR OpenCanopy (Themes)
+mkdir ./resources && cd ./resources
+download_raw https://github.com/acidanthera/OcBinaryData/archive/refs/heads/master.zip OcBinaryData.zip
+
+
+echo "unzipping resources"
+unzip -q OcBinaryData.zip 'OcBinaryData-master/Resources/**/*' -d "" 
+cd ..
+
 # download OpenCore
 mkdir ./oc && cd ./oc
-download_github "acidanthera/OpenCorePkg" "$oc_version-RELEASE" "OpenCorePkg.zip"
-unzip -q -d OpenCorePkg OpenCorePkg.zip
+download_github "acidanthera/OpenCorePkg" "$oc_version-RELEASE" "OpenCore.zip"
+unzip -o -q -d OpenCorePkg OpenCore.zip 
 cd ..
 
 # download kexts
@@ -59,7 +69,8 @@ mkdir ./drivers && cd ./drivers
 download_raw https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus.efi HfsPlus.efi
 cd ..
 
-KEXTS="AppleALC|AppleBacklightSmoother|AsusSMC|BrcmPatchRAM3|BrcmFirmwareData|BrcmBluetoothInjector|WhateverGreen|CPUFriend|Lilu|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|CpuTscSync|Fixup"
+
+KEXTS="AppleALC|AppleBacklightSmoother|AsusSMC|BrcmPatchRAM3|BrcmFirmwareData|BlueToolFixup|WhateverGreen|CPUFriend|CPUFriendDataProvider|Lilu|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooI2C.kext|VoodooI2CHID.kext|VoodooPS2Controller|CpuTscSync|AirportBrcmFixup|HibernationFixup"
 
 function check_directory
 {
@@ -72,6 +83,8 @@ function check_directory
     done
 }
 
+
+
 function unzip_kext
 {
     out=${1/.zip/}
@@ -80,7 +93,7 @@ function unzip_kext
     if [ $? -ne 0 ]; then
         for kext in $out/Release/*.kext; do
             kextname="`basename $kext`"
-            if [[ "`echo $kextname | grep -E $KEXTS`" != "" ]]; then
+            if [[ "`echo $kextname | grep -w -E $KEXTS`" != "" ]]; then
                 cp -R $kext ../kexts
             fi
         done
@@ -89,7 +102,7 @@ function unzip_kext
     if [ $? -ne 0 ]; then
         for kext in $out/*.kext; do
             kextname="`basename $kext`"
-            if [[ "`echo $kextname | grep -E $KEXTS`" != "" ]]; then
+            if [[ "`echo $kextname | grep -w -E $KEXTS`" != "" ]]; then
                 cp -R $kext ../kexts
             fi
         done
@@ -98,7 +111,7 @@ function unzip_kext
     if [ $? -ne 0 ]; then
         for kext in $out/Kexts/*.kext; do
             kextname="`basename $kext`"
-            if [[ "`echo $kextname | grep -E $KEXTS`" != "" ]]; then
+            if [[ "`echo $kextname | grep -w -E $KEXTS`" != "" ]]; then
                 cp -R $kext ../kexts
             fi
         done

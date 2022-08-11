@@ -4,9 +4,11 @@
 
 - Time and patience
 - Basic knowledge of command line
-- A computer running macOS (for running scripts in this repo)
+- ~~A computer running macOS (for running scripts in this repo)~~ 
 
 While not necessary, I recommend reading Dortania's [OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/) entirely before we start to get a feel of how OpenCore/Hackintosh works. Don't worry if you're new to Hackintosh and get overwhelmed with the amount of information there. All the files have been prepared for you in this repo; you just need to follow the instruction below.
+
+__Script can also be run in Windows, just download [iasl binary](https://acpica.org/downloads/binary-tools) and replace it in tools/asl__. (Maybe you also need installation of Git Bash).
 
 ## Step 0: Clone this repo
 
@@ -76,3 +78,8 @@ If you have correctly generated serial number, these services should work for yo
 #### Unlock 0xE2 MSR
 
 While not needed, you are recommended to do it (for better system stability). Follow [this guide](https://dortania.github.io/OpenCore-Post-Install/misc/msr-lock.html).
+
+#### Fix Other Issues
+- If you experience poor quality audio, try to change frequency of audio output to 48,0Hz in 'Midi Audio Setup'. 
+- Sometimes Audio from Speaker or Jack randomly disappear in some models, in this case closing and reopening the lid should fix. 
+

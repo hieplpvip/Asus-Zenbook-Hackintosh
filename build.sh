@@ -35,9 +35,13 @@ done
 # Copy UEFI Drivers
 cp -R download/drivers/* $OCFOLDER/Drivers/
 
+
 # Copy kexts
 cp -R download/kexts/* $OCFOLDER/Kexts/
 cp -R src/kexts/* $OCFOLDER/Kexts/
+
+# Copy Resources
+cp -R download/resources/OcBinaryData-master/Resources/* $OCFOLDER/Resources/
 
 # Copy OpenCore config
 cp src/config/$CONFIGPLIST $OCFOLDER/config.plist
@@ -53,7 +57,7 @@ sed -i "" -e "s/MLB_PLACEHOLDER/$MLB/" \
           -e "s/SmUUID_PLACEHOLDER/$SystemUUID/" $OCFOLDER/config.plist
 
 # Remove unused UEFI Drivers
-find $OCFOLDER/Drivers ! -name AudioDxe.efi \
+find $OCFOLDER/Drivers ! -name OpenCanopy.efi \
                        ! -name HfsPlus.efi \
                        ! -name OpenRuntime.efi -type f -delete
 

@@ -3,7 +3,9 @@
 [![Gitter chat](https://img.shields.io/gitter/room/nwjs/nw.js.svg?colorB=ed1965)](https://gitter.im/ASUS-ZENBOOK-HACKINTOSH/Lobby)
 [![Donate with PayPal](https://img.shields.io/badge/paypal-donate-red.svg)](https://paypal.me/lebhiep)
 
-Run macOS on Asus Zenbook with OpenCore
+Run macOS on Asus Zenbook with OpenCore   
+__Updated for Monterey by @xick__     
+(should also works for Ventura, not tested yet).  
 
 #### Supported models
 
@@ -35,4 +37,11 @@ See [docs](https://github.com/hieplpvip/Asus-Zenbook-Hackintosh/tree/master/docs
 
 @RehabMan for his guides on Tonymacx86
 
+
 See [References](../../wiki/References) for full list.
+
+[![Gitter chat](https://img.shields.io/gitter/room/nwjs/nw.js.svg?colorB=ed1965)](https://gitter.im/ASUS-ZENBOOK-HACKINTOSH/Lobby)
+[![Donate with PayPal](https://img.shields.io/badge/paypal-donate-red.svg)](https://paypal.me/lebhiep)
+
+Run macOS on Asus Zenbook with OpenCore
+
