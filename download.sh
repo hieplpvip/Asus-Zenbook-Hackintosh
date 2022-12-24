@@ -12,10 +12,11 @@ function download_github()
 # $3 is file name to rename to
 {
     echo "downloading `basename $3 .zip`:"
-    curl $curl_options_silent --output /tmp/com.hieplpvip.download.txt "https://github.com/$1/releases/latest"
-    local url=https://github.com`grep -o -m 1 "/.*$2.*\.zip" /tmp/com.hieplpvip.download.txt`
+	local jsonink="https://api.github.com/repos/$1/releases/latest"
+    curl $curl_options_silent --output /tmp/com.hieplpvip.download.txt "$jsonink"
+    local url=`grep "browser_download_url" /tmp/com.hieplpvip.download.txt | cut -d : -f 2,3 | tr -d \"|grep RELEASE`
     echo $url
-    curl $curl_options --output "$3" "$url"
+    wget -O $3 $url
     rm /tmp/com.hieplpvip.download.txt
     echo
 }
