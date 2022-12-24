@@ -1,5 +1,5 @@
 #!/bin/bash
-IASL='./tools/iasl -vw 3073 -vi -vr -p'
+IASL='iasl -vw 3073 -vi -vr -p'
 
 # Select model
 . ./src/models.txt
