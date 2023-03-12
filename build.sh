@@ -52,9 +52,15 @@ if [ -e src/smbios.txt ]; then
 else
     . src/smbios-sample.txt
 fi
-sed -i "" -e "s/MLB_PLACEHOLDER/$MLB/" \
-          -e "s/Serial_PLACEHOLDER/$SystemSerialNumber/" \
-          -e "s/SmUUID_PLACEHOLDER/$SystemUUID/" $OCFOLDER/config.plist
+
+# Support both GNU and BSD sed
+SEDOPTION=
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  SEDOPTION="''"
+fi
+sed -i $SEDOPTION -e "s/MLB_PLACEHOLDER/$MLB/" \
+         -e "s/Serial_PLACEHOLDER/$SystemSerialNumber/" \
+         -e "s/SmUUID_PLACEHOLDER/$SystemUUID/" $OCFOLDER/config.plist
 
 # Remove unused UEFI Drivers
 find $OCFOLDER/Drivers ! -name OpenCanopy.efi \
